@@ -31,6 +31,8 @@ The controller performs integration internally: `velocity = Σ(acceleration × �
 - **Pinscape KL25Z**: X/Y = accelerations, RX/RY = velocity
 - **Pinscape Pico**: `nudge.x`/`nudge.y` (acceleration) and `nudge.vx`/`nudge.vy` (velocity)
 
+The KL25Z generation documented in the [Pinscape Build Guide](../sources/Pinscape%20Build%20Guide.md) also stresses cabinet mounting details: mount the board flat, square with the cabinet, close to the front, and firmly attached so the accelerometer tracks cabinet motion accurately.
+
 ### Setup in VPX
 1. Check **"Analog Nudge Input is Velocity"**
 2. **UNCHECK** "Enable Nudge Filter" (that's only for acceleration input)
@@ -41,8 +43,9 @@ The controller performs integration internally: `velocity = Σ(acceleration × �
 
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The engine handling nudge input
 - [Open Pinball Device](Open%20Pinball%20Device.md) — New HID interface for accelerometer
-- [VPX Plunger Input](Plunger%20Input.md) — Related input system for plunger
+- [VPX Plunger Input](VPX%20Plunger%20Input.md) — Related input system for plunger
 - [VPX Latency](VPX%20Latency.md) — Input latency considerations
+- [Pinscape Controller](../projects/Pinscape%20Controller.md) — Common accelerometer-based cabinet controller
 
 
 

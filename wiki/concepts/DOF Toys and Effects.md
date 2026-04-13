@@ -4,7 +4,7 @@ In the [DirectOutput Framework](../projects/DirectOutput%20Framework.md), **toys
 
 ## Toys
 
-Toys abstract physical devices so effects don't need to know about specific [DOF Output Controllers](Output%20Controllers.md).
+Toys abstract physical devices so effects don't need to know about specific [DOF Output Controllers](DOF%20Output%20Controllers.md).
 
 ### Built-in Toy Types
 
@@ -24,7 +24,7 @@ Toys abstract physical devices so effects don't need to know about specific [DOF
 
 ### Toy Configuration
 
-Toys are defined in the DOF CabinetConfig XML, mapping to [output controller](Output%20Controllers.md) pins:
+Toys are defined in the DOF CabinetConfig XML, mapping to [output controller](DOF%20Output%20Controllers.md) pins:
 
 ```xml
 <Toys>
@@ -117,7 +117,7 @@ The CabinetConfig defines named colors used by effects:
 ## See Also
 
 - [DirectOutput Framework](../projects/DirectOutput%20Framework.md) — The framework hosting toys and effects
-- [DOF Output Controllers](Output%20Controllers.md) — Hardware that toys map to
+- [DOF Output Controllers](DOF%20Output%20Controllers.md) — Hardware that toys map to
 - [DOF Table Configuration](DOF%20Table%20Configuration.md) — Per-table effect assignments
 - [Pincab Setup](Pincab%20Setup.md) — Physical cabinet using these devices
 

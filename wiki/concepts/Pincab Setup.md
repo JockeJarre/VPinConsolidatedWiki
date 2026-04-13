@@ -45,11 +45,15 @@ For a complete 64-bit pincab environment:
 
 ## Camera / View Configuration
 
-For cabinet setups, use **Window Projection** mode in VPX — see [VPX View Setup](View%20Setup.md). This simulates the player positioned at the side of a real screen. Configure screen dimensions in centimeters for accurate perspective.
+For cabinet setups, use **Window Projection** mode in VPX — see [VPX View Setup](VPX%20View%20Setup.md). This simulates the player positioned at the side of a real screen. Configure screen dimensions in centimeters for accurate perspective.
+
+## Cabinet I/O Hardware
+
+A common DIY control stack is [Pinscape Controller](../projects/Pinscape%20Controller.md). In a single KL25Z-based setup it can cover cabinet buttons, analog nudging, plunger sensing, and optionally cabinet outputs for feedback devices.
 
 ## Hardware Feedback
 
-[DOF](../projects/DirectOutput%20Framework.md) connects to physical [DOF Output Controllers](Output%20Controllers.md) to drive:
+[DOF](../projects/DirectOutput%20Framework.md) connects to physical [DOF Output Controllers](DOF%20Output%20Controllers.md) to drive:
 - **Solenoids/contactors** for flipper and bumper feedback
 - **Motors/shakers** for vibration
 - **RGB LEDs** for ambient lighting
@@ -73,11 +77,12 @@ CALL C:\vPinball\B2SServer\B2STools\B2SRandom.cmd "[GAMEFULLNAME]"
 ## See Also
 
 - [Screen Configuration](Screen%20Configuration.md) — Monitor layout configuration
-- [VPX View Setup](View%20Setup.md) — VPX camera/projection for cabinets
+- [VPX View Setup](VPX%20View%20Setup.md) — VPX camera/projection for cabinets
 - [Backglass](Backglass.md) — Backglass display on secondary monitor
 - [DMD](DMD.md) — Digital Message Display
-- [DOF Output Controllers](Output%20Controllers.md) — Hardware driving cabinet feedback
+- [DOF Output Controllers](DOF%20Output%20Controllers.md) — Hardware driving cabinet feedback
 - [B2S Backglass Server](../projects/B2S%20Backglass%20Server.md) — Manages backglass rendering
 - [DirectOutput Framework](../projects/DirectOutput%20Framework.md) — Drives physical feedback
+- [Pinscape Controller](../projects/Pinscape%20Controller.md) — Common DIY cabinet input/output controller
 
 

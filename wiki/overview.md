@@ -56,6 +56,8 @@ Connects game events to physical hardware. Translates solenoid/lamp/switch chang
 - [VPX Accelerometer Input](concepts/VPX%20Accelerometer%20Input.md) — Acceleration vs velocity-based nudge
 - [Open Pinball Device](concepts/Open%20Pinball%20Device.md) — New USB HID standard for pincab controllers
 
+A common DIY hardware bridge for these cabinet inputs is [Pinscape Controller](projects/Pinscape%20Controller.md), which can combine buttons, plunger sensing, nudge sensing, and cabinet output control on one KL25Z-based controller stack.
+
 ### Hardware Feedback
 - [DOF Output Controllers](concepts/DOF%20Output%20Controllers.md) — LedWiz, PacLed64, Art-Net, etc.
 - [DOF Toys and Effects](concepts/DOF%20Toys%20and%20Effects.md) — Logical devices and effect chaining
@@ -78,14 +80,15 @@ Connects game events to physical hardware. Translates solenoid/lamp/switch chang
 
 ## Raw Sources
 
-This wiki is currently maintained from six source collections:
+This wiki is currently maintained from seven source collections:
 - [B2S Wiki](sources/B2S%20Wiki.md) — 31 markdown files from the B2S Backglass Server wiki mirror
 - [DOF Documentation](sources/DOF%20Documentation.md) — 25 markdown files from the DirectOutput Framework docs mirror
 - [VPX Docs](sources/VPX%20Docs.md) — 37 files from the Visual Pinball X docs mirror
 - [FlexDMD Docs](sources/FlexDMD%20Docs.md) — 5 markdown files from the FlexDMD docs mirror
 - [DMD Extensions Docs](sources/DMD%20Extensions%20Docs.md) — 6 documentation files from the DMD Extensions mirror
+- [Pinscape Build Guide](sources/Pinscape%20Build%20Guide.md) — 133 AsciiDoc files covering cabinet construction and the Pinscape controller platform
 - [PinUp Popper Docs](sources/PinUp%20Popper%20Docs.md) — 78 mirrored HTML pages from the PinUp Popper wiki
 
-PinUp Popper pages are mirrored locally for reference, but are still less deeply modeled than the main VPX/B2S/DOF/FlexDMD/DMD Extensions project and concept pages.
+PinUp Popper pages are mirrored locally for reference, but are still less deeply modeled than the main VPX/B2S/DOF/FlexDMD/DMD Extensions/Pinscape project and concept pages.
 
 

@@ -9,7 +9,7 @@ Traditional pincab controllers emulate joysticks, which causes:
 - No way for VPX to know the device is actually a pinball controller
 - Extra manual configuration required
 
-With OPD, VPX knows the connected device is a pinball controller, reducing configuration and avoiding interference with other applications.
+With OPD, VPX knows the connected device is a pinball controller, reducing configuration and avoiding interference with other applications. This is a direct improvement over older joystick-emulating cabinet controllers such as the KL25Z-based [Pinscape Controller](../projects/Pinscape%20Controller.md).
 
 ## Supported Devices
 
@@ -25,7 +25,7 @@ Standard pinball buttons (Start, Left Flipper, Right Flipper, Coin In, etc.) are
 Buttons #1–#32 can be configured like joystick buttons in the VPX Keys dialog.
 
 ### Axis Inputs
-For [plunger](Plunger%20Input.md) and [accelerometer/nudge](Accelerometer%20Input.md) inputs, select **OpenPinDev** in the dropdown. No need to specify which axis (unlike joystick X/Y/RX/RY selection).
+For [plunger](VPX%20Plunger%20Input.md) and [accelerometer/nudge](VPX%20Accelerometer%20Input.md) inputs, select **OpenPinDev** in the dropdown. No need to specify which axis (unlike joystick X/Y/RX/RY selection).
 
 ### Multiple Controllers
 - Inputs from multiple OPD controllers are automatically combined
@@ -38,8 +38,8 @@ Fully supports mixing OPD controllers with traditional joystick-emulating device
 ## See Also
 
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The engine supporting OPD
-- [VPX Plunger Input](Plunger%20Input.md) — Plunger via OPD
-- [VPX Accelerometer Input](Accelerometer%20Input.md) — Nudge via OPD
+- [VPX Plunger Input](VPX%20Plunger%20Input.md) — Plunger via OPD
+- [VPX Accelerometer Input](VPX%20Accelerometer%20Input.md) — Nudge via OPD
 - [Pincab Setup](Pincab%20Setup.md) — Physical cabinet using OPD controllers
 
 

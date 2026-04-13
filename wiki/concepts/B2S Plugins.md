@@ -16,7 +16,7 @@ Plugins implement the `IDirectPlugin` and optionally `IDirectPluginFrontend` int
 
 ### DirectOutput Framework (DOF)
 
-The [DirectOutput Framework](../projects/DirectOutput%20Framework.md) receives table element state changes and drives physical [DOF Output Controllers](Output%20Controllers.md) to trigger [toys](Toys%20and%20Effects.md) (contactors, LEDs, motors, shakers).
+The [DirectOutput Framework](../projects/DirectOutput%20Framework.md) receives table element state changes and drives physical [DOF Output Controllers](DOF%20Output%20Controllers.md) to trigger [toys](DOF%20Toys%20and%20Effects.md) (contactors, LEDs, motors, shakers).
 
 - **DLL**: `DirectOutput_B2SServer_Plugin.dll`
 - **Data flow**: B2S forwards `Controller.B2SSetData(ElementID, Value)` calls from table scripts
@@ -49,6 +49,7 @@ DOF also provides a separate `DirectOutput PinballX Plugin.dll` for frontend int
 - [B2S Backglass Server](../projects/B2S%20Backglass%20Server.md) — Host application for plugins
 - [DirectOutput Framework](../projects/DirectOutput%20Framework.md) — The hardware feedback plugin
 - [DOF Table Configuration](DOF%20Table%20Configuration.md) — Configuring DOF per table
+- [DOF Output Controllers](DOF%20Output%20Controllers.md) — Hardware driven by the DOF plugin
 
 
 

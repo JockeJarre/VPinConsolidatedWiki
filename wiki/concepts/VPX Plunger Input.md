@@ -21,6 +21,7 @@ The controller's microcontroller measures plunger speed directly at high frequen
 ### Compatible Devices
 - **Pinscape Controller (KL25Z)**: Z axis = position, RZ axis = speed
 - **Pinscape Pico**: Custom `plunger.z` and `plunger.speed` axes
+- The [Pinscape Build Guide](../sources/Pinscape%20Build%20Guide.md) documents several sensor options for the KL25Z generation, including potentiometer and optical approaches
 
 ### Setup
 In VPX Keys dialog, select both:
@@ -44,9 +45,10 @@ Methods: `Pullback()`, `Fire()`, `CreateBall()`
 
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The engine handling plunger input
 - [Open Pinball Device](Open%20Pinball%20Device.md) — New HID interface for plunger
-- [VPX Accelerometer Input](Accelerometer%20Input.md) — Related input system for nudge
+- [VPX Accelerometer Input](VPX%20Accelerometer%20Input.md) — Related input system for nudge
 - [VPX Latency](VPX%20Latency.md) — Input latency considerations
 - [VPX Scripting](VPX%20Scripting.md) — Plunger script interface
+- [Pinscape Controller](../projects/Pinscape%20Controller.md) — Common plunger-capable cabinet controller
 
 
 

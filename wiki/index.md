@@ -12,6 +12,7 @@ Catalog of all pages in this wiki.
 - [DirectOutput Framework](projects/DirectOutput%20Framework.md) — C# framework connecting virtual pinball to physical feedback hardware
 - [DMD Extensions](projects/DMD%20Extensions.md) — DmdDevice.dll toolbox routing DMD frames from games to real and virtual displays
 - [FlexDMD](projects/FlexDMD.md) — In-process COM DMD renderer for VPX; drop-in UltraDMD replacement with scene-graph API
+- [Pinscape Controller](projects/Pinscape%20Controller.md) — Open-source KL25Z-based cabinet controller for buttons, plunger, nudge, and outputs
 - [Visual Pinball X](projects/Visual%20Pinball%20X.md) — Pinball table simulator, editor, and physics engine
 
 ## Concepts
@@ -39,6 +40,7 @@ Catalog of all pages in this wiki.
 - [DMD Extensions Docs](sources/DMD%20Extensions%20Docs.md) — Summary of 6 DMD Extensions documentation files
 - [DOF Documentation](sources/DOF%20Documentation.md) — Summary of 25 DirectOutput Framework documentation files
 - [FlexDMD Docs](sources/FlexDMD%20Docs.md) — Summary of 5 FlexDMD documentation files
+- [Pinscape Build Guide](sources/Pinscape%20Build%20Guide.md) — Summary of 133 AsciiDoc files covering cabinet construction and the Pinscape platform
 - [PinUp Popper Docs](sources/PinUp%20Popper%20Docs.md) — Summary of 78 mirrored PinUp Popper wiki HTML pages
 - [VPX Docs](sources/VPX%20Docs.md) — Summary of 37 Visual Pinball X documentation files
 

@@ -127,6 +127,6 @@ Use Notepad++ with regex Find/Replace across `*.res` files to bulk-update screen
 - [Pincab Setup](Pincab%20Setup.md) — Physical cabinet monitor layout
 - [Backglass](Backglass.md) — The window being positioned
 - [DMD](DMD.md) — DMD window positioning
-- [VPX View Setup](View%20Setup.md) — VPX camera configuration (separate from B2S screen config)
+- [VPX View Setup](VPX%20View%20Setup.md) — VPX camera configuration (separate from B2S screen config)
 
 

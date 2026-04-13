@@ -23,7 +23,7 @@ To prevent "egg-shaped" ball distortion:
 
 ## Window Projection (Pincab)
 
-Designed for [pincab setups](Pincab%20Setup.md) where a TV screen sits inside the cabinet. Simulates the player positioned at the side of a real screen. Supports headtracking and [VPX Stereo 3D](Stereo%203D.md).
+Designed for [pincab setups](Pincab%20Setup.md) where a TV screen sits inside the cabinet. Simulates the player positioned at the side of a real screen. Supports headtracking and [VPX Stereo 3D](VPX%20Stereo%203D.md).
 
 **Video Settings (global):**
 | Parameter | Description |
@@ -66,7 +66,7 @@ Adjustable via POV settings. Tonemapper options:
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The rendering engine
 - [Pincab Setup](Pincab%20Setup.md) — Physical cabinet display configuration
 - [Screen Configuration](Screen%20Configuration.md) — B2S window positioning (separate system)
-- [VPX Stereo 3D](Stereo%203D.md) — 3D rendering modes
+- [VPX Stereo 3D](VPX%20Stereo%203D.md) — 3D rendering modes
 - [VPX Latency](VPX%20Latency.md) — Rendering latency considerations
 
 

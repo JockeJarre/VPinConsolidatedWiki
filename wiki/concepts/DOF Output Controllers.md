@@ -17,6 +17,7 @@ Output controllers are hardware units that translate digital signals from the [D
 | **DirectStripController** | Unlimited | 256 | Swisslizard design | Multiple |
 | **Philips Hue** | ~150 (50 lights × 3) | 256 | Zigbee wireless | Unlimited |
 | **DudesCab** | 128 | 256 | RP2040-based USB | 5 |
+| **Pinscape (LedWiz emulation)** | 22+ standalone, 65+ with expansion boards | LedWiz-compatible | USB | Cabinet-specific |
 
 ## LedWiz
 
@@ -54,11 +55,13 @@ Output controllers are defined in the DOF **CabinetConfig** XML:
 </OutputControllers>
 ```
 
-[Toys](Toys%20and%20Effects.md) reference controller outputs by name (e.g., `LedWiz 01.01` for LedWiz unit 1, output 1).
+[DOF Toys and Effects](DOF%20Toys%20and%20Effects.md) reference controller outputs by name (e.g., `LedWiz 01.01` for LedWiz unit 1, output 1).
 
 ## DOF Abstraction
 
-DOF manages all outputs through an abstract `IOutput` interface, allowing cross-controller compatibility. A [toy](Toys%20and%20Effects.md) can be mapped to any controller's output regardless of hardware type. Each controller runs on its own thread for non-blocking communication.
+DOF manages all outputs through an abstract `IOutput` interface, allowing cross-controller compatibility. A [toy](DOF%20Toys%20and%20Effects.md) can be mapped to any controller's output regardless of hardware type. Each controller runs on its own thread for non-blocking communication.
+
+Pinscape is relevant here because its guide describes using the controller as a LedWiz-style output target, either from a standalone KL25Z with booster circuitry or from the larger expansion-board stack.
 
 ## See Also
 
@@ -66,6 +69,7 @@ DOF manages all outputs through an abstract `IOutput` interface, allowing cross-
 - [DOF Toys and Effects](DOF%20Toys%20and%20Effects.md) — Logical devices mapped to controller outputs
 - [Pincab Setup](Pincab%20Setup.md) — Physical cabinet using these controllers
 - [DOF Table Configuration](DOF%20Table%20Configuration.md) — Per-table effect assignments
+- [Pinscape Controller](../projects/Pinscape%20Controller.md) — DIY controller with LedWiz-style output support
 
 
 

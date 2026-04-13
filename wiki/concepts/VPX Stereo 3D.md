@@ -53,9 +53,9 @@ Toggle stereo during play with **F10**.
 ## See Also
 
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The rendering engine
-- [VPX View Setup](View%20Setup.md) — Camera configuration affects stereo
+- [VPX View Setup](VPX%20View%20Setup.md) — Camera configuration affects stereo
 - [Pincab Setup](Pincab%20Setup.md) — 3D TV in cabinet context
-- [VPX Lights and Rendering](Lights%20and%20Rendering.md) — Lighting interacts with stereo
+- [VPX Lights and Rendering](VPX%20Lights%20and%20Rendering.md) — Lighting interacts with stereo
 
 
 

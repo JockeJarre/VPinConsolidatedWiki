@@ -2,6 +2,16 @@
 
 Chronological record of wiki operations.
 
+## [2026-04-13] update | Ingest Pinscape Build Guide and repair stale scoped links
+
+Added Pinscape coverage for the newly mirrored `raw/pinscape-build-guide/repo/book/` source collection and fixed stale concept links left behind by earlier scoped renames:
+
+- Created [Pinscape Controller](projects/Pinscape%20Controller.md) as a new project page covering KL25Z-based inputs, plunger support, nudging, and output control
+- Created [Pinscape Build Guide](sources/Pinscape%20Build%20Guide.md) as a new source summary for the 133-file AsciiDoc cabinet-building guide
+- Updated [index.md](index.md) and [overview.md](overview.md) to include Pinscape as a first-class project/source and raised raw source coverage from six to seven collections
+- Updated [Pincab Setup](concepts/Pincab%20Setup.md), [VPX Plunger Input](concepts/VPX%20Plunger%20Input.md), [VPX Accelerometer Input](concepts/VPX%20Accelerometer%20Input.md), [Open Pinball Device](concepts/Open%20Pinball%20Device.md), and [DOF Output Controllers](concepts/DOF%20Output%20Controllers.md) to connect existing cabinet/input concepts to the Pinscape source material
+- Repaired stale internal links in concept pages that still pointed at pre-rename filenames such as `View Setup.md`, `Output Controllers.md`, `Stereo 3D.md`, and `Accelerometer Input.md`
+
 ## [2026-04-12] update | Link root README.md files from raw sources
 
 Added proper links to README.md files at the root level of raw source repositories:

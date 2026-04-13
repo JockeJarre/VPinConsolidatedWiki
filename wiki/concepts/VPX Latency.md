@@ -51,8 +51,8 @@ Skips the standard solenoid emulation chain: applies flipper changes immediately
 ## See Also
 
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The engine with latency settings
-- [VPX Plunger Input](Plunger%20Input.md) — Plunger-specific latency concerns
-- [VPX Accelerometer Input](Accelerometer%20Input.md) — Nudge input latency
-- [VPX View Setup](View%20Setup.md) — Rendering mode affects visual latency
+- [VPX Plunger Input](VPX%20Plunger%20Input.md) — Plunger-specific latency concerns
+- [VPX Accelerometer Input](VPX%20Accelerometer%20Input.md) — Nudge input latency
+- [VPX View Setup](VPX%20View%20Setup.md) — Rendering mode affects visual latency
 
 

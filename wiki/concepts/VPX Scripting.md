@@ -18,7 +18,7 @@
 ### Rendering
 | Variable | Description |
 |----------|-------------|
-| `RenderingMode` | 0=2D, 1=[Stereo](Stereo%203D.md), 2=VR |
+| `RenderingMode` | 0=2D, 1=[Stereo](VPX%20Stereo%203D.md), 2=VR |
 | `WindowWidth` / `WindowHeight` | Render target size |
 
 ## Key Element Types
@@ -32,10 +32,10 @@ Position, geometry (`BaseRadius`, `EndRadius`, `Length`, `Height`), angles (`Sta
 Methods: `RotateToEnd()`, `RotateToStart()`
 
 ### Light
-`State` (0=off, 1=on, 2=blinking), `Color`, `Intensity`, `IntensityScale`, `Fader` (None/Linear/Incandescent), `BlinkPattern`, `Shadows` (0=off, 1=raytraced), `FilamentTemperature`. See [VPX Lights and Rendering](Lights%20and%20Rendering.md).
+`State` (0=off, 1=on, 2=blinking), `Color`, `Intensity`, `IntensityScale`, `Fader` (None/Linear/Incandescent), `BlinkPattern`, `Shadows` (0=off, 1=raytraced), `FilamentTemperature`. See [VPX Lights and Rendering](VPX%20Lights%20and%20Rendering.md).
 
 ### Plunger
-`Position()`, `FireSpeed`, `MechPlunger`, `ParkPosition`, `MechStrength`, `Stroke`. Methods: `Pullback()`, `Fire()`, `CreateBall()`. See [VPX Plunger Input](Plunger%20Input.md).
+`Position()`, `FireSpeed`, `MechPlunger`, `ParkPosition`, `MechStrength`, `Stroke`. Methods: `Pullback()`, `Fire()`, `CreateBall()`. See [VPX Plunger Input](VPX%20Plunger%20Input.md).
 
 ### Bumper
 Position, `Force`, `RingDropOffset`, `RingSpeed`, `EnableSkirtAnimation`
@@ -111,7 +111,7 @@ See [DMD](DMD.md).
 `LightAmbient`, `Light0Emission`, `LightEmissionScale`, `AOScale`, `BloomStrength`
 
 ### Stereo
-`MaxSeparation`, `ZPD`, `Offset`. See [VPX Stereo 3D](Stereo%203D.md).
+`MaxSeparation`, `ZPD`, `Offset`. See [VPX Stereo 3D](VPX%20Stereo%203D.md).
 
 ## Material Control
 
@@ -155,9 +155,9 @@ Core VBS scripts provide helper classes for common game mechanics:
 ## See Also
 
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The engine running these scripts
-- [VPX Lights and Rendering](Lights%20and%20Rendering.md) — Light element details
+- [VPX Lights and Rendering](VPX%20Lights%20and%20Rendering.md) — Light element details
 - [DMD](DMD.md) — DMD scripting interface
-- [VPX Plunger Input](Plunger%20Input.md) — Plunger script properties
+- [VPX Plunger Input](VPX%20Plunger%20Input.md) — Plunger script properties
 - [B2S Backglass Server](../projects/B2S%20Backglass%20Server.md) — COM interface from scripts
 
 

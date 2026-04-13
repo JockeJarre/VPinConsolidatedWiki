@@ -74,8 +74,8 @@ New system for scalable, VR-compatible reflections:
 
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The rendering engine
 - [VPX Scripting](VPX%20Scripting.md) — Script access to light properties
-- [VPX Stereo 3D](Stereo%203D.md) — 3D rendering interacts with lighting
-- [VPX View Setup](View%20Setup.md) — Camera affects light appearance
+- [VPX Stereo 3D](VPX%20Stereo%203D.md) — 3D rendering interacts with lighting
+- [VPX View Setup](VPX%20View%20Setup.md) — Camera affects light appearance
 
 
 
