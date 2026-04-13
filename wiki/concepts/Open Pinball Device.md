@@ -1,0 +1,45 @@
+# Open Pinball Device
+
+Open Pinball Device (OPD) is a new USB HID interface specifically designed for pinball cabinet controllers, supported by [Visual Pinball X](../projects/Visual%20Pinball%20X.md). It replaces generic joystick emulation for [pincab](Pincab%20Setup.md) input devices.
+
+## Why OPD?
+
+Traditional pincab controllers emulate joysticks, which causes:
+- Confusion with non-pinball games looking for joystick input
+- No way for VPX to know the device is actually a pinball controller
+- Extra manual configuration required
+
+With OPD, VPX knows the connected device is a pinball controller, reducing configuration and avoiding interference with other applications.
+
+## Supported Devices
+
+- **Pinscape Pico** (in development as of Sept 2024)
+- Specification publicly available: [OpenPinballDeviceHID.htm](http://mjrnet.org/pinscape/OpenPinballDevice/OpenPinballDeviceHID.htm)
+
+## Features
+
+### Pre-Assigned Buttons
+Standard pinball buttons (Start, Left Flipper, Right Flipper, Coin In, etc.) are pre-assigned — no VPX configuration needed.
+
+### Generic Buttons
+Buttons #1–#32 can be configured like joystick buttons in the VPX Keys dialog.
+
+### Axis Inputs
+For [plunger](Plunger%20Input.md) and [accelerometer/nudge](Accelerometer%20Input.md) inputs, select **OpenPinDev** in the dropdown. No need to specify which axis (unlike joystick X/Y/RX/RY selection).
+
+### Multiple Controllers
+- Inputs from multiple OPD controllers are automatically combined
+- Assumes one accelerometer and one plunger per system
+- Button inputs are OR'd together (any controller's button = active)
+
+### Mixing with Joystick
+Fully supports mixing OPD controllers with traditional joystick-emulating devices.
+
+## See Also
+
+- [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The engine supporting OPD
+- [VPX Plunger Input](Plunger%20Input.md) — Plunger via OPD
+- [VPX Accelerometer Input](Accelerometer%20Input.md) — Nudge via OPD
+- [Pincab Setup](Pincab%20Setup.md) — Physical cabinet using OPD controllers
+
+

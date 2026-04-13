@@ -1,0 +1,30 @@
+name: Update raw sources
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Every Monday at 06:00 UTC
+  workflow_dispatch:       # Also runnable manually from the Actions tab
+
+jobs:
+  update-raw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch upstream documentation sources
+        shell: pwsh
+        run: ./update-raw.ps1
+
+      # Future step: call LLM API to re-ingest changed files and update wiki/
+      # For now this only refreshes raw/ — wiki/ re-generation stays manual.
+
+      - name: Commit updated raw sources
+        # Enable this once automated LLM re-ingestion is wired up.
+        # Until then raw/ is gitignored anyway, so nothing to commit.
+        if: false
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add wiki/
+          git diff --cached --quiet || git commit -m "chore: auto-update wiki from upstream sources"
+          git push

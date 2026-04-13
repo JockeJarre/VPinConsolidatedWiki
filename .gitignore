@@ -1,0 +1,9 @@
+.obsidian/
+
+# Raw source snapshots — populated by update-raw.ps1, not committed to this repo
+raw/B2S/b2s-backglass.wiki/
+raw/DOF/repo/
+raw/FlexDMD/repo/
+raw/VPX/repo/
+raw/DMD-Extensions/repo/
+raw/PUP/site/
