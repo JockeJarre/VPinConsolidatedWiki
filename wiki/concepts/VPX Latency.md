@@ -7,6 +7,14 @@ Latency in [Visual Pinball X](../projects/Visual%20Pinball%20X.md) is the delay 
 ### 1. Input Latency
 Time from physical stimulus to VPX processing. Target: **<1ms**. VPX polls input continuously.
 
+Measured input-method floor ([raw/vpw-wiki/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction):
+
+- **KL25Z board + leaf switches**: ~**20ms** minimum (8ms debounce + spring contact bounce); fast taps are occasionally missed entirely
+- **PS/2 keyboard hack + gold leaf switches**: **5–8ms** — interrupt-driven, no USB polling, zero missed contacts
+- At 60 Hz, VPX can only register inputs once per frame (**16.7ms**), disadvantaging tap-pass timing; compensating with a very low `sosramp` (~0.5) helps
+
+**PinAffinity** ([mjrnet.org/pinscape/PinAffinity.html](https://mjrnet.org/pinscape/PinAffinity.html)) dedicates CPU threads to the pinball processes and moves everything else to other cores, reducing input lag and script timing jitter — important for consistent flipper physics and live-catch timing ([raw/vpw-wiki/docs/reference/tools-resources.md](https://vpw-wiki.skirmishofwit.com/reference/tools-resources/), 2026 extraction).
+
 ### 2. Physics/Emulation Latency
 Time from input event to emulation awareness. Typically **~0.5ms** for WPC machines. Optimized with FastFlips (see below).
 
@@ -39,8 +47,15 @@ Skips the standard solenoid emulation chain: applies flipper changes immediately
 - **Disable V-Sync** if possible — Removes frame-sync wait
 - **TV/Monitor "Game Mode"** — Reduces display processing
 - **Latency Correction** — Renders balls at predicted position. Set to -1 (auto) or specific ms value
+  - ⚠️ CONFLICT (secondary source): VisualLatencyCorrection "Setting this value to `0` disables this correction, while `1` (the default) derives an appropriate value from the target FPS rate" — the archived page is internally inconsistent (it also says "Set to -1 (auto)")
+    ([raw/dekay-vpinball-wiki/VPinball-Ini.md](https://github.com/dekay/vpinball-wiki/wiki/VPinball-Ini), **ARCHIVED in-source**) — Primary: "Set to -1 (auto)". Version drift: the archived ini doc is a historic snapshot; verify against the shipped `Default_VPinballX.ini`
+- **SyncMode / V-Sync** — this page says "Disable V-Sync if possible"
+  - ⚠️ CONFLICT (secondary source): syncmode `0` "leads to input latency, render latency" (frame-pacing regime); the archived doc enumerates "3 - Frame Pacing (default)" and states the **BGFX build "only supports syncmode values of 0 and 1"**
+    ([raw/dekay-vpinball-wiki/VPinball-Ini.md](https://github.com/dekay/vpinball-wiki/wiki/VPinball-Ini), **ARCHIVED in-source**) — Primary: disable V-Sync for lowest latency. The archived enumeration predates current builds; the BGFX 0/1-only note is worth verifying against current releases
 
 ## Registry Keys
+
+Settings keys from the registry era (VPX 10.7 and earlier); as of 10.8 settings live in `VPinballX.ini` — see [VPX File Layout](VPX%20File%20Layout.md).
 
 | Key | Description |
 |-----|-------------|
@@ -54,5 +69,7 @@ Skips the standard solenoid emulation chain: applies flipper changes immediately
 - [VPX Plunger Input](VPX%20Plunger%20Input.md) — Plunger-specific latency concerns
 - [VPX Accelerometer Input](VPX%20Accelerometer%20Input.md) — Nudge input latency
 - [VPX View Setup](VPX%20View%20Setup.md) — Rendering mode affects visual latency
+- [VPX VR Setup](VPX%20VR%20Setup.md) — Frame pacing (ASW/Motion Smoothing) in VR
+- [VPX Debugging](VPX%20Debugging.md) — Performance levers (textures, PreRenderLimit, AO)
 
 

@@ -1,6 +1,6 @@
 # FlexDMD Docs
 
-Summary of 5 FlexDMD documentation files from the local snapshot in [raw/FlexDMD/repo/docs](../../raw/FlexDMD/repo/docs/). Run `update-raw.ps1` to refresh it before re-ingesting.
+Summary of 5 FlexDMD documentation files from the local snapshot in [raw/FlexDMD/repo/docs](https://github.com/vbousquet/flexdmd/tree/master/docs). Run `update-raw.ps1` to refresh it before re-ingesting.
 
 ## Canonical Upstream
 
@@ -10,11 +10,11 @@ Summary of 5 FlexDMD documentation files from the local snapshot in [raw/FlexDMD
 
 | File | Contents |
 |------|----------|
-| [README.md](../../raw/FlexDMD/repo/docs/README.md) | Overview, features, installation, configuration, architecture |
-| [FlexDMD_API.md](../../raw/FlexDMD/repo/docs/FlexDMD_API.md) | Full COM API reference: Stage, Actors, Actions, threading |
-| [UltraDMD.md](../../raw/FlexDMD/repo/docs/UltraDMD.md) | Drop-in UltraDMD replacement guide and table conversion steps |
-| [VPXDMD.md](../../raw/FlexDMD/repo/docs/VPXDMD.md) | Embedding the DMD directly on the VPX playfield |
-| [JPSalas.md](../../raw/FlexDMD/repo/docs/JPSalas.md) | Adding FlexDMD to JPSalas tables that lack UltraDMD support |
+| [README.md](https://github.com/vbousquet/flexdmd/blob/master/docs/README.md) | Overview, features, installation, configuration, architecture |
+| [FlexDMD_API.md](https://github.com/vbousquet/flexdmd/blob/master/docs/FlexDMD_API.md) | Full COM API reference: Stage, Actors, Actions, threading |
+| [UltraDMD.md](https://github.com/vbousquet/flexdmd/blob/master/docs/UltraDMD.md) | Drop-in UltraDMD replacement guide and table conversion steps |
+| [VPXDMD.md](https://github.com/vbousquet/flexdmd/blob/master/docs/VPXDMD.md) | Embedding the DMD directly on the VPX playfield |
+| [JPSalas.md](https://github.com/vbousquet/flexdmd/blob/master/docs/JPSalas.md) | Adding FlexDMD to JPSalas tables that lack UltraDMD support |
 
 ## Key Facts
 

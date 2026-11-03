@@ -48,6 +48,10 @@ Toys are defined in the DOF CabinetConfig XML, mapping to [output controller](DO
 </Toys>
 ```
 
+### LedWizEquivalent in Practice
+
+The [SSFImpactor](../projects/SSFImpactor.md) guide ships a canonical Cabinet.xml that demonstrates the **LedWizEquivalent** toy end to end: each of the controller's 15 software ports (`FlipperLeft.00` … `Bell.14`) is wrapped in a `<Contactor>` or `<ReplayKnocker>` toy and mapped to a LedWiz output number via `<LedWizEquivalentOutput>`, so legacy INI-based table configs drive software-synthesized effects unchanged.
+
 ## Effects
 
 Effects define what happens to toys when table events fire.
@@ -120,5 +124,6 @@ The CabinetConfig defines named colors used by effects:
 - [DOF Output Controllers](DOF%20Output%20Controllers.md) — Hardware that toys map to
 - [DOF Table Configuration](DOF%20Table%20Configuration.md) — Per-table effect assignments
 - [Pincab Setup](Pincab%20Setup.md) — Physical cabinet using these devices
+- [SSFImpactor](../projects/SSFImpactor.md) — Software controller with canonical toy mappings
 
 

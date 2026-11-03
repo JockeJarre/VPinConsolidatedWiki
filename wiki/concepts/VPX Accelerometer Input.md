@@ -29,6 +29,8 @@ The controller performs integration internally: `velocity = Σ(acceleration × �
 
 ### Compatible Devices
 - **Pinscape KL25Z**: X/Y = accelerations, RX/RY = velocity
+  - ⚠️ CONFLICT (secondary source): the community Pinscape guide's gamepad mapping puts acceleration on **`rx`/`ry`** and velocity on **`x`/`y`** ("These setup instructions also work for the KL25Z") — while the same guide states axis choice is **arbitrary** (each reading just needs a distinct axis)
+    ([raw/dekay-vpinball-wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers) — Primary: the axis convention above. Both work; do not "fix" one convention into the other
 - **Pinscape Pico**: `nudge.x`/`nudge.y` (acceleration) and `nudge.vx`/`nudge.vy` (velocity)
 
 The KL25Z generation documented in the [Pinscape Build Guide](../sources/Pinscape%20Build%20Guide.md) also stresses cabinet mounting details: mount the board flat, square with the cabinet, close to the front, and firmly attached so the accelerometer tracks cabinet motion accurately.
@@ -41,6 +43,7 @@ The KL25Z generation documented in the [Pinscape Build Guide](../sources/Pinscap
 
 ## See Also
 
+- [Pinscape Pico](Pinscape%20Pico.md) — Pico nudge mapping (2-G acceleration unit, 0.2048 m/s velocity unit)
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The engine handling nudge input
 - [Open Pinball Device](Open%20Pinball%20Device.md) — New HID interface for accelerometer
 - [VPX Plunger Input](VPX%20Plunger%20Input.md) — Related input system for plunger

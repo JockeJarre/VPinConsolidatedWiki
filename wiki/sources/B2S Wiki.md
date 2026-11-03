@@ -1,6 +1,6 @@
 # B2S Wiki (Source Summary)
 
-Summary of 31 markdown files in the local B2S Backglass Server wiki snapshot at [raw/B2S/b2s-backglass.wiki](../../raw/B2S/b2s-backglass.wiki/). Run `update-raw.ps1` to refresh it before re-ingesting.
+Summary of 31 markdown files in the local B2S Backglass Server wiki snapshot at [raw/B2S/b2s-backglass.wiki](https://github.com/vpinball/b2s-backglass/wiki). Run `update-raw.ps1` to refresh it before re-ingesting.
 
 ## Canonical Upstream
 
@@ -12,33 +12,33 @@ Current snapshot file count: 31 markdown files.
 
 | File | Topic |
 |------|-------|
-| [Home](../../raw/B2S/b2s-backglass.wiki/Home.md) | Wiki landing page |
-| [Description](../../raw/B2S/b2s-backglass.wiki/Description.md) | What B2S Server is |
-| [Fresh-Installation](../../raw/B2S/b2s-backglass.wiki/Fresh-Installation.md) | Installation guide |
-| [Update](../../raw/B2S/b2s-backglass.wiki/Update.md) | Update procedures |
-| [Settings](../../raw/B2S/b2s-backglass.wiki/Settings.md) | Settings system |
-| [Usage](../../raw/B2S/b2s-backglass.wiki/Usage.md) | General usage |
-| [Methods](../../raw/B2S/b2s-backglass.wiki/Methods.md) | API methods reference |
-| [B2S-DMD](../../raw/B2S/b2s-backglass.wiki/B2S-DMD.md) | DMD window feature |
-| [B2SScreenResIdentifier](../../raw/B2S/b2s-backglass.wiki/B2SScreenResIdentifier.md) | Screen config tool |
-| [B2SWindowPunch](../../raw/B2S/b2s-backglass.wiki/B2SWindowPunch.md) | Window transparency tool |
-| [B2STableSettings](../../raw/B2S/b2s-backglass.wiki/B2STableSettings.md) | Per-ROM settings |
-| [B2STableSettings.xml](../../raw/B2S/b2s-backglass.wiki/B2STableSettings.xml.md) | XML config format |
-| [Screenres.txt](../../raw/B2S/b2s-backglass.wiki/Screenres.txt.md) | Screen resolution config |
-| [Tablename.res](../../raw/B2S/b2s-backglass.wiki/Tablename.res.md) | Per-table screen config |
-| [Backgrounds](../../raw/B2S/b2s-backglass.wiki/Backgrounds.md) | Background image feature |
-| [B2SRandom](../../raw/B2S/b2s-backglass.wiki/B2SRandom.md) | Backglass randomizer |
-| [B2SBackglassServerRegisterApp](../../raw/B2S/b2s-backglass.wiki/B2SBackglassServerRegisterApp.md) | COM registration tool |
-| [Single-Screen-examples](../../raw/B2S/b2s-backglass.wiki/Single-Screen-examples.md) | Desktop setup examples |
-| [Dual-Screen-examples](../../raw/B2S/b2s-backglass.wiki/Dual-Screen-examples.md) | Cabinet setup examples |
-| [64bit-VPX-Pincab-Setup-Guide](../../raw/B2S/b2s-backglass.wiki/64bit-VPX-Pincab-Setup-Guide.md) | 64-bit setup guide |
-| [Tips-n-Tricks](../../raw/B2S/b2s-backglass.wiki/Tips-n-Tricks.md) | Tips and tricks |
-| [VPinballX.starter](../../raw/B2S/b2s-backglass.wiki/VPinballX.starter.md) | VPX starter info |
-| [VPX-POV-Setup](../../raw/B2S/b2s-backglass.wiki/VPX-POV-Setup.md) | POV camera setup |
-| [PinVol](../../raw/B2S/b2s-backglass.wiki/PinVol.md) | PinVol audio config |
-| [Template-Folder](../../raw/B2S/b2s-backglass.wiki/Template-Folder.md) | ScreenRes templates |
-| [DeRegister-dll](../../raw/B2S/b2s-backglass.wiki/DeRegister-dll.md) | De-registration guide |
-| [RightMouseClick-Context-Menu](../../raw/B2S/b2s-backglass.wiki/RightMouseClick-Context-Menu.md) | Context menu features |
+| [Home](https://github.com/vpinball/b2s-backglass/wiki) | Wiki landing page |
+| [Description](https://github.com/vpinball/b2s-backglass/wiki/Description) | What B2S Server is |
+| [Fresh-Installation](https://github.com/vpinball/b2s-backglass/wiki/Fresh-Installation) | Installation guide |
+| [Update](https://github.com/vpinball/b2s-backglass/wiki/Update) | Update procedures |
+| [Settings](https://github.com/vpinball/b2s-backglass/wiki/Settings) | Settings system |
+| [Usage](https://github.com/vpinball/b2s-backglass/wiki/Usage) | General usage |
+| [Methods](https://github.com/vpinball/b2s-backglass/wiki/Methods) | API methods reference |
+| [B2S-DMD](https://github.com/vpinball/b2s-backglass/wiki/B2S-DMD) | DMD window feature |
+| [B2SScreenResIdentifier](https://github.com/vpinball/b2s-backglass/wiki/B2SScreenResIdentifier) | Screen config tool |
+| [B2SWindowPunch](https://github.com/vpinball/b2s-backglass/wiki/B2SWindowPunch) | Window transparency tool |
+| [B2STableSettings](https://github.com/vpinball/b2s-backglass/wiki/B2STableSettings) | Per-ROM settings |
+| [B2STableSettings.xml](https://github.com/vpinball/b2s-backglass/wiki/B2STableSettings.xml) | XML config format |
+| [Screenres.txt](https://github.com/vpinball/b2s-backglass/wiki/Screenres.txt) | Screen resolution config |
+| [Tablename.res](https://github.com/vpinball/b2s-backglass/wiki/Tablename.res) | Per-table screen config |
+| [Backgrounds](https://github.com/vpinball/b2s-backglass/wiki/Backgrounds) | Background image feature |
+| [B2SRandom](https://github.com/vpinball/b2s-backglass/wiki/B2SRandom) | Backglass randomizer |
+| [B2SBackglassServerRegisterApp](https://github.com/vpinball/b2s-backglass/wiki/B2SBackglassServerRegisterApp) | COM registration tool |
+| [Single-Screen-examples](https://github.com/vpinball/b2s-backglass/wiki/Single-Screen-examples) | Desktop setup examples |
+| [Dual-Screen-examples](https://github.com/vpinball/b2s-backglass/wiki/Dual-Screen-examples) | Cabinet setup examples |
+| [64bit-VPX-Pincab-Setup-Guide](https://github.com/vpinball/b2s-backglass/wiki/64bit-VPX-Pincab-Setup-Guide) | 64-bit setup guide |
+| [Tips-n-Tricks](https://github.com/vpinball/b2s-backglass/wiki/Tips-n-Tricks) | Tips and tricks |
+| [VPinballX.starter](https://github.com/vpinball/b2s-backglass/wiki/VPinballX.starter) | VPX starter info |
+| [VPX-POV-Setup](https://github.com/vpinball/b2s-backglass/wiki/VPX-POV-Setup) | POV camera setup |
+| [PinVol](https://github.com/vpinball/b2s-backglass/wiki/PinVol) | PinVol audio config |
+| [Template-Folder](https://github.com/vpinball/b2s-backglass/wiki/Template-Folder) | ScreenRes templates |
+| [DeRegister-dll](https://github.com/vpinball/b2s-backglass/wiki/DeRegister-dll) | De-registration guide |
+| [RightMouseClick-Context-Menu](https://github.com/vpinball/b2s-backglass/wiki/RightMouseClick-Context-Menu) | Context menu features |
 
 ## Key Takeaways
 

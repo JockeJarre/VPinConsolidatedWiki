@@ -10,14 +10,14 @@ A companion tool, **B2S Backglass Designer**, provides a WYSIWYG editor for crea
 
 ## Core Components
 
-| Component | Description |
-|-----------|-------------|
-| **B2SBackglassServer.dll** | Main COM component, runs in-process with VPX |
-| **B2SBackglassServerEXE.exe** | Standalone executable with improved performance, Large Address Aware |
-| **B2SBackglassServerRegisterApp.exe** | Registers the COM component and context menus |
-| **B2SServerPluginInterface.dll** | Plugin support interface |
-| **B2SScreenResIdentifier.exe** | Visual editor for [Screen Configuration](../concepts/Screen%20Configuration.md) |
-| **B2SWindowPunch.exe** | Creates transparent holes in overlapping windows |
+| Component                             | Description                                                                     |
+| ------------------------------------- | ------------------------------------------------------------------------------- |
+| **B2SBackglassServer.dll**            | Main COM component, runs in-process with VPX                                    |
+| **B2SBackglassServerEXE.exe**         | Standalone executable with improved performance, Large Address Aware            |
+| **B2SBackglassServerRegisterApp.exe** | Registers the COM component and context menus                                   |
+| **B2SServerPluginInterface.dll**      | Plugin support interface                                                        |
+| **B2SScreenResIdentifier.exe**        | Visual editor for [Screen Configuration](../concepts/Screen%20Configuration.md) |
+| **B2SWindowPunch.exe**                | Creates transparent holes in overlapping windows                                |
 
 ### DLL vs EXE Mode
 

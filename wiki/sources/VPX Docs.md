@@ -1,6 +1,6 @@
 # VPX Docs (Source Summary)
 
-Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](../../raw/VPX/repo/docs/) (37 files total in the current mirror). Run `update-raw.ps1` to refresh it before re-ingesting.
+Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](https://github.com/vpinball/vpinball/tree/master/docs) (37 files total in the current mirror). Run `update-raw.ps1` to refresh it before re-ingesting.
 
 ## Canonical Upstream
 
@@ -12,29 +12,29 @@ Current snapshot file count: 37 files. The table below lists the core files curr
 
 | File                                                                                                                     | Topic                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
-| [README.md](../../raw/VPX/repo/docs/README.md)                                                                           | Overview                   |
-| [Build Differences.md](../../raw/VPX/repo/docs/Build%20Differences.md)                                                   | BGFX vs DX9 vs OpenGL      |
-| [Script API Reference.md](../../raw/VPX/repo/docs/Script%20API%20Reference.md)                                           | Full scripting API         |
-| [View Setup.md](../../raw/VPX/repo/docs/View%20Setup.md)                                                                 | Camera/projection config   |
-| [Lights.md](../../raw/VPX/repo/docs/Lights.md)                                                                           | Lighting system            |
-| [Stereo.md](../../raw/VPX/repo/docs/Stereo.md)                                                                           | 3D stereo rendering        |
-| [Latency.md](../../raw/VPX/repo/docs/Latency.md)                                                                         | Latency analysis           |
-| [LiveUI.md](../../raw/VPX/repo/docs/LiveUI.md)                                                                           | In-game editor             |
-| [Command Line.md](../../raw/VPX/repo/docs/Command%20Line.md)                                                             | CLI options                |
-| [FileLayout.md](../../raw/VPX/repo/docs/FileLayout.md)                                                                   | Directory structure        |
-| [Plunger Velocity Input User Guide.md](../../raw/VPX/repo/docs/Plunger%20Velocity%20Input%20User%20Guide.md)             | Plunger velocity setup     |
-| [Plunger Velocity Input Tech Note.md](../../raw/VPX/repo/docs/Plunger%20Velocity%20Input%20Tech%20Note.md)               | Plunger velocity internals |
-| [Accelerometer Velocity Input User Guide.md](../../raw/VPX/repo/docs/Accelerometer%20Velocity%20Input%20User%20Guide.md) | Nudge velocity setup       |
-| [Accelerometer Velocity Input Tech Note.md](../../raw/VPX/repo/docs/Accelerometer%20Velocity%20Input%20Tech%20Note.md)   | Nudge velocity internals   |
-| [Open Pinball Device User Guide.md](../../raw/VPX/repo/docs/Open%20Pinball%20Device%20User%20Guide.md)                   | OPD support                |
-| [Upgrading Table 10.8.md](../../raw/VPX/repo/docs/Upgrading%20Table%2010.8.md)                                           | 10.7→10.8 migration        |
-| [Upgrading Table 10.8.1.md](../../raw/VPX/repo/docs/Upgrading%20Table%2010.8.1.md)                                       | 10.8→10.8.1 migration      |
-| [Hotkeys.txt](../../raw/VPX/repo/docs/Hotkeys.txt)                                                                       | Keyboard shortcuts         |
-| [RegistryKeys.txt](../../raw/VPX/repo/docs/RegistryKeys.txt)                                                             | Registry configuration     |
-| [Scripts.txt](../../raw/VPX/repo/docs/Scripts.txt)                                                                       | Script notes               |
-| [CommandReference.txt](../../raw/VPX/repo/docs/CommandReference.txt)                                                     | Internal command reference |
-| [layoutGuideline.txt](../../raw/VPX/repo/docs/layoutGuideline.txt)                                                       | Table layout tips          |
-| [vp10_issues.txt](../../raw/VPX/repo/docs/vp10_issues.txt)                                                               | Known issues               |
+| [README.md](https://github.com/vpinball/vpinball/blob/master/docs/README.md)                                                                           | Overview                   |
+| [Build Differences.md](https://github.com/vpinball/vpinball/blob/master/docs/Build%20Differences.md)                                                   | BGFX vs DX9 vs OpenGL      |
+| [Script API Reference.md](https://github.com/vpinball/vpinball/blob/master/docs/Script%20API%20Reference.md)                                           | Full scripting API         |
+| [View Setup.md](https://github.com/vpinball/vpinball/blob/master/docs/View%20Setup.md)                                                                 | Camera/projection config   |
+| [Lights.md](https://github.com/vpinball/vpinball/blob/master/docs/Lights.md)                                                                           | Lighting system            |
+| [Stereo.md](https://github.com/vpinball/vpinball/blob/master/docs/Stereo.md)                                                                           | 3D stereo rendering        |
+| [Latency.md](https://github.com/vpinball/vpinball/blob/master/docs/Latency.md)                                                                         | Latency analysis           |
+| [LiveUI.md](https://github.com/vpinball/vpinball/blob/master/docs/LiveUI.md)                                                                           | In-game editor             |
+| [Command Line.md](https://github.com/vpinball/vpinball/blob/master/docs/Command%20Line.md)                                                             | CLI options                |
+| [FileLayout.md](https://github.com/vpinball/vpinball/blob/master/docs/FileLayout.md)                                                                   | Directory structure        |
+| [Plunger Velocity Input User Guide.md](https://github.com/vpinball/vpinball/blob/master/docs/Plunger%20Velocity%20Input%20User%20Guide.md)             | Plunger velocity setup     |
+| [Plunger Velocity Input Tech Note.md](https://github.com/vpinball/vpinball/blob/master/docs/Plunger%20Velocity%20Input%20Tech%20Note.md)               | Plunger velocity internals |
+| [Accelerometer Velocity Input User Guide.md](https://github.com/vpinball/vpinball/blob/master/docs/Accelerometer%20Velocity%20Input%20User%20Guide.md) | Nudge velocity setup       |
+| [Accelerometer Velocity Input Tech Note.md](https://github.com/vpinball/vpinball/blob/master/docs/Accelerometer%20Velocity%20Input%20Tech%20Note.md)   | Nudge velocity internals   |
+| [Open Pinball Device User Guide.md](https://github.com/vpinball/vpinball/blob/master/docs/Open%20Pinball%20Device%20User%20Guide.md)                   | OPD support                |
+| [Upgrading Table 10.8.md](https://github.com/vpinball/vpinball/blob/master/docs/Upgrading%20Table%2010.8.md)                                           | 10.7→10.8 migration        |
+| [Upgrading Table 10.8.1.md](https://github.com/vpinball/vpinball/blob/master/docs/Upgrading%20Table%2010.8.1.md)                                       | 10.8→10.8.1 migration      |
+| [Hotkeys.txt](https://github.com/vpinball/vpinball/blob/master/docs/Hotkeys.txt)                                                                       | Keyboard shortcuts         |
+| [RegistryKeys.txt](https://github.com/vpinball/vpinball/blob/master/docs/RegistryKeys.txt)                                                             | Registry configuration     |
+| [Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Scripts.txt)                                                                       | Script notes               |
+| [CommandReference.txt](https://github.com/vpinball/vpinball/blob/master/docs/CommandReference.txt)                                                     | Internal command reference |
+| [layoutGuideline.txt](https://github.com/vpinball/vpinball/blob/master/docs/layoutGuideline.txt)                                                       | Table layout tips          |
+| [vp10_issues.txt](https://github.com/vpinball/vpinball/blob/master/docs/vp10_issues.txt)                                                               | Known issues               |
 
 ## Key Takeaways
 

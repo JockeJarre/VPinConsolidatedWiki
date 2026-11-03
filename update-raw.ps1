@@ -17,6 +17,8 @@
     Pinscape   https://github.com/concurrent-recursion/pinscape-build-guide → raw/pinscape-build-guide/repo/book/
                                               → raw/pinscape-build-guide/markdown/
       PinUP      https://www.nailbuster.com/wikipinup/              → raw/PUP/site/
+      Dekay    https://github.com/dekay/vpinball-wiki (wiki)        → raw/ExternalWikis/dekay-vpinball-wiki/repo/
+      VPW      https://github.com/dcbenji/vpw-wiki                  → raw/ExternalWikis/vpw-wiki/repo/
 
 .NOTES
     Requires git 2.25+ (sparse-checkout support).
@@ -551,6 +553,22 @@ Invoke-SourceStep -Label 'pinscape-build-guide' -Action {
         -OutputRoot 'raw/pinscape-build-guide/markdown'
 }
 
+# Unofficial Visual Pinball Wiki (dekay) — GitHub wiki = its own tiny git repo, plain clone
+Invoke-SourceStep -Label 'Unofficial Visual Pinball Wiki' -Action {
+    Invoke-WikiClone `
+        -Label     'Unofficial Visual Pinball Wiki' `
+        -RepoUrl   'https://github.com/dekay/vpinball-wiki.wiki.git' `
+        -LocalPath 'raw/ExternalWikis/dekay-vpinball-wiki/repo'
+}
+
+# VPW Knowledge Base — MkDocs content repo behind vpw-wiki.skirmishofwit.com (full clone, small)
+Invoke-SourceStep -Label 'VPW Knowledge Base' -Action {
+    Invoke-WikiClone `
+        -Label     'VPW Knowledge Base' `
+        -RepoUrl   'https://github.com/dcbenji/vpw-wiki.git' `
+        -LocalPath 'raw/ExternalWikis/vpw-wiki/repo'
+}
+
 # PinUP Popper — public DokuWiki mirrored as local HTML snapshots
 <# Invoke-SourceStep -Label 'PinUp Popper' -Action {
     Invoke-PinUpMirror `
@@ -581,6 +599,8 @@ Write-Host '  raw/DMD-Extensions/repo/'
 Write-Host '  raw/pinscape-build-guide/repo/book/'
 Write-Host '  raw/pinscape-build-guide/markdown/'
 Write-Host '  raw/PUP/site/'
+Write-Host '  raw/ExternalWikis/dekay-vpinball-wiki/repo/'
+Write-Host '  raw/ExternalWikis/vpw-wiki/repo/'
 Write-Host ''
 Write-Host 'Ask Copilot to re-ingest any changed files and regenerate wiki/ pages.' -ForegroundColor Cyan
 

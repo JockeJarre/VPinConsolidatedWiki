@@ -17,6 +17,7 @@ Output controllers are hardware units that translate digital signals from the [D
 | **DirectStripController** | Unlimited | 256 | Swisslizard design | Multiple |
 | **Philips Hue** | ~150 (50 lights × 3) | 256 | Zigbee wireless | Unlimited |
 | **DudesCab** | 128 | 256 | RP2040-based USB | 5 |
+| **[SSFImpactor](../projects/SSFImpactor.md)** | 15 fixed ports | Software-synthesized (BASS audio) | Sound card channels, no board | Cabinet-specific |
 | **Pinscape (LedWiz emulation)** | 22+ standalone, 65+ with expansion boards | LedWiz-compatible | USB | Cabinet-specific |
 
 ## LedWiz
@@ -31,12 +32,41 @@ Higher-end alternative with 64 outputs at 256 PWM levels and 100kHz frequency. C
 
 Professional stage lighting protocol over Ethernet. 512 channels per universe with unlimited universes. Useful for large LED installations or integration with existing stage lighting infrastructure.
 
+- The community guide's Art-Net entry describes an **ESP8266-based LED controller "limited to 170 LEDs max, so not very popular these days"** — this is the community's DOF-adjacent usage view, narrower than the 512-channel DMX universe framing above ([raw/dekay-vpinball-wiki/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework), §Supported Hardware)
+
 ## Addressable LED Controllers
 
 **TeensyStripController**, **WS2811 Controller**, and **DirectStripController** drive addressable LED strips (WS2811/WS2812). These enable:
 - LED matrix effects (plasma, bitmaps, animations)
 - Addressable undercab lighting
 - Individual LED control for hundreds or thousands of LEDs
+
+The Wemos D1 Mini / S2 Mini class of controllers (community-recommended, ini number 30) is documented on [DOF Addressable LEDs](DOF%20Addressable%20LEDs.md).
+
+- ⚠️ CONFLICT (secondary source): the recommended Vroonsh TeensyStripController fork "improves the LED communication timing and allows for more LEDs per line (from 1100 to 2100 LEDs)", "likely to be merged into the mainline repo"
+  ([raw/dekay-vpinball-wiki/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §PJRC Teensy) — Primary: TeensyStripController at 8 channels × 1100 LEDs (mainline figure; the fork raises it)
+
+## INI File Numbering
+
+Each controller class has a base `directoutputconfig<N>.ini`; extra boards of the same type increment the number by 1, and only PacDrive is limited to one per cabinet. Community table, July 2025 snapshot ([raw/dekay-vpinball-wiki/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework), §Supported Hardware and Their `ini` Files):
+
+| Controller | ini number |
+|-----------|------------|
+| FRDM-KL25Z (Pinscape Gen 1) | 8 |
+| PinOne | 11 |
+| LedWiz | base file, suffixes appended per unit |
+| PacDrive | 19 |
+| PacLed64 | 20 |
+| Ultimate I/O | 27 |
+| WS2811 (Wemos/Teensy strips) | 30 |
+| SainSmart (FT245R relays) | 40 |
+| Pinscape | 51 |
+| Philips Hue | 70 |
+| Pincontrol1 | 80 |
+| Pincontrol2 | 85 |
+| DudesCab | 90 |
+| Art-Net | 100 |
+| **Pinscape Pico** | 120 |
 
 ## Configuration
 
@@ -63,6 +93,10 @@ DOF manages all outputs through an abstract `IOutput` interface, allowing cross-
 
 Pinscape is relevant here because its guide describes using the controller as a LedWiz-style output target, either from a standalone KL25Z with booster circuitry or from the larger expansion-board stack.
 
+## SSFImpactor (Software Controller)
+
+[SSFImpactor](../projects/SSFImpactor.md) is the software exception to the hardware rule: it emulates a LedWiz with 15 fixed ports (flippers, slings, six bumpers, knocker, shaker, gear, hellball motor, bell) and drives [contactor](DOF%20Toys%20and%20Effects.md)-style effects by synthesizing tactile audio through sound-card channels to exciters and shakers. It is configured as `<SSFImpactController>` in CabinetConfig XML and ships with the DirectOutput Framework R3++ Grand Unified Edition.
+
 ## See Also
 
 - [DirectOutput Framework](../projects/DirectOutput%20Framework.md) — The framework that drives these controllers
@@ -70,6 +104,9 @@ Pinscape is relevant here because its guide describes using the controller as a 
 - [Pincab Setup](Pincab%20Setup.md) — Physical cabinet using these controllers
 - [DOF Table Configuration](DOF%20Table%20Configuration.md) — Per-table effect assignments
 - [Pinscape Controller](../projects/Pinscape%20Controller.md) — DIY controller with LedWiz-style output support
+- [Pinscape Pico](Pinscape%20Pico.md) — Second-generation controller (ini number 120)
+- [DOF Addressable LEDs](DOF%20Addressable%20LEDs.md) — Wemos/Teensy strip and matrix setup end to end
+- [SSFImpactor](../projects/SSFImpactor.md) — Software-only controller using tactile audio
 
 
 

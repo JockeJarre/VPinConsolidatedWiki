@@ -33,7 +33,7 @@ Virtual DMD output for monitor users is also included, with a pixel-shader rende
 
 ## Architecture: RenderGraph
 
-![FlexDMD/DMD Extensions architecture in the VPX ecosystem](../../raw/FlexDMD/repo/docs/media/architecture.svg)
+![FlexDMD/DMD Extensions architecture in the VPX ecosystem](https://raw.githubusercontent.com/vbousquet/flexdmd/master/docs/media/architecture.svg)
 
 The core library (`LibDmd`) routes frames through a `RenderGraph`. Each graph has one source and one or more destinations. The graph inspects the source/destination interface pair and selects the most efficient frame conversion.
 
@@ -102,7 +102,7 @@ url = ws://127.0.0.1/dmd
 
 ## Configuration
 
-Behavior is controlled via `DmdDevice.ini`. Per-game overrides are possible for Pinball FX using the game's numeric ID (see [PinballFX_IDs reference](../../raw/DMD-Extensions/PinMameDevice/PinballFX_IDs.md)).
+Behavior is controlled via `DmdDevice.ini`. Per-game overrides are possible for Pinball FX using the game's numeric ID (see [PinballFX_IDs reference](https://github.com/freezy/dmd-extensions/blob/master/PinMameDevice/PinballFX_IDs.md)).
 
 Example per-game override:
 ```ini

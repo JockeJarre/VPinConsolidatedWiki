@@ -21,6 +21,10 @@ The controller's microcontroller measures plunger speed directly at high frequen
 ### Compatible Devices
 - **Pinscape Controller (KL25Z)**: Z axis = position, RZ axis = speed
 - **Pinscape Pico**: Custom `plunger.z` and `plunger.speed` axes
+  - ⚠️ CONFLICT (secondary source): mjr's config help "recommends the use of `z0`" — use **`plunger.z0`** (instantaneous position) instead of `plunger.z` for speed-capable programs (VPX 10.8.1+)
+    ([raw/dekay-vpinball-wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers), quoting PlungerCal.htm) — Primary: `plunger.z` + `plunger.speed` axis names
+  - ⚠️ CONFLICT (secondary source): VPX bug (vpinball issue #4055, late Sept 2026) — with both position *and* velocity configured the plunger "behaves strangely"; workaround: set the Velocity sensor to **Unmapped**
+    ([raw/dekay-vpinball-wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers) — Primary: the Setup section above prescribes selecting both axes
 - The [Pinscape Build Guide](../sources/Pinscape%20Build%20Guide.md) documents several sensor options for the KL25Z generation, including potentiometer and optical approaches
 
 ### Setup
@@ -49,6 +53,7 @@ Methods: `Pullback()`, `Fire()`, `CreateBall()`
 - [VPX Latency](VPX%20Latency.md) — Input latency considerations
 - [VPX Scripting](VPX%20Scripting.md) — Plunger script interface
 - [Pinscape Controller](../projects/Pinscape%20Controller.md) — Common plunger-capable cabinet controller
+- [Pinscape Pico](Pinscape%20Pico.md) — Pico mapping guidance
 
 
 

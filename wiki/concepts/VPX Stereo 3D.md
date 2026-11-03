@@ -5,8 +5,12 @@
 ## Output Modes
 
 - **VR Headsets** — via OpenXR (BGFX build)
+  - ⚠️ CONFLICT (secondary source): "only the Windows version of VPinball supports VR… work is currently underway to port VPinball to the cross-platform OpenXR API"
+    ([raw/dekay-vpinball-wiki/VR.md](https://github.com/dekay/vpinball-wiki/wiki/VR), 2025 snapshot) — Primary: OpenXR VR ships in the BGFX build ([raw/VPX docs](https://github.com/vpinball/vpinball/tree/master/docs))
 - **3D TVs** — passive or active glasses
 - **Anaglyph glasses** — red/cyan or other filter combinations on standard monitors
+
+For operational VR configuration (per-table VR rooms, OpenComposite, Asynchronous Spacewarp) see [VPX VR Setup](VPX%20VR%20Setup.md).
 
 ## Rendering Approaches
 

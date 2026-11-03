@@ -8,11 +8,11 @@ PinUp Popper (PUP) is a frontend and media server for virtual pinball cabinets, 
 
 ## Source Files
 
-Run `update-raw.ps1` to mirror the public PinUp Popper wiki into local HTML snapshots under [raw/PUP/site](../../raw/PUP/site/).
+Run `update-raw.ps1` to mirror the public PinUp Popper wiki into local HTML snapshots under [raw/PUP/site](https://www.nailbuster.com/wikipinup/doku.php?id=start).
 
-The checked-in repository still only includes [raw/PUP/Documentation.url](../../raw/PUP/Documentation.url); mirrored HTML pages are generated locally and are not committed.
+The checked-in repository still only includes [raw/PUP/Documentation.url](https://www.nailbuster.com/wikipinup/doku.php?id=start); mirrored HTML pages are generated locally and are not committed.
 
-Current snapshot file count: 78 mirrored HTML pages plus [site-index.json](../../raw/PUP/site/site-index.json).
+Current snapshot file count: 78 mirrored HTML pages plus [site-index.json](https://www.nailbuster.com/wikipinup/doku.php?id=start).
 
 ## Key Facts
 

@@ -1,6 +1,6 @@
 # DMD Extensions Docs
 
-Summary of 6 DMD Extensions documentation files from the local snapshot in [raw/DMD-Extensions/repo](../../raw/DMD-Extensions/repo/). Run `update-raw.ps1` to refresh it before re-ingesting.
+Summary of 6 DMD Extensions documentation files from the local snapshot in [raw/DMD-Extensions/repo](https://github.com/freezy/dmd-extensions). Run `update-raw.ps1` to refresh it before re-ingesting.
 
 ## Canonical Upstream
 
@@ -10,12 +10,12 @@ Summary of 6 DMD Extensions documentation files from the local snapshot in [raw/
 
 | File | Contents |
 |------|----------|
-| [README.md](../../raw/DMD-Extensions/repo/README.md) | Overview, supported games/displays, features, install, configuration |
-| [LibDmd/README.md](../../raw/DMD-Extensions/repo/LibDmd/README.md) | RenderGraph architecture, frame formats, routing, colorization |
-| [PinMameDevice/README.md](../../raw/DMD-Extensions/repo/PinMameDevice/README.md) | `DmdDevice.dll` C API header and history |
-| [PinMameDevice/PinballFX_IDs.md](../../raw/DMD-Extensions/repo/PinMameDevice/PinballFX_IDs.md) | Numeric game IDs for per-game `DmdDevice.ini` overrides in Pinball FX |
-| [Console/Server/README.md](../../raw/DMD-Extensions/repo/Console/Server/README.md) | Network streaming via WebSocket (server + client modes) |
-| [ProPinballBridge/README.md](../../raw/DMD-Extensions/repo/ProPinballBridge/README.md) | Boost message-queue IPC bridge for Pro Pinball Timeshock |
+| [README.md](https://github.com/freezy/dmd-extensions/blob/master/README.md) | Overview, supported games/displays, features, install, configuration |
+| [LibDmd/README.md](https://github.com/freezy/dmd-extensions/blob/master/LibDmd/README.md) | RenderGraph architecture, frame formats, routing, colorization |
+| [PinMameDevice/README.md](https://github.com/freezy/dmd-extensions/blob/master/PinMameDevice/README.md) | `DmdDevice.dll` C API header and history |
+| [PinMameDevice/PinballFX_IDs.md](https://github.com/freezy/dmd-extensions/blob/master/PinMameDevice/PinballFX_IDs.md) | Numeric game IDs for per-game `DmdDevice.ini` overrides in Pinball FX |
+| [Console/Server/README.md](https://github.com/freezy/dmd-extensions/blob/master/Console/Server/README.md) | Network streaming via WebSocket (server + client modes) |
+| [ProPinballBridge/README.md](https://github.com/freezy/dmd-extensions/blob/master/ProPinballBridge/README.md) | Boost message-queue IPC bridge for Pro Pinball Timeshock |
 
 ## Key Facts
 

@@ -2,6 +2,83 @@
 
 Chronological record of wiki operations.
 
+## [2026-11-03] query | PUP videos in VPX 10.8.1 with the legacy file structure
+
+Answered how PUP videos configure under 10.8.1 with the old global (Baller-era) layout: PinUp Player's global `C:\PinUpSystem\PuPVideos\<rom>` pack folder (unaffected by the layout change), the beside-`.vpx` search resolving to a global `C:\pinball\tables\pupvideos\`, option `.bat` files, the B2S-plugin/Freezy integration stack, directb2s 6-character prefix conflicts, and per-pack `PinUPPlayer.ini` overrides.
+
+- Sources: raw/PUP/site/puppack_troubleshoot.html, pinup_player_tables.html, pinup_pack_layout.html, pup_capture.html ([wikipinup](https://www.nailbuster.com/wikipinup/doku.php?id=start)); dekay PUP-Packs.md / File-Layout.md
+- Filed as new §Placement in the Legacy (Baller-Era) Layout in [PuP Packs](concepts/PuP%20Packs.md); cross-linked from [VPX File Layout](concepts/VPX%20File%20Layout.md) §Legacy Global Layout
+
+## [2026-11-01] lint | Upstream link conversion scan
+
+Converted every wiki citation of a `raw/` snapshot into a markdown link to its **upstream URL** (raw/ is local staging, never committed), then scanned all links.
+
+- 113 markdown links and ~150 plain-text `(raw/...)` citations retargeted across all wiki pages via an idempotent script; mapping verified against `update-raw.ps1` (B2S/VPX/DOF/FlexDMD/DMD-Extensions GitHub repos, pinscape `main`-branch `.adoc` book, nailbuster wiki, mjrnet.org, dekay GitHub wiki, vpw-wiki.skirmishofwit.com)
+- Fixed 5 double-wrapped links (doubled `\[...](url)](url)` wrappers) in VPX File Layout, VPX Stereo 3D, Visual Pinball X; added a dedupe guard to the conversion script
+- Spot-checked live: dekay U+2010 page URL (`PAL-%E2%80%90-4-Colors`) and VPW guide URL resolve correctly
+- Extended the lint script with a **local-raw-link** check (log.md exempt); full scan: 0 violations, 0 unencoded spaces, 0 `%20` in link texts, 0 placeholder targets, no orphan pages
+- Remaining 11 findings are the same historical [log.md](log.md) entries previously allowed; untouched per the append-only rule
+
+## [2026-11-01] ingest | VPW Knowledge Base (108 extractions, secondary source)
+
+Ingested `raw/vpw-wiki/` (Virtual Pinball Workshop Discord knowledge base, https://vpw-wiki.skirmishofwit.com/, knowledge extracted Mar 2026) — second **secondary-priority** collection; focus is **table authoring**.
+
+- Created [VPW Knowledge Base](sources/VPW%20Knowledge%20Base.md) source page with the Secondary-priority callout, full 83-table catalog (tables are case studies; guides are the knowledge tier), and errata (index count drift 81/88 vs real 83/108; theatre-of-magic mislabel; superseded cirqus-voltaire trigger margin)
+- Created 17 new concept pages from the 13 guides + 5 references: VPX 3D Art Pipeline, VPX Authoring Best Practices, VPX Authoring Tools, VPX Example Table, VPX Game Rules Design, VPX GI and Flashers, VPX Insert Lighting, VPX Light State Controller, VPX Physics Tuning, VPX Playfield Scanning, VPX Scripting Patterns, VPX Software Setup, VPX Table Build Workflow, VPX Table Troubleshooting, VPX Transparent Elements, VPX VR Authoring, Fleep Sound Packages
+- Swept facts into existing pages: Visual Pinball X, VPX Scripting, VPX Lights and Rendering, VPX Standalone (gBOT→GetBalls ~95% standalone segfaults; FlexDMD `On Error Resume Next` guard), FlexDMD (new §Script Detection and Portability), VPX Latency (KL25Z ~20ms vs PS/2 hack 5–8ms, 16.7ms frame floor, sosramp, PinAffinity), VPX View Setup (POV conflict note; Anti Ball Stretch aspect-ratio tip), Pincab Setup (DOF `DOFPulse` solenoid safety, 10.8.1 native tilt, analog plunger seat bug), VPX VR Setup (`VRRoom` 0/1/2 stutter isolation)
+- Updated [index.md](index.md) (all new pages, VPW source entry marked `(secondary source)`), [overview.md](overview.md) (ten collections, authoring section), and `AGENTS.md` (raw layout, Source Citation convention with the upstream-URL mapping table, log.md exemption)
+
+## [2026-11-01] lint | Link scan after dekay wiki ingest
+
+Scanned all wiki markdown links for missing targets, unencoded spaces in targets, and `%20` in link text.
+
+- Fixed 4 project-page links in [PinUp Player](projects/PinUp%20Player.md) missing the `../concepts/` prefix (`Pincab Setup.md`, `PuP Packs.md` ×3)
+- Remaining 11 findings are the same historical [log.md](log.md) entries previously allowed (pre-rename filenames, superseded `_schema.md`, raw README links recorded at 2026-04-12 depths); untouched per the append-only rule
+- No unencoded spaces; no `%20` in link texts; plain-text raw citations use the exact U+2010 filenames where applicable
+
+## [2026-11-01] ingest | Unofficial Visual Pinball Wiki (48 files, secondary source)
+
+Ingested `raw/dekay-vpinball-wiki/` (mirror of the Unofficial Visual Pinball Wiki, github.com/dekay/vpinball-wiki) — the first **secondary-priority** collection: primary sources win conflicts; disagreements are recorded as `⚠️ CONFLICT (secondary source)` notes.
+
+- Created [Unofficial Visual Pinball Wiki](sources/Unofficial%20Visual%20Pinball%20Wiki.md) source page with the Secondary-priority callout, coverage table, key facts, and open-conflicts list
+- Created 11 new pages from the extraction sweep:
+  - [VPX File Layout](concepts/VPX%20File%20Layout.md) — per-table 10.8.1 layout, three-part structure, `.vpx`/`.vpz`/`.vpxz`, companion-file search priority, legacy Baller-era notes
+  - [Altcolor](concepts/Altcolor.md) — PAL/patched-ROM/VNI/PAC/Serum format ladder, `.crz`→`.cromc` auto-migration
+  - [DOF Addressable LEDs](concepts/DOF%20Addressable%20LEDs.md) — Wemos/Teensy controllers, wiring, ini files, HD/SD matrices, cross-platform serial quirks
+  - [VPX Standalone](concepts/VPX%20Standalone.md) — cross-platform architecture (POLE, Wine-vbscript, BGFX, SDL3), input mapping, mobile specifics, Batocera
+  - [PinUp Player](projects/PinUp%20Player.md) — pack file anatomy, screen IDs, SendMSG mt:301 API, standalone gaps
+  - [PuP Packs](concepts/PuP%20Packs.md) — installation mechanics, dated reconciliation of "do not work" vs Rev 4837+ VR-table display injection
+  - [VPinFE](projects/VPinFE.md) — cross-platform frontend, VPS-ID matching workflow, Linux window-title integration
+  - [Pinscape Pico](concepts/Pinscape%20Pico.md) — gamepad/xInput/OPD interfaces, canonical 10.8.1 mapping table, KL25Z notes
+  - [VPX Debugging](concepts/VPX%20Debugging.md) — git bisect, debug builds, Renderdoc, crash-report protocol, NVRAM/font repairs
+  - [VPX ScoreView Plugin](concepts/VPX%20ScoreView%20Plugin.md) — activation, form factors, `.scv` layout format
+  - [VPX VR Setup](concepts/VPX%20VR%20Setup.md) — per-table VR rooms, OpenComposite, ASW disable, ROM chores
+- Swept existing pages with conflict notes and additions: [Visual Pinball X](projects/Visual%20Pinball%20X.md) (DX9 go-to, Standalone scope, ini-vs-registry era), [VPX Stereo 3D](concepts/VPX%20Stereo%203D.md) (VR OpenXR dated snapshot), [VPX Latency](concepts/VPX%20Latency.md) (VisualLatencyCorrection default, SyncMode/BGFX 0-1, registry-era framing), [Open Pinball Device](concepts/Open%20Pinball%20Device.md) (Pico OPD broken Linux #3303), [VPX Plunger Input](concepts/VPX%20Plunger%20Input.md) (`plunger.z0`, #4055 workaround), [VPX Accelerometer Input](concepts/VPX%20Accelerometer%20Input.md) (rx/ry-vs-x/y axis conventions), [Pinscape Controller](projects/Pinscape%20Controller.md) (USB-C KL25Z no accelerometer, 10 s disconnect reboot), [DirectOutput Framework](projects/DirectOutput%20Framework.md) (built-in 10.8.1 DOF plugin + config paths, GlobalConfig dual spelling, per-device ini numbering), [DOF Output Controllers](concepts/DOF%20Output%20Controllers.md) (Vroonsh 2100-LED fork, Art-Net ESP8266 note, ini-numbering table), [DMD](concepts/DMD.md) (LED-grid vs plasma claim, 8-alpha/7-DMD display profiles, unlit-color recipes), [Screen Configuration](concepts/Screen%20Configuration.md) (Linux window-rule scope note)
+- Cross-linked [Pincab Setup](concepts/Pincab%20Setup.md) and [overview.md](overview.md); raw source collections raised from eight to nine
+- [index.md](index.md) updated with 11 concept/project entries plus the source entry marked `(secondary source)`
+- Notes: five raw filenames use U+2010 hyphens (DOF, PAC, PAL-4-Colors, PINPAD, Standalone-VR) — plain-text citations use the exact characters; Vroonsh 2100-LED and `.pak` claims verified present/absent against raw before filing
+
+## [2026-11-01] lint | Link scan after SSFImpactor ingest
+
+Scanned all wiki markdown links for missing targets, unencoded spaces in targets, and `%20` in link text.
+
+- Fixed broken raw link in [DMD Extensions](projects/DMD%20Extensions.md): PinballFX_IDs reference was missing the `repo/` path segment
+- Remaining 11 findings are all inside historical [log.md](log.md) entries (pre-rename filenames, superseded `_schema.md`, raw README links recorded at 2026-04-12 depths); left untouched per the append-only rule
+- No unencoded spaces; no `%20` in link texts
+
+## [2026-11-01] ingest | SSFImpactor Guide (1 PDF)
+
+Ingested `raw/SSFImpactor Guide.pdf` (Rev 1.1, March 2019), the user guide for the SSFImpactor software force-feedback controller:
+
+- Created [SSFImpactor](projects/SSFImpactor.md) as a new project page: software LEDWiz-alike DOF controller, 15 fixed output ports, Cabinet.xml `<SSFImpactController>` tuning, BASS audio routing, LedWizEquivalent integration, reference cabinet
+- Created [SSFImpactor Guide](sources/SSFImpactor%20Guide.md) source summary with key facts and quotes
+- Updated [DOF Output Controllers](concepts/DOF%20Output%20Controllers.md) with SSFImpactor as the software controller (table row + section)
+- Updated [DOF Toys and Effects](concepts/DOF%20Toys%20and%20Effects.md) with the canonical LedWizEquivalent mapping example
+- Updated [DirectOutput Framework](projects/DirectOutput%20Framework.md): SSFImpactor ships in DOF R3++ Grand Unified Edition
+- Updated [Pincab Setup](concepts/Pincab%20Setup.md) Hardware Feedback and Audio sections (exciters, SSF routing warning)
+- Updated [index.md](index.md) and [overview.md](overview.md); raw source collections raised from seven to eight
+- Open question: guide is community-distributed (SSF Facebook group / VPinball forum); no canonical upstream URL recorded. Related to Pinscape-hosted DOF installer — cross-referenced from Pinscape Controller's resources site mention
+
 ## [2026-04-13] update | Ingest Pinscape Build Guide and repair stale scoped links
 
 Added Pinscape coverage for the newly mirrored `raw/pinscape-build-guide/repo/book/` source collection and fixed stale concept links left behind by earlier scoped renames:

@@ -1,6 +1,6 @@
 # VPX Scripting
 
-[Visual Pinball X](../projects/Visual%20Pinball%20X.md) uses VBScript for table game logic. Scripts handle input, physics interactions, display updates, sound, and communication with PinMAME and [B2S Backglass Server](../projects/B2S%20Backglass%20Server.md).
+[Visual Pinball X](../projects/Visual%20Pinball%20X.md) uses VBScript for table game logic. Scripts handle input, physics interactions, display updates, sound, and communication with PinMAME and [B2S Backglass Server](../projects/B2S%20Backglass%20Server.md). Community authoring idioms built on this API are collected on [VPX Scripting Patterns](VPX%20Scripting%20Patterns.md).
 
 ## Global Variables
 
@@ -57,6 +57,7 @@ Position, `Radius`, `TriggerShape`, `Surface`, `HitHeight`
 | Event | Description |
 |-------|-------------|
 | `Table_Init()` | Table initialization |
+| `Table_Exit()` | Table teardown (release COM objects, e.g. PuPlayer) |
 | `Table_KeyDown(keycode)` | Key pressed |
 | `Table_KeyUp(keycode)` | Key released |
 | `Animate()` | Visual property sync (10.8+) |
@@ -103,6 +104,9 @@ See [DMD](DMD.md).
 
 ### Physics
 `Gravity`, `Friction`, `Elasticity`, `Scatter`, `GlobalDifficulty`, `SlopeMax`/`SlopeMin`, `PhysicsLoopTime`, `NudgeTime`
+
+- ⚠️ CONFLICT (secondary source): the difficulty slider interpolates slope and scatter only; VPX's default difficulty (20) is below the intended range (tune with the slider at the intended midpoint, ~56); and **Global Physics Sets silently override per-object nFozzy physics values**
+  ([raw/vpw-wiki/docs/guides/physics-tuning.md](https://vpw-wiki.skirmishofwit.com/guides/physics-tuning/), §Difficulty Slider; [raw/vpw-wiki/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/), §Physics Sets) — Primary: these properties are documented neutrally here; the caveats apply to nFozzy-style authoring. Full guidance: [VPX Physics Tuning](VPX%20Physics%20Tuning.md)
 
 ### Display
 `Width`, `Height`, `Inclination`, `Rotation`, `ScaleX`/`ScaleY`/`ScaleZ`, `Layback`, `FieldOfView`
@@ -152,10 +156,16 @@ Core VBS scripts provide helper classes for common game mechanics:
 | `GetBalls()` | Array of all active balls |
 | `GetElements()` | Array of all table elements |
 
+Authoring-community guidance on ball enumeration: the VPW convention caches balls in a global `gBOT` array (create at init, never destroy) because per-frame `GetBalls` is expensive — **but `gBOT` must not be used inside `Cor.Update`/CorTracker, where it segfaults standalone VPX; use `GetBalls` there** ([raw/vpw-wiki/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/), §Ball Tracking). See [VPX Scripting Patterns](VPX%20Scripting%20Patterns.md), [VPX Standalone](VPX%20Standalone.md).
+
+The **core.vbs** ROM-integration script is community-maintained (VPW repo); keep it current — features like `PlaySoundAtLevelStatic` depend on it ([raw/vpw-wiki/docs/reference/fleep-sounds.md](https://vpw-wiki.skirmishofwit.com/reference/fleep-sounds/) The cvpm class reference is the VPForums VBS doc (see [VPX Authoring Tools](VPX%20Authoring%20Tools.md)).
+
 ## See Also
 
 - [Visual Pinball X](../projects/Visual%20Pinball%20X.md) — The engine running these scripts
+- [VPX Scripting Patterns](VPX%20Scripting%20Patterns.md) — Community authoring idioms on this API
 - [VPX Lights and Rendering](VPX%20Lights%20and%20Rendering.md) — Light element details
+- [VPX Physics Tuning](VPX%20Physics%20Tuning.md) — Physics property tuning guidance (secondary)
 - [DMD](DMD.md) — DMD scripting interface
 - [VPX Plunger Input](VPX%20Plunger%20Input.md) — Plunger script properties
 - [B2S Backglass Server](../projects/B2S%20Backglass%20Server.md) — COM interface from scripts

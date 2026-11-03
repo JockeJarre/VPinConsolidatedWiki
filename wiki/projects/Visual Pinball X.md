@@ -20,13 +20,23 @@ VPX is the core of the virtual pinball ecosystem. Tables are authored in the VPX
 ### DirectX 9 (Deprecated)
 - Original VPX flavor developed over 20+ years
 - Reference build for backward compatibility; no longer recommended
+- ⚠️ CONFLICT (secondary source): DX9 called "the go-to version for most users"
+  ([raw/dekay-vpinball-wiki/About-Visual-Pinball.md](https://github.com/dekay/vpinball-wiki/wiki/About-Visual-Pinball) — Primary: DX9 is deprecated, BGFX is the recommended build ([raw/VPX docs](https://github.com/vpinball/vpinball/tree/master/docs))
 
 ### OpenGL (Deprecated)
 - Initial VR headset support; superseded by BGFX
 
+### Cross-Platform Builds — Standalone
+The BGFX engine runs on all platforms, but the other-OS builds ship **without the table editor and preferences GUI** — the community calls them **VPX Standalone**; see [VPX Standalone](../concepts/VPX%20Standalone.md).
+
+- ⚠️ CONFLICT (secondary source): "VPX is supported only on Windows, while VPX Standalone runs on other operating systems"
+  ([raw/dekay-vpinball-wiki/Home.md](https://github.com/dekay/vpinball-wiki/wiki) — Primary: VPX (BGFX) is cross-platform ([raw/VPX docs](https://github.com/vpinball/vpinball/tree/master/docs)). Reconciliation: full editor VPX = Windows; cross-platform builds are the editor-less Standalone derivative
+
 **Bitness**: Tables work on both 32-bit and 64-bit builds. x64 builds offer better multithreading and memory.
 
 ## File Layout
+
+See [VPX File Layout](../concepts/VPX%20File%20Layout.md) for the full cross-platform layout, search priority, and per-OS configuration paths. Summary:
 
 ### Installation Structure (Windows)
 - **Application**: `C:\Program Files\...`
@@ -59,6 +69,9 @@ Table Name (Manufacturer Year)/
 - **Global**: `VPinballX.ini` (user-adjustable via in-game UI)
 - **Table overrides**: Named after table file or containing folder
 - Custom settings file via `-Ini` command line option
+- Settings moved from the Windows Registry to ini files; the registry-era layout (global `VPinMAME\roms\`, Baller-managed trees) survives in community FAQ/Windows pages as **legacy VP9-era advice** — see [VPX File Layout](../concepts/VPX%20File%20Layout.md)
+  - ⚠️ CONFLICT (secondary source): registry-key settings storage, `regsvr32` repair steps, global ROM folders
+    ([raw/dekay-vpinball-wiki/FAQ.md](https://github.com/dekay/vpinball-wiki/wiki/FAQ), Windows.md) — Primary: ini model with per-table config ([raw/VPX docs](https://github.com/vpinball/vpinball/tree/master/docs))
 
 ## Command Line Options
 
@@ -100,8 +113,15 @@ VPX uses VBScript for table logic. See [VPX Scripting](../concepts/VPX%20Scripti
 - **Kicker**: `Kick(angle, speed, inclination)`, `CreateBall()`, `DestroyBall()`
 - **Wall**: Hit events, elasticity, collidability, `IsDropped`
 
+Object names face a **31-character hard limit that is silently truncated**, causing duplicate-name conflicts — the authoring community keeps component names ≤6 characters ([raw/vpw-wiki/docs/guides/best-practices.md](https://vpw-wiki.skirmishofwit.com/guides/best-practices/), §Naming). See [VPX Authoring Best Practices](../concepts/VPX%20Authoring%20Best%20Practices.md).
+
+### Engine Audio Behavior
+
+Positional audio uses a fixed pan law — **Left 100% / Middle 200% / Right 100%** — implemented in the engine, not scriptable ([raw/vpw-wiki/docs/reference/fleep-sounds.md](https://vpw-wiki.skirmishofwit.com/reference/fleep-sounds/) See [Fleep Sound Packages](../concepts/Fleep%20Sound%20Packages.md).
+
 ### Key Events
 - `Table_Init()` — Table initialization
+- `Table_Exit()` — Table teardown (PUP users must release the PuPlayer COM object here)
 - `Table_KeyDown(keycode)` / `Table_KeyUp(keycode)` — Input
 - `Animate()` — Visual property sync (10.8+, replaces timer-based flipper shadows)
 
@@ -180,5 +200,9 @@ In-game editor allowing modification while a table plays. Supports orbit/pan/zoo
 - [DirectOutput Framework](DirectOutput%20Framework.md) — Hardware feedback
 - [Pincab Setup](../concepts/Pincab%20Setup.md) — Physical cabinet configuration
 - [DMD](../concepts/DMD.md) — Digital Message Display
+- [VPX Standalone](../concepts/VPX%20Standalone.md) — Cross-platform builds (Linux/macOS/iOS/Android/Batocera)
+- [VPX File Layout](../concepts/VPX%20File%20Layout.md) — Per-table layout, config paths, search priority
+- [VPX Debugging](../concepts/VPX%20Debugging.md) — Bisecting regressions, logs, crash reporting
+- [VPX VR Setup](../concepts/VPX%20VR%20Setup.md) — Operational VR configuration
 
 

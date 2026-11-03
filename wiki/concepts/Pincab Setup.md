@@ -59,6 +59,8 @@ A common DIY control stack is [Pinscape Controller](../projects/Pinscape%20Contr
 - **RGB LEDs** for ambient lighting
 - **Fans** for air effects
 
+A cabinet without an output board can use [SSFImpactor](../projects/SSFImpactor.md) instead: a software DOF controller that renders contactor, gear, and shaker effects as tactile audio sent to exciters and shakers through the sound card.
+
 See [DOF Toys and Effects](DOF%20Toys%20and%20Effects.md) for the full device catalog.
 
 ## Audio
@@ -66,6 +68,7 @@ See [DOF Toys and Effects](DOF%20Toys%20and%20Effects.md) for the full device ca
 - Use AppAudioConfig from Nirsoft for per-application volume levels
 - PinVol (`PinVolSettings.ini`) consolidates PinUp forms under one volume entry
 - EqAPO for audio equalization with SSF (Surround Sound Feedback) integration
+- SSF cabinets route tactile signals to exciters via surround channels into 2.1 amps with crossovers — never plain speakers (risk of damage); see [SSFImpactor](../projects/SSFImpactor.md)
 
 ## Frontend Integration
 
@@ -73,6 +76,26 @@ Frontends like PinUp Popper manage table selection and launching. B2SRandom can 
 ```cmd
 CALL C:\vPinball\B2SServer\B2STools\B2SRandom.cmd "[GAMEFULLNAME]"
 ```
+
+## DOF Safety Rules
+
+Field rules from the authoring community ([raw/vpw-wiki/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction):
+
+- Solenoid-related DOF outputs must use **`DOFPulse`, never `DOFOn`** — a table whose GI code sent `DOFOn` left solenoids continuously energized and burnt fuse/solenoid hardware
+- `DOFOn` is reserved for flippers, button lights, and RGB effects; diverters get pulses without contactors — only flippers stay energized
+- Cap solenoid outputs with a maximum-duration setting (e.g. `S5 MAX100`) so a stuck on-signal cannot cook a coil
+- Use DOTK v0.09 when developing DOF table effects (v0.10 had bugs)
+
+## Nudge and Tilt
+
+- VPX 10.8.1 includes native tilt plumb-through: cabinet nudge input reaches the emulated ROM tilt bob directly, no table-script shim required
+- Three nudge models are available — legacy digital nudge key, accelerometer (native), and analog nudge via a [Pinscape controller](../projects/Pinscape%20Controller.md); analog is preferred for proportional, ROM-accurate tilt ([raw/vpw-wiki/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction). See [VPX Accelerometer Input](VPX%20Accelerometer%20Input.md)
+- Budget trick: mount the coin door so leaning on the glass closes a micro-switch wired as the nudge button ([raw/vpw-wiki/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction)
+
+## Known Hardware-Side Gotchas
+
+- **Analog plunger seat position**: keyboard-emulation pluggers (ServoSting, encoders in keyboard mode) can report a resting value VPX reads as pulled, so tables drop the ball mid-multiball; fix by using raw-axis mode (Pinscape analog plunger) so the device is a true joystick axis ([raw/vpw-wiki/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction)
+- POV calibration for cabinets (Inclination 6–20, FOV 29–45, Layback 42–70) — see the conflict note in [VPX View Setup](VPX%20View%20Setup.md)
 
 ## See Also
 
@@ -83,6 +106,11 @@ CALL C:\vPinball\B2SServer\B2STools\B2SRandom.cmd "[GAMEFULLNAME]"
 - [DOF Output Controllers](DOF%20Output%20Controllers.md) — Hardware driving cabinet feedback
 - [B2S Backglass Server](../projects/B2S%20Backglass%20Server.md) — Manages backglass rendering
 - [DirectOutput Framework](../projects/DirectOutput%20Framework.md) — Drives physical feedback
+- [SSFImpactor](../projects/SSFImpactor.md) — Software controller for tactile-audio feedback
 - [Pinscape Controller](../projects/Pinscape%20Controller.md) — Common DIY cabinet input/output controller
+- [Pinscape Pico](Pinscape%20Pico.md) — Second-generation cabinet controller
+- [DOF Addressable LEDs](DOF%20Addressable%20LEDs.md) — Strip/matrix wiring, firmware, configuration
+- [VPX Standalone](VPX%20Standalone.md) — Non-Windows cabinet builds
+- [VPX File Layout](VPX%20File%20Layout.md) — Per-table file organization
 
 

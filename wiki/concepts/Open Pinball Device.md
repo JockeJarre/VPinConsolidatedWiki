@@ -14,6 +14,8 @@ With OPD, VPX knows the connected device is a pinball controller, reducing confi
 ## Supported Devices
 
 - **Pinscape Pico** (in development as of Sept 2024)
+  - ⚠️ CONFLICT (secondary source): "detection of the Pico's `openpindev` interface isn't working per this Github issue [vpinball #3303]… on Linux… Use the `gamepad` (preferred) or `xinput` interfaces instead"
+    ([raw/dekay-vpinball-wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers), §Nudge & Plunger Setup, 2026) — Primary: OPD is the intended interface (design stands; the secondary report is a platform status note)
 - Specification publicly available: [OpenPinballDeviceHID.htm](http://mjrnet.org/pinscape/OpenPinballDevice/OpenPinballDeviceHID.htm)
 
 ## Features

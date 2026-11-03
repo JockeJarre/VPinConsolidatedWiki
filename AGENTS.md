@@ -19,11 +19,19 @@ VPXwiki/
 ├── AGENTS.md               ← You are here. Agent instructions.
 ├── llm-wiki.md             ← LLM prompt / entry point for wiki tasks.
 │
-├── raw/                    ← READ-ONLY source material. Never modified.
-│   ├── B2S/                   B2S Backglass Server wiki export
-│   ├── DOF/                   DirectOutput Framework documentation
-│   ├── Popper/                PinballY/Popper documentation
-│   └── VPX/                   Visual Pinball X documentation
+├── raw/                    ← READ-ONLY source snapshots. Never modified.
+│   │                          Local staging only — never committed, refreshed by update-raw.ps1.
+│   │                          Wiki links into raw paths MUST use the upstream URLs below, never local paths.
+│   ├── B2S/                   B2S Backglass Server wiki export (GitHub wiki mirror)
+│   ├── DOF/                   DirectOutput Framework documentation (repo clone)
+│   ├── VPX/                   Visual Pinball X documentation (repo clone)
+│   ├── FlexDMD/               FlexDMD documentation (repo clone)
+│   ├── DMD-Extensions/        Freezy DMD Extensions documentation (repo clone)
+│   ├── pinscape-build-guide/  Pinscape Build Guide (repo clone, AsciiDoc book)
+│   ├── PUP/                   PinUp system documentation mirror
+│   ├── SSFImpactor Guide.pdf  SSFImpactor user guide PDF
+│   ├── dekay-vpinball-wiki/   Unofficial Visual Pinball Wiki mirror — SECONDARY priority
+│   └── vpw-wiki/              VPW Knowledge Base (Virtual Pinball Workshop Discord) — SECONDARY priority
 │
 └── wiki/                   ← LLM-written and LLM-maintained.
     ├── _schema.md              Legacy schema reference (superseded by this file)
@@ -64,6 +72,25 @@ VPXwiki/
 
 ## Conventions
 
+### Source Priority
+
+| Tier | Sources | Rule |
+|------|---------|------|
+| **Primary** | B2S wiki, DOF docs, VPX docs, FlexDMD docs, DMD Extensions docs, Pinscape Build Guide, SSFImpactor Guide, PinUp Popper docs | Upstream docs of the owning project. Claims win on conflicts |
+| **Secondary** | Unofficial Visual Pinball Wiki (`raw/dekay-vpinball-wiki/`) | Community wiki. Use for tips and platforms the Primary sources do not cover. Where it conflicts with a Primary source, keep the Primary claim and add a conflict note |
+| **Secondary** | VPW Knowledge Base (`raw/vpw-wiki/`) | Virtual Pinball Workshop Discord community knowledge base (table authoring focus). Same secondary rules as above |
+
+Conflict note format for Secondary-source disagreements:
+
+```markdown
+- ⚠️ CONFLICT (secondary source): <secondary claim>
+  (raw/dekay-vpinball-wiki/<File>.md) — Primary: <primary claim> (raw/<path>)
+```
+
+- The source page of a Secondary collection must open with the callout
+  `> ⚠️ Priority: Secondary — community-maintained; Primary sources win on conflicts.`
+- Its `index.md` entry ends with the marker `(secondary source)`.
+
 ### Filenames
 
 | Rule | Example |
@@ -79,16 +106,42 @@ VPXwiki/
 | From `wiki/` to a project page | `[VPX](projects/Visual%20Pinball%20X.md)` |
 | From `wiki/concepts/` to another concept | `[DMD](DMD.md)` |
 | From `wiki/concepts/` to a project | `[VPX](../projects/Visual%20Pinball%20X.md)` |
-| From `wiki/sources/` to raw source | `[raw file](../../raw/VPX/docs/Script%20API%20Reference.md)` |
+| Any link to a raw-source document | `[raw/VPX/repo/docs/Script API Reference.md](https://github.com/vpinball/vpinball/blob/master/docs/Script%20API%20Reference.md)` |
 
-- Always use **relative paths**.
-- **MUST** URL-encode all spaces as `%20` in link targets (the path part inside `()`) for wiki links and raw file links.
+- Always use **relative paths** for links between wiki pages.
+- **Never** link into local `raw/` paths — raw snapshots are local staging and are not committed, so every citation of a raw file must be a markdown link whose **label** is the human-readable raw path and whose **target** is the upstream URL (see Source Citation below).
+- **MUST** URL-encode all spaces as `%20` in link targets (the path part inside `()`).
 - **NEVER** use literal spaces in a link target path.
 - **Never URL-encode link text** (the label inside `[]`) — it must be human-readable.
-  - ✓ `[Script API Reference.md](../../raw/VPX/docs/Script%20API%20Reference.md)`
-  - ✗ `[Script API Reference.md](../../raw/VPX/docs/Script API Reference.md)`
-  - ✗ `[Script%20API%20Reference.md](../../raw/VPX/docs/Script%20API%20Reference.md)`
+  - ✓ `[Script API Reference.md](https://github.com/vpinball/vpinball/blob/master/docs/Script%20API%20Reference.md)`
+  - ✗ `[Script API Reference.md](https://github.com/vpinball/vpinball/blob/master/docs/Script API Reference.md)`
+  - ✗ `[Script%20API%20Reference.md](https://github.com/vpinball/vpinball/blob/master/docs/Script%20API%20Reference.md)`
 - Cross-reference liberally — every concept with its own page should be linked on first mention per section.
+
+### Source Citation
+
+Facts derived from a raw collection cite the raw file path as link text, wrapped in a markdown link to the upstream URL. Plain-text `(raw/...)` citations are written as `([raw/...](https://upstream))`:
+
+```markdown
+- POV ranges are per-cabinet ([raw/vpw-wiki/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction)
+```
+
+Upstream URL mapping per collection (verified against `update-raw.ps1`; branch is `master` everywhere except pinscape-build-guide which is `main`):
+
+| Raw collection | Upstream URL |
+|----------------|--------------|
+| `raw/B2S/b2s-backglass.wiki/<Stem>.md` | `https://github.com/vpinball/b2s-backglass/wiki/<Stem>` (`Home.md` → wiki root) |
+| `raw/DOF/repo/<path>` | `https://github.com/DirectOutput/DirectOutput/blob/master/<path>` (repo root → project page) |
+| `raw/VPX/repo/docs/<path>` | `https://github.com/vpinball/vpinball/blob/master/docs/<path>` (`raw/VPX` root → `…/vpinball/tree/master/docs`; the shorthand `raw/VPX docs` maps there too) |
+| `raw/FlexDMD/repo/<path>` | `https://github.com/vbousquet/flexdmd/blob/master/<path>`; `docs/media/architecture.svg` → raw.githubusercontent.com |
+| `raw/DMD-Extensions/repo/<path>` | `https://github.com/freezy/dmd-extensions/blob/master/<path>` (repo root → project page) |
+| `raw/pinscape-build-guide/markdown/<stem>.md` | `https://github.com/concurrent-recursion/pinscape-build-guide/blob/main/book/<stem>.adoc` |
+| `raw/PUP/**` | `https://www.nailbuster.com/wikipinup/doku.php?id=start` |
+| `raw/SSFImpactor Guide.pdf` | `https://www.mjrnet.org/pinscape/BuildGuideV2/BuildGuide.php?sec=downloads` (ships inside the DOF R3++ Grand Unified Edition zip) |
+| `raw/dekay-vpinball-wiki/<Stem>.md` | `https://github.com/dekay/vpinball-wiki/wiki/<Stem>` (`Home.md` → wiki root; dekay page titles legitimately use U+2010 hyphens — write them literally in link text, percent-encode as `%E2%80%90` in URLs) |
+| `raw/vpw-wiki/docs/<area>/<stem>.md` | `https://vpw-wiki.skirmishofwit.com/<area>/<stem>/` (area = `guides`, `tables`, `reference`) |
+
+- **log.md exemption:** historical `log.md` entries keep their original local `raw/` links as-is (append-only rule). Lint checks and link conversion skip `log.md`.
 
 ### Page Structure
 

@@ -10,6 +10,8 @@ VPX renders lights as flat surfaces:
 - **Halo lights**: Transparent additive surfaces for glow effects
 - **Custom lightmaps**: Flasher or Primitive objects with a `lightmap` property pointing to a Light element
 
+In VPX 10.8 the primitive **Lightmap property** auto-drives the primitive's opacity from the linked light (render mode Hidden, fader Incandescent), replacing custom fader subs. Script color changes propagate to attached lightmaps when the lightmap primitive's name contains the light name (e.g. `_l01_`) or the light name appears in the light's `UserValue` ([raw/vpw-wiki/docs/guides/insert-lighting.md](https://vpw-wiki.skirmishofwit.com/guides/insert-lighting/), §Lightmap Property; [raw/vpw-wiki/docs/reference/light-state-controller.md](https://vpw-wiki.skirmishofwit.com/reference/light-state-controller/)
+
 ## Light Fading Modes
 
 ### None (LED)
@@ -24,6 +26,15 @@ Physical model simulating filament temperature:
 - Filament cools gradually when turned off, producing a warm red glow
 - Temperature readable via `FilamentTemperature` [script property](VPX%20Scripting.md)
 - Most authentic for classic machines with incandescent bulbs
+- Community working fade values: ~40 ms up / 120 ms down — the filament heats faster than it cools ([raw/vpw-wiki/docs/guides/gi-and-flashers.md](https://vpw-wiki.skirmishofwit.com/guides/gi-and-flashers/), §Lampz)
+
+### Lampz (pre-10.8 legacy)
+
+Before the native faders, tables used the **Lampz/ModLampz** script library for per-lamp fading (FadeSpeed LED ½/⅛, incandescent 1/40/1/120). Dated status per the VPW collection:
+- ⚠️ CONFLICT (secondary source, internal to VPW): "ROM-based tables should still use Lampz/vpmMapLights"
+  ([raw/vpw-wiki/docs/reference/light-state-controller.md](https://vpw-wiki.skirmishofwit.com/reference/light-state-controller/) — same collection, newer: Lampz was removed from the VPW Example Table at v1.5.15 (March 2024); "Lampz is no longer needed for either ROM or original tables" ([raw/vpw-wiki/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/) Treat Lampz as pre-10.8 legacy; current paths are native faders, `light_animate`, and `vpmMapLights`
+- `vpmMapLights` + TimerInterval = ROM lamp index replaces manual Lampz lamp mapping for ROM tables
+- 10.8 `light_animate` subs (`l86_Animate` + `GetInPlayIntensity`) replace Lampz for insert-blend control on toolkit tables — see [VPX Insert Lighting](VPX%20Insert%20Lighting.md)
 
 ## Shadows
 
