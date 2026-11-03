@@ -22,8 +22,8 @@ The simplest build uses only the KL25Z board. In that mode, Pinscape can already
 The second-generation controller is the RP2040-based [Pinscape Pico](../concepts/Pinscape%20Pico.md), which the community wiki documents in detail. Two community observations apply to the KL25Z generation as well:
 
 - ⚠️ CONFLICT (secondary source): "The newest version of the FRDM-KL25Z development board **does not** have the onboard accelerometer… If the board has a USB-C port, it will be the newer version" — buy micro-USB-era old stock or move to the Pico
-  ([raw/dekay-vpinball-wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers), CAUTION) — Primary: the build guide assumes every KL25Z has the onboard MMA845x accelerometer
-- Pinscape **resets every 10 seconds if its joystick output is not being read**, which drops keyboard events during each reset; fix by unchecking "Reboot on Disconnect" in the Config Tool, or set config variable 12 (`disconnectRebootTimeout=0`) and save to flash ([raw/dekay-vpinball-wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers), §KL25Z quirks)
+  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers), CAUTION) — Primary: the build guide assumes every KL25Z has the onboard MMA845x accelerometer
+- Pinscape **resets every 10 seconds if its joystick output is not being read**, which drops keyboard events during each reset; fix by unchecking "Reboot on Disconnect" in the Config Tool, or set config variable 12 (`disconnectRebootTimeout=0`) and save to flash ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers), §KL25Z quirks)
 
 ### Expansion Boards
 

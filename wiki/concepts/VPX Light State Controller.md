@@ -2,7 +2,7 @@
 
 The VPX Light State Controller is a VBScript class by **flux5009 (mpcarr)** that manages complex light behavior for original (non-ROM) VPX tables — stacked simultaneous states per light, blink groups, color palettes, and coordinate-driven sequences that plain lamp mapping cannot express.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/reference/light-state-controller.md](https://vpw-wiki.skirmishofwit.com/reference/light-state-controller/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/reference/light-state-controller.md](https://vpw-wiki.skirmishofwit.com/reference/light-state-controller/)
 
 ## Overview
 

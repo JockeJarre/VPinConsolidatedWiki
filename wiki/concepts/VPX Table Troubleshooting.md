@@ -2,7 +2,7 @@
 
 Symptom → cause → fix cookbook for VPX table authoring, distilled from the VPW troubleshooting guide: rendering, physics, scripting, sound, ROM, Blender, VR, and editor entries.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/troubleshooting.md](https://vpw-wiki.skirmishofwit.com/guides/troubleshooting/) (40-entry symptom index). Process-level regression bisecting is on [VPX Debugging](VPX%20Debugging.md).
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/troubleshooting.md](https://vpw-wiki.skirmishofwit.com/guides/troubleshooting/) (40-entry symptom index). Process-level regression bisecting is on [VPX Debugging](VPX%20Debugging.md).
 
 ## Rendering
 

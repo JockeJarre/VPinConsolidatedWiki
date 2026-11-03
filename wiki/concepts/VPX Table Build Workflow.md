@@ -2,7 +2,7 @@
 
 Community workflow for building VPX tables: scope decision (Lite vs Premium), build order, team roles, version control, Blender collection organization, mechanism wiring conventions, and the pre-release checklist.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/build-workflow.md](https://vpw-wiki.skirmishofwit.com/guides/build-workflow/), `[raw/vpw-wiki/docs/guides/best-practices.md](https://vpw-wiki.skirmishofwit.com/guides/best-practices/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/build-workflow.md](https://vpw-wiki.skirmishofwit.com/guides/build-workflow/), `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/best-practices.md](https://vpw-wiki.skirmishofwit.com/guides/best-practices/)
 
 ## Scope Decision
 
@@ -77,7 +77,7 @@ Pre-release validation (raw §Release Checklist, corroborated by best-practices.
 - Solenoids `DOFPulse` only (see [VPX Authoring Best Practices](VPX%20Authoring%20Best%20Practices.md))
 
 - ⚠️ CONFLICT (secondary source): "VSync override set to −1 (not 1) in table User properties" is author-side shipping guidance
-  ([raw/vpw-wiki/docs/guides/build-workflow.md](https://vpw-wiki.skirmishofwit.com/guides/build-workflow/), §Release Checklist) — Primary: [VPX Latency](VPX%20Latency.md) tells players to disable V-Sync. Complementary scopes: −1 = application-controlled sync shipped in the table; player-side disable is the low-latency override
+  ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/build-workflow.md](https://vpw-wiki.skirmishofwit.com/guides/build-workflow/), §Release Checklist) — Primary: [VPX Latency](VPX%20Latency.md) tells players to disable V-Sync. Complementary scopes: −1 = application-controlled sync shipped in the table; player-side disable is the low-latency override
 
 ## Multi-Playfield and Dimension Discipline
 

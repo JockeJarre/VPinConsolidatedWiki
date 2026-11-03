@@ -2,7 +2,7 @@
 
 General Illumination systems and flasher techniques for VPX table authoring: GI string tracing from real machines, per-era GI behaviors, the canonical flasher decay curve, solenoid PWM migration, and room-brightness handling.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/gi-and-flashers.md](https://vpw-wiki.skirmishofwit.com/guides/gi-and-flashers/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/gi-and-flashers.md](https://vpw-wiki.skirmishofwit.com/guides/gi-and-flashers/)
 
 ## GI String Tracing
 
@@ -68,7 +68,7 @@ From raw §Flasher Domes: name-pattern-driven iteration requires exact naming (`
 - `SolModCallback` delivers 0–255 PWM (not universal); modulated values are erratic in practice (Congo Sol17: 27/72/109/36 at 56–3023 ms) → per-flasher decay timers beat direct drive; normalize WPC 0–255 → 0–100 opacity using observed real maxima
 - **PinMAME 3.6 PWM migration**: `UseVPMModSol = 2` (1 = legacy), float 0..1 signals, remove SolMask arrays, fader Incandescent for lamps / None for PWM flashers; WPC/Whitestar-SAM need PWM, Sys11/DE relays benefit less; flipper-output PWM was added to PinMAME because of Scared Stiff; GI relay sounds need 0.01/0.99 threshold triggers under PWM
   - ⚠️ CONFLICT (secondary source): `UseVPMModSol=2` "can strand DOF solenoids on at startup → add `MAX100` in the DOF config"
-    ([raw/vpw-wiki/docs/guides/troubleshooting.md](https://vpw-wiki.skirmishofwit.com/guides/troubleshooting/), §ROM) — Primary: DOF docs do not mention this interaction (see [DirectOutput Framework](../projects/DirectOutput%20Framework.md))
+    ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/troubleshooting.md](https://vpw-wiki.skirmishofwit.com/guides/troubleshooting/), §ROM) — Primary: DOF docs do not mention this interaction (see [DirectOutput Framework](../projects/DirectOutput%20Framework.md))
 
 ## Flasher Discovery and Conventions
 

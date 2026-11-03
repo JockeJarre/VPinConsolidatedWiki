@@ -2,11 +2,11 @@
 
 The VPW Example Table is the community's canonical "bag of tricks" reference implementation for VPX table authoring — a demonstration table showing every current best-practice system, explicitly **not** a starter template.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/), `[raw/vpw-wiki/docs/guides/physics-tuning.md](https://vpw-wiki.skirmishofwit.com/guides/physics-tuning/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/), `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/physics-tuning.md](https://vpw-wiki.skirmishofwit.com/guides/physics-tuning/)
 
 ## What It Demonstrates
 
-From [raw/vpw-wiki/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/), §Systems Demonstrated:
+From [raw/ExternalWikis/vpw-wiki/repo/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/), §Systems Demonstrated:
 
 - Dynamic ball shadows (array-based; shadow size ∝ `(Z + BallSize)/80`; update only on Z-threshold transitions)
 - nFozzy flipper physics — trajectory/polarity/velocity curves per era (see [VPX Physics Tuning](VPX%20Physics%20Tuning.md))

@@ -123,10 +123,10 @@ Use Notepad++ with regex Find/Replace across `*.res` files to bulk-update screen
 
 ## Non-Windows / Standalone Windowing
 
-This page covers the B2S-era Windows mechanism (`ScreenRes.txt`, `.res` files). On [VPX Standalone](VPX%20Standalone.md) platforms there is no B2S server — window placement falls to the OS window manager and the frontend. The community guide's recommended setup is **KDE KWin window rules** (absolute positioning + layers: Desktop < Normal < Above < Notification) driving the fixed window titles `Visual Pinball Player`, `Visual Pinball Backglass`, `Visual Pinball Score View`, and [VPinFE](../projects/VPinFE.md)'s `VPinFE Table`/`VPinFE BG`/`VPinFE DMD`; pure Wayland forbids this placement and Gnome has no placement rules ([raw/dekay-vpinball-wiki/Linux.md](https://github.com/dekay/vpinball-wiki/wiki/Linux) Do not rotate the playfield display — VPinFE assumes unrotated output.
+This page covers the B2S-era Windows mechanism (`ScreenRes.txt`, `.res` files). On [VPX Standalone](VPX%20Standalone.md) platforms there is no B2S server — window placement falls to the OS window manager and the frontend. The community guide's recommended setup is **KDE KWin window rules** (absolute positioning + layers: Desktop < Normal < Above < Notification) driving the fixed window titles `Visual Pinball Player`, `Visual Pinball Backglass`, `Visual Pinball Score View`, and [VPinFE](../projects/VPinFE.md)'s `VPinFE Table`/`VPinFE BG`/`VPinFE DMD`; pure Wayland forbids this placement and Gnome has no placement rules ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Linux.md](https://github.com/dekay/vpinball-wiki/wiki/Linux) Do not rotate the playfield display — VPinFE assumes unrotated output.
 
 - ⚠️ CONFLICT (secondary source): the B2S ScreenRes/.res workflow on this page is Windows-only guidance; the community Linux page prescribes window-manager rules instead
-  ([raw/dekay-vpinball-wiki/Linux.md](https://github.com/dekay/vpinball-wiki/wiki/Linux) — Primary: B2S docs (this page). Scope note: complementary per platform, not contradictory
+  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Linux.md](https://github.com/dekay/vpinball-wiki/wiki/Linux) — Primary: B2S docs (this page). Scope note: complementary per platform, not contradictory
 
 ## See Also
 

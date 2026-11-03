@@ -13,7 +13,7 @@ Since the 10.8.1 development cycle, VPX also ships a **built-in DOF plugin** —
 - Enable keys: 10.8.0 `[Standalone] DOFPlugin=1`; 10.8.1 `[Plugin.DOF] Enable=1` (expect churn — the codebase is moving to a plugin architecture)
 
 - ⚠️ CONFLICT (secondary source): "DOF operates as a plugin for B2S Backglass Server" (framing of this page, from the primary DOF docs)
-  ([raw/dekay-vpinball-wiki/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework) — Primary: DOF's own docs describe the B2S.Server plugin. Both are true per era: the B2S plugin is the classic path; the built-in VPX plugin (10.8.1+) bypasses B2S
+  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework) — Primary: DOF's own docs describe the B2S.Server plugin. Both are true per era: the B2S plugin is the classic path; the built-in VPX plugin (10.8.1+) bypasses B2S
 
 ## Architecture
 
@@ -78,7 +78,7 @@ Per-table configuration defining:
 Legacy format with `[Config DOF]` section. ROM name rows with 32+ columns for LedWizEquivalent outputs. Numbered by controller (1–16 for LedWiz, 19 PacDrive, 20–27 PacLed64, 30+ custom).
 
 - ⚠️ CONFLICT (secondary source): the community guide's July-2025 table numbers each **controller class** with its own base file — LedWiz = the unnumbered `directoutputconfig.ini` with suffixes appended per extra unit, FRDM-KL25Z (Pinscape Gen 1) = 8, PinOne = 11, PacDrive = 19, PacLed = 20, UltimateI/O = 27, WS2811 = 30, SainSmart = 40, Pinscape = 51, Philips Hue = 70, Pincontrol1 = 80, Pincontrol2 = 85, DudesCab = 90, Art-Net = 100, **Pinscape Pico = 120**; extra boards of a type increment the base by 1, and only PacDrive is capped at one per cabinet
-  ([raw/dekay-vpinball-wiki/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework), §Supported Hardware and Their ini Files) — Primary: the 1–16/19/20–27 ranges above. Full table on [DOF Output Controllers](../concepts/DOF%20Output%20Controllers.md)
+  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework), §Supported Hardware and Their ini Files) — Primary: the 1–16/19/20–27 ranges above. Full table on [DOF Output Controllers](../concepts/DOF%20Output%20Controllers.md)
 
 ## Supported Hardware
 

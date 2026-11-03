@@ -2,7 +2,7 @@
 
 **Upstream:** [DirectOutput/DirectOutput](https://github.com/DirectOutput/DirectOutput) (branch `master`).
 
-**What is fetched:** only `Documentation/` (~25 files) — a small fraction of the repo (sources, binaries, config are not fetched).
+**What is fetched:** only `Documentation/` (~100 files, incl. nested subfolders) — a fraction of the repo (sources, binaries, config are not fetched).
 
 **Initial fetch** (from repo root):
 

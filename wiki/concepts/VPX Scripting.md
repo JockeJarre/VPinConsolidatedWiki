@@ -106,7 +106,7 @@ See [DMD](DMD.md).
 `Gravity`, `Friction`, `Elasticity`, `Scatter`, `GlobalDifficulty`, `SlopeMax`/`SlopeMin`, `PhysicsLoopTime`, `NudgeTime`
 
 - ⚠️ CONFLICT (secondary source): the difficulty slider interpolates slope and scatter only; VPX's default difficulty (20) is below the intended range (tune with the slider at the intended midpoint, ~56); and **Global Physics Sets silently override per-object nFozzy physics values**
-  ([raw/vpw-wiki/docs/guides/physics-tuning.md](https://vpw-wiki.skirmishofwit.com/guides/physics-tuning/), §Difficulty Slider; [raw/vpw-wiki/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/), §Physics Sets) — Primary: these properties are documented neutrally here; the caveats apply to nFozzy-style authoring. Full guidance: [VPX Physics Tuning](VPX%20Physics%20Tuning.md)
+  ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/physics-tuning.md](https://vpw-wiki.skirmishofwit.com/guides/physics-tuning/), §Difficulty Slider; [raw/ExternalWikis/vpw-wiki/repo/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/), §Physics Sets) — Primary: these properties are documented neutrally here; the caveats apply to nFozzy-style authoring. Full guidance: [VPX Physics Tuning](VPX%20Physics%20Tuning.md)
 
 ### Display
 `Width`, `Height`, `Inclination`, `Rotation`, `ScaleX`/`ScaleY`/`ScaleZ`, `Layback`, `FieldOfView`
@@ -156,9 +156,9 @@ Core VBS scripts provide helper classes for common game mechanics:
 | `GetBalls()` | Array of all active balls |
 | `GetElements()` | Array of all table elements |
 
-Authoring-community guidance on ball enumeration: the VPW convention caches balls in a global `gBOT` array (create at init, never destroy) because per-frame `GetBalls` is expensive — **but `gBOT` must not be used inside `Cor.Update`/CorTracker, where it segfaults standalone VPX; use `GetBalls` there** ([raw/vpw-wiki/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/), §Ball Tracking). See [VPX Scripting Patterns](VPX%20Scripting%20Patterns.md), [VPX Standalone](VPX%20Standalone.md).
+Authoring-community guidance on ball enumeration: the VPW convention caches balls in a global `gBOT` array (create at init, never destroy) because per-frame `GetBalls` is expensive — **but `gBOT` must not be used inside `Cor.Update`/CorTracker, where it segfaults standalone VPX; use `GetBalls` there** ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/), §Ball Tracking). See [VPX Scripting Patterns](VPX%20Scripting%20Patterns.md), [VPX Standalone](VPX%20Standalone.md).
 
-The **core.vbs** ROM-integration script is community-maintained (VPW repo); keep it current — features like `PlaySoundAtLevelStatic` depend on it ([raw/vpw-wiki/docs/reference/fleep-sounds.md](https://vpw-wiki.skirmishofwit.com/reference/fleep-sounds/) The cvpm class reference is the VPForums VBS doc (see [VPX Authoring Tools](VPX%20Authoring%20Tools.md)).
+The **core.vbs** ROM-integration script is community-maintained (VPW repo); keep it current — features like `PlaySoundAtLevelStatic` depend on it ([raw/ExternalWikis/vpw-wiki/repo/docs/reference/fleep-sounds.md](https://vpw-wiki.skirmishofwit.com/reference/fleep-sounds/) The cvpm class reference is the VPForums VBS doc (see [VPX Authoring Tools](VPX%20Authoring%20Tools.md)).
 
 ## See Also
 

@@ -7,13 +7,13 @@ DMD (Dot Matrix Display) is the digital alphanumeric/dot-matrix display found on
 Real pinball machines from the early 1990s onward replaced mechanical score reels with dot-matrix displays showing scores, animations, and game information, typically at 128×32 pixels.
 
 - ⚠️ CONFLICT (secondary source): "Later machines adopted Dot Matrix Displays (DMDs) **built from grids of individual LEDs**"
-  ([raw/dekay-vpinball-wiki/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays.md](https://github.com/dekay/vpinball-wiki/wiki/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays) §Display Types) — Primary: "dot-matrix **plasma** displays" (wording of this page's opening history, from community-era framing). Real machines used plasma panels (WMS), and many reproductions are LED grids — the rendering styles below cover both
+  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays.md](https://github.com/dekay/vpinball-wiki/wiki/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays) §Display Types) — Primary: "dot-matrix **plasma** displays" (wording of this page's opening history, from community-era framing). Real machines used plasma panels (WMS), and many reproductions are LED grids — the rendering styles below cover both
 
 Common resolutions (shared with [VPX ScoreView Plugin](VPX%20ScoreView%20Plugin.md) presets): usual DMD 128×32 (4:1), hi-res 256×64, wide 128×16 (8:1), Sega 192×64 (3:1).
 
 ## Display Profiles
 
-VPinball renders **8 alphanumeric display profiles** and **7 DMD display profiles**, selected via F12 LiveUI → `Alpha/DMD Profile Settings` ([raw/dekay-vpinball-wiki/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays.md](https://github.com/dekay/vpinball-wiki/wiki/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays) §Display Profiles):
+VPinball renders **8 alphanumeric display profiles** and **7 DMD display profiles**, selected via F12 LiveUI → `Alpha/DMD Profile Settings` ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays.md](https://github.com/dekay/vpinball-wiki/wiki/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays) §Display Profiles):
 
 | Index | Alpha profile | Index | DMD profile |
 |:-----:|---------------|:-----:|-------------|

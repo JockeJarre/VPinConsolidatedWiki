@@ -2,7 +2,7 @@
 
 Authoring guidance for transparent geometry in VPX — ramps, plastics, and glass: refraction probe rules, ramp baking methods, wire-ramp techniques, glass "mayo" and dust effects, and the dominant transparency performance ceiling.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/transparent-elements.md](https://vpw-wiki.skirmishofwit.com/guides/transparent-elements/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/transparent-elements.md](https://vpw-wiki.skirmishofwit.com/guides/transparent-elements/)
 
 ## Quick Rules
 

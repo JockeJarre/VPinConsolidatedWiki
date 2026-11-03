@@ -2,7 +2,7 @@
 
 The community toolchain directory for VPX table authoring: scanning, stitching, texture/AI tools, Blender add-ons, parts libraries, VPX utilities, sound and display tools, DOF utilities, documentation references, and community sites.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/reference/tools-resources.md](https://vpw-wiki.skirmishofwit.com/reference/tools-resources/) (as of the 2026 snapshot; URLs volatile).
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/reference/tools-resources.md](https://vpw-wiki.skirmishofwit.com/reference/tools-resources/) (as of the 2026 snapshot; URLs volatile).
 
 ## Scanning and Photography
 

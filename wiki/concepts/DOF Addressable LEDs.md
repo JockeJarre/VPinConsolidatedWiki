@@ -6,7 +6,7 @@ Addressable LED strips and matrices (WS2811/WS2812/WS2815) in a [pincab](Pincab%
 
 ## Controller Tiers
 
-([raw/dekay-vpinball-wiki/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Addressable LED Controllers)
+([raw/ExternalWikis/dekay-vpinball-wiki/repo/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Addressable LED Controllers)
 
 | Board | Cost | Performance | Notes |
 |-------|------|-------------|-------|
@@ -19,7 +19,7 @@ Preflashed units exist from PJRC, Cleveland Software Designs, and the Arnoz shop
 **Not all LED boards are addressable**: Cleveland PinOne, LED-Wiz, Pinscape Pico, and Dudes Cab/Moslight drive individual LEDs only — not addressable strings.
 
 - ⚠️ CONFLICT (secondary source): the recommended Vroonsh TeensyStripController fork raises the per-line limit "from 1100 to 2100 LEDs" and is "likely to be merged into mainline"
-  ([raw/dekay-vpinball-wiki/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §PJRC Teensy) — Primary: [DOF Output Controllers](DOF%20Output%20Controllers.md) lists TeensyStripController at 8 channels × 1100 LEDs (mainline figure)
+  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §PJRC Teensy) — Primary: [DOF Output Controllers](DOF%20Output%20Controllers.md) lists TeensyStripController at 8 channels × 1100 LEDs (mainline figure)
 
 ## Wiring and Firmware
 
@@ -31,7 +31,7 @@ Preflashed units exist from PJRC, Cleveland Software Designs, and the Arnoz shop
 
 ## Configuration Files
 
-Four files, living with the rest of the DOF configuration ([raw/dekay-vpinball-wiki/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Configuration Files):
+Four files, living with the rest of the DOF configuration ([raw/ExternalWikis/dekay-vpinball-wiki/repo/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Configuration Files):
 
 | File | Role |
 |------|------|
@@ -46,7 +46,7 @@ Per-device ini numbering: the WS2811 controller class uses `directoutputconfig30
 
 ## Strips as Matrices
 
-An LED strip is "a simplified LED matrix": mounted vertically beside the playfield it is one column wide, so `cabinet.xml` uses `Width=1`, `Height=<LED count>`, and a `<LedStripArrangement>` of `TopDown…`/`BottomUp…`. Getting the arrangement backwards breaks *some* effects only — a subtle, hard-to-trace failure ([raw/dekay-vpinball-wiki/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Configuration Files).
+An LED strip is "a simplified LED matrix": mounted vertically beside the playfield it is one column wide, so `cabinet.xml` uses `Width=1`, `Height=<LED count>`, and a `<LedStripArrangement>` of `TopDown…`/`BottomUp…`. Getting the arrangement backwards breaks *some* effects only — a subtle, hard-to-trace failure ([raw/ExternalWikis/dekay-vpinball-wiki/repo/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Configuration Files).
 
 DOF Config Tool assignment uses **combo names**: e.g. `PF Left Combo` = `PF Left Effects MX` + `PF Left Flashers MX`; matrix: `PF Back Effects MX` + `PF Back Flashers MX` + `Custom MX 1`.
 
@@ -60,7 +60,7 @@ DOF Config Tool assignment uses **combo names**: e.g. `PF Left Combo` = `PF Left
 
 ## Table Script Gating
 
-Tables coded `DOF 104, DOFPulse` fire unconditionally; tables using `Controller.vbs` variables depend on `[Controller]` values in `VPinballX.ini`: `DOFContactors`, `DOFKnocker`, `DOFChimes`, `DOFBell`, `DOFGear`, `DOFShaker`, `DOFFlippers`, `DOFTargets`, `DOFDropTargets` — **0 = digital sound only, 1 = DOF only, 2 = both**. `Controller.vbs` auto-adds these on first launch; VPX 10.8.1 (2026-02-15, commit 40dd999) automates this on all platforms; on Linux/Mac the placeholders may need filling manually. Plugin enable keys: 10.8.0 `[Standalone] B2SPlugins=1, DOFPlugin=1`; 10.8.1 `[Plugin.B2SLegacy] Enable=1`, `[Plugin.DOF] Enable=1`. Expect churn — the codebase is moving to a plugin architecture ([raw/dekay-vpinball-wiki/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Setting Up the VPinballX.ini File).
+Tables coded `DOF 104, DOFPulse` fire unconditionally; tables using `Controller.vbs` variables depend on `[Controller]` values in `VPinballX.ini`: `DOFContactors`, `DOFKnocker`, `DOFChimes`, `DOFBell`, `DOFGear`, `DOFShaker`, `DOFFlippers`, `DOFTargets`, `DOFDropTargets` — **0 = digital sound only, 1 = DOF only, 2 = both**. `Controller.vbs` auto-adds these on first launch; VPX 10.8.1 (2026-02-15, commit 40dd999) automates this on all platforms; on Linux/Mac the placeholders may need filling manually. Plugin enable keys: 10.8.0 `[Standalone] B2SPlugins=1, DOFPlugin=1`; 10.8.1 `[Plugin.B2SLegacy] Enable=1`, `[Plugin.DOF] Enable=1`. Expect churn — the codebase is moving to a plugin architecture ([raw/ExternalWikis/dekay-vpinball-wiki/repo/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Setting Up the VPinballX.ini File).
 
 ## Cross-Platform Serial Quirks
 
@@ -72,7 +72,7 @@ Tables coded `DOF 104, DOFPulse` fire unconditionally; tables using `Controller.
 
 ## Troubleshooting Quick List
 
-([raw/dekay-vpinball-wiki/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Troubleshooting)
+([raw/ExternalWikis/dekay-vpinball-wiki/repo/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §Troubleshooting)
 
 | Symptom | Likely cause |
 |---------|--------------|

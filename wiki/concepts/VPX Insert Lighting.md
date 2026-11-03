@@ -2,7 +2,7 @@
 
 Insert rendering techniques across the three community eras — Skitso flasher inserts, the Flupper 3-layer system, and VLM toolkit inserts — with the depth-bias, z-fighting, additive-material, and lightmap mechanics that make inserts work.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/insert-lighting.md](https://vpw-wiki.skirmishofwit.com/guides/insert-lighting/) ("the definitive insert reference" per the collection, 30+ table builds).
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/insert-lighting.md](https://vpw-wiki.skirmishofwit.com/guides/insert-lighting/) ("the definitive insert reference" per the collection, 30+ table builds).
 
 ## The Three Eras
 
@@ -73,7 +73,7 @@ The Lightmap property auto-drives primitive opacity from the linked light (rende
 - **Normal maps: tangent space mandatory** (object space breaks VR); normal maps on ON prims silently break `UpdateMaterial` in VR — keep them on OFF prims only
 - VPX 10.8: the visual playfield can be non-static, so alpha transparency works — the 132-alpha Photoshop hack is obsolete (GIMP was always fine)
   - ⚠️ CONFLICT (secondary source, internal to VPW): 3d-art-pipeline.md §Playfield Mesh Setup says "the playfield texture's alpha channel does not work in VPX"
-    ([raw/vpw-wiki/docs/guides/3d-art-pipeline.md](https://vpw-wiki.skirmishofwit.com/guides/3d-art-pipeline/) — same collection, insert-lighting.md §Playfield Alpha Cutouts: "VPX 10.8 … the visual playfield can be set to non-static, which means alpha transparency works correctly." Reconciliation: the static-rendered mesh has dead alpha; a non-static image primitive's alpha works
+    ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/3d-art-pipeline.md](https://vpw-wiki.skirmishofwit.com/guides/3d-art-pipeline/) — same collection, insert-lighting.md §Playfield Alpha Cutouts: "VPX 10.8 … the visual playfield can be set to non-static, which means alpha transparency works correctly." Reconciliation: the static-rendered mesh has dead alpha; a non-static image primitive's alpha works
 
 ## See Also
 

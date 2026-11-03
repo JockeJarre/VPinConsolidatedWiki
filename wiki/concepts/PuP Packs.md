@@ -6,7 +6,7 @@ PuP Packs are the media packs consumed by [PinUp Player](../projects/PinUp%20Pla
 
 ## Installation Mechanics
 
-([raw/dekay-vpinball-wiki/PUP-Packs.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Packs), §Add PuP Packs to an Existing Table)
+([raw/ExternalWikis/dekay-vpinball-wiki/repo/PUP-Packs.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Packs), §Add PuP Packs to an Existing Table)
 
 - VPinball searches a **`pupvideos` folder beside the `*.vpx` file** — see [VPX File Layout](VPX%20File%20Layout.md)
 - The pack root is the folder containing the `*.bat` option files; extract `puppack/<rom>` **into** `pupvideos/`

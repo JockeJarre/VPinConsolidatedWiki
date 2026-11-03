@@ -2,7 +2,7 @@
 
 **Upstream:** [vpinball/vpinball](https://github.com/vpinball/vpinball) (branch `master`).
 
-**What is fetched:** only `docs/` (~37 files) — a tiny fraction; the full repo is very large (C++ sources, media), so never clone it whole.
+**What is fetched:** only `docs/` (~78 files) — a tiny fraction; the full repo is very large (C++ sources, media), so never clone it whole.
 
 **Initial fetch** (from repo root):
 

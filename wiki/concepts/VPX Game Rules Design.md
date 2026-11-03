@@ -2,7 +2,7 @@
 
 Design and scripting reference for VPX game rules and mechanisms: mode state machines, wizard-mode design principles (from the Blood Machines discussion), multiball and lock implementations, scoring verification, and mechanism scripting patterns.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/game-rules-mechanics.md](https://vpw-wiki.skirmishofwit.com/guides/game-rules-mechanics/), `[raw/vpw-wiki/docs/reference/bm-rules.md](https://vpw-wiki.skirmishofwit.com/reference/bm-rules/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/game-rules-mechanics.md](https://vpw-wiki.skirmishofwit.com/guides/game-rules-mechanics/), `[raw/ExternalWikis/vpw-wiki/repo/docs/reference/bm-rules.md](https://vpw-wiki.skirmishofwit.com/reference/bm-rules/)
 
 ## Mode State Machines
 

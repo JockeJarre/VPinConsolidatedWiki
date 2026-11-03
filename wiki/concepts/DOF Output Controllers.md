@@ -32,7 +32,7 @@ Higher-end alternative with 64 outputs at 256 PWM levels and 100kHz frequency. C
 
 Professional stage lighting protocol over Ethernet. 512 channels per universe with unlimited universes. Useful for large LED installations or integration with existing stage lighting infrastructure.
 
-- The community guide's Art-Net entry describes an **ESP8266-based LED controller "limited to 170 LEDs max, so not very popular these days"** — this is the community's DOF-adjacent usage view, narrower than the 512-channel DMX universe framing above ([raw/dekay-vpinball-wiki/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework), §Supported Hardware)
+- The community guide's Art-Net entry describes an **ESP8266-based LED controller "limited to 170 LEDs max, so not very popular these days"** — this is the community's DOF-adjacent usage view, narrower than the 512-channel DMX universe framing above ([raw/ExternalWikis/dekay-vpinball-wiki/repo/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework), §Supported Hardware)
 
 ## Addressable LED Controllers
 
@@ -44,11 +44,11 @@ Professional stage lighting protocol over Ethernet. 512 channels per universe wi
 The Wemos D1 Mini / S2 Mini class of controllers (community-recommended, ini number 30) is documented on [DOF Addressable LEDs](DOF%20Addressable%20LEDs.md).
 
 - ⚠️ CONFLICT (secondary source): the recommended Vroonsh TeensyStripController fork "improves the LED communication timing and allows for more LEDs per line (from 1100 to 2100 LEDs)", "likely to be merged into the mainline repo"
-  ([raw/dekay-vpinball-wiki/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §PJRC Teensy) — Primary: TeensyStripController at 8 channels × 1100 LEDs (mainline figure; the fork raises it)
+  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/AddressableLED.md](https://github.com/dekay/vpinball-wiki/wiki/AddressableLED), §PJRC Teensy) — Primary: TeensyStripController at 8 channels × 1100 LEDs (mainline figure; the fork raises it)
 
 ## INI File Numbering
 
-Each controller class has a base `directoutputconfig<N>.ini`; extra boards of the same type increment the number by 1, and only PacDrive is limited to one per cabinet. Community table, July 2025 snapshot ([raw/dekay-vpinball-wiki/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework), §Supported Hardware and Their `ini` Files):
+Each controller class has a base `directoutputconfig<N>.ini`; extra boards of the same type increment the number by 1, and only PacDrive is limited to one per cabinet. Community table, July 2025 snapshot ([raw/ExternalWikis/dekay-vpinball-wiki/repo/DOF-‐-The-Direct-Output-Framework.md](https://github.com/dekay/vpinball-wiki/wiki/DOF-%E2%80%90-The-Direct-Output-Framework), §Supported Hardware and Their `ini` Files):
 
 | Controller | ini number |
 |-----------|------------|

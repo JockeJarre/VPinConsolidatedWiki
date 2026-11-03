@@ -6,7 +6,7 @@ The ScoreView Plugin displays the DMD **without any table-script modification** 
 
 ## Activation
 
-([raw/dekay-vpinball-wiki/ScoreView-Plugin.md](https://github.com/dekay/vpinball-wiki/wiki/ScoreView-Plugin)
+([raw/ExternalWikis/dekay-vpinball-wiki/repo/ScoreView-Plugin.md](https://github.com/dekay/vpinball-wiki/wiki/ScoreView-Plugin)
 
 1. Load the table
 2. Open the options menu by **tapping the top-right edge** of the screen

@@ -6,7 +6,7 @@ Debugging workflow for [Visual Pinball X](../projects/Visual%20Pinball%20X.md) r
 
 ## Bisecting Regressions
 
-Use `git bisect` on the vpinball repository between a known-good and known-bad build: check out midpoints, build each candidate, test one table, and mark good/bad until the regressing commit is isolated ([raw/dekay-vpinball-wiki/Debugging.md](https://github.com/dekay/vpinball-wiki/wiki/Debugging), §git bisect).
+Use `git bisect` on the vpinball repository between a known-good and known-bad build: check out midpoints, build each candidate, test one table, and mark good/bad until the regressing commit is isolated ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Debugging.md](https://github.com/dekay/vpinball-wiki/wiki/Debugging), §git bisect).
 
 ## Debug Builds and Logs
 
@@ -17,11 +17,11 @@ Use `git bisect` on the vpinball repository between a known-good and known-bad b
 
 ## Render Frame Capture
 
-Capture a single VPX frame with **Renderdoc** to inspect draw calls, textures, and shader passes — the way to localize rendering regressions to a specific pass ([raw/dekay-vpinball-wiki/Debugging.md](https://github.com/dekay/vpinball-wiki/wiki/Debugging), §Renderdoc).
+Capture a single VPX frame with **Renderdoc** to inspect draw calls, textures, and shader passes — the way to localize rendering regressions to a specific pass ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Debugging.md](https://github.com/dekay/vpinball-wiki/wiki/Debugging), §Renderdoc).
 
 ## Crash Reporting Protocol
 
-A useful VPX bug report includes ([raw/dekay-vpinball-wiki/Debugging.md](https://github.com/dekay/vpinball-wiki/wiki/Debugging), §Crash reporting):
+A useful VPX bug report includes ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Debugging.md](https://github.com/dekay/vpinball-wiki/wiki/Debugging), §Crash reporting):
 
 1. VPX build/version (release number or Actions revision)
 2. GPU model and driver version
@@ -34,7 +34,7 @@ Mobile platforms: iOS support goes through email/Discord (`#vpx-standalone-mobil
 
 ## Table-Level Repair
 
-- **NVRAM reset**: "high scores gone / mechanism stuck at boot" → delete the table's NVRAM files (`keyram`/`backupram`, per the Glossary definitions: keyram = battery-backed game settings, backupram = high scores) to force clean re-initialization ([raw/dekay-vpinball-wiki/Table-Fixes-&-Performance-Optimizations.md](https://github.com/dekay/vpinball-wiki/wiki/Table-Fixes-&-Performance-Optimizations), §NVRAM fix)
+- **NVRAM reset**: "high scores gone / mechanism stuck at boot" → delete the table's NVRAM files (`keyram`/`backupram`, per the Glossary definitions: keyram = battery-backed game settings, backupram = high scores) to force clean re-initialization ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Table-Fixes-&-Performance-Optimizations.md](https://github.com/dekay/vpinball-wiki/wiki/Table-Fixes-&-Performance-Optimizations), §NVRAM fix)
 - **Custom fonts**: tables referencing fonts load them from the OS font directory (not embedded) — missing fonts break the display; install the font (matters on Linux/Wine)
 - Sidecar `.vbs` overrides and `vpxtool` script extraction/repair — see [VPX File Layout](VPX%20File%20Layout.md) and the community patch repo jsm174/vpx-standalone-scripts
 - Performance tuning levers (texture scaling/compression, PreRenderLimit, disable reflections/SSAO, lower FSAA) sit on the same ini surface as [VPX Latency](VPX%20Latency.md) settings

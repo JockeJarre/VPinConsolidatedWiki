@@ -109,7 +109,7 @@ End Sub
 
 ## Script Detection and Portability
 
-FlexDMD is a Windows COM server, so it is **unavailable on [VPX Standalone](../concepts/VPX%20Standalone.md)**. Tables that must run on both platforms detect it in script instead of assuming it exists ([raw/vpw-wiki/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/), 2026 extraction):
+FlexDMD is a Windows COM server, so it is **unavailable on [VPX Standalone](../concepts/VPX%20Standalone.md)**. Tables that must run on both platforms detect it in script instead of assuming it exists ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/), 2026 extraction):
 
 ```vbscript
 Dim FlexDMD

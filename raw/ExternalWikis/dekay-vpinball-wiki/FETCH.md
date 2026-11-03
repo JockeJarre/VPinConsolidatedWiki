@@ -7,10 +7,10 @@
 **Initial fetch** (from repo root):
 
 ```powershell
-git clone --depth 1 https://github.com/dekay/vpinball-wiki.wiki.git raw/dekay-vpinball-wiki
+git clone --depth 1 https://github.com/dekay/vpinball-wiki.wiki.git raw/ExternalWikis/dekay-vpinball-wiki/repo
 ```
 
-**Refresh:** `git -C raw/dekay-vpinball-wiki pull --depth 1`
+**Refresh:** `git -C raw/ExternalWikis/dekay-vpinball-wiki/repo pull --depth 1`
 
 **Notes:**
 - Covered by `update-raw.ps1` and `update-raw.sh` (step "Unofficial Visual Pinball Wiki").

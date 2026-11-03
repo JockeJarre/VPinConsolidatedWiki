@@ -14,4 +14,4 @@ Invoke-PinUpMirror -Label 'PinUp Popper' `
 
 The crawl uses `curl.exe -L --fail --silent` per page (`doku.php?id=<pageId>`) and regenerates the whole `site/` tree on each run.
 
-**Notes:** `raw/PUP/site/` contains ~78 pages (e.g. `start.html`, `popper.html`, `pinup_display.html`). Because there is no raw-export feed, these HTML snapshots are the only local source; wiki citations point at the live DokuWiki URLs.
+**Notes:** `raw/PUP/site/` contains 79 HTML pages (e.g. `start.html`, `faq.html`, `pinup_pack_layout.html`). Because there is no raw-export feed, these HTML snapshots are the only local source; wiki citations point at the live DokuWiki URLs.

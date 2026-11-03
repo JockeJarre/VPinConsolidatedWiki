@@ -2,7 +2,7 @@
 
 Community conventions for VPX table authoring: object naming, layer maps, versioning and release practice, performance rules, testing, anti-patterns, DOF output safety, and modding ethics.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/best-practices.md](https://vpw-wiki.skirmishofwit.com/guides/best-practices/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/best-practices.md](https://vpw-wiki.skirmishofwit.com/guides/best-practices/)
 
 ## Naming Conventions
 
@@ -81,7 +81,7 @@ Render neutral, grade via LUT; **vector redraws beat scans for toolkit tables**.
 Cabinet-tuned starting ranges (raw §POV Calibration): **Inclination 6–20, FOV 29–45, Layback 42–70** (Flupper reference 6/45/65 — table top tucks under the backbox); once dialed per cabinet, only X/Y per table.
 
 - ⚠️ CONFLICT (secondary source): "Inclination 6–20, FOV 29–45, Layback 42–70"
-  ([raw/vpw-wiki/docs/guides/best-practices.md](https://vpw-wiki.skirmishofwit.com/guides/best-practices/), §POV Calibration) — Primary: [VPX View Setup](VPX%20View%20Setup.md) starts at Inclination ~10, FOV ~10, Layback ~30–40. Scope note: VPW ranges are cabinet-calibrated; the primary starting values suit desktop
+  ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/best-practices.md](https://vpw-wiki.skirmishofwit.com/guides/best-practices/), §POV Calibration) — Primary: [VPX View Setup](VPX%20View%20Setup.md) starts at Inclination ~10, FOV ~10, Layback ~30–40. Scope note: VPW ranges are cabinet-calibrated; the primary starting values suit desktop
 
 The Anti-Ball-Stretch checkbox alone is insufficient — enter the monitor aspect ratio (may need a 9:16 swap on rotated monitors).
 

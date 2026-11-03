@@ -6,7 +6,7 @@ PinUp Player (PuP) is NailBuster's closed-source Windows media player that rende
 
 ## Overview
 
-- Definition (community): media + metadata that render backbox screens for VPX and Future Pinball; **Windows PinUp Player is closed source** ([raw/dekay-vpinball-wiki/PUP-Reverse-Engineering.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Reverse-Engineering), §What Are Pup Packs)
+- Definition (community): media + metadata that render backbox screens for VPX and Future Pinball; **Windows PinUp Player is closed source** ([raw/ExternalWikis/dekay-vpinball-wiki/repo/PUP-Reverse-Engineering.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Reverse-Engineering), §What Are Pup Packs)
 - Newer packs ship content as static files; **older packs define screens/playlists/triggers at runtime from the table script**
 - Standalone (cross-platform VPX) has partial support — see [PuP Packs](../concepts/PuP%20Packs.md)
 - Distinct from [PinUp Popper](../sources/PinUp%20Popper%20Docs.md), the frontend; both are part of the PinUp ecosystem
@@ -14,7 +14,7 @@ PinUp Player (PuP) is NailBuster's closed-source Windows media player that rende
 
 ## Pack File Anatomy
 
-The four master files at the pack root ([raw/dekay-vpinball-wiki/PUP-Reverse-Engineering.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Reverse-Engineering), §Important files):
+The four master files at the pack root ([raw/ExternalWikis/dekay-vpinball-wiki/repo/PUP-Reverse-Engineering.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Reverse-Engineering), §Important files):
 
 | File | Format | Role |
 |------|--------|------|
@@ -38,11 +38,11 @@ The five standalone-renderable physical windows: **Topper=0, DMD=1, Backglass=2,
 ## Scripting API
 
 - Tables create the COM object `PinUpPlayer.PinDisplay`; data flows via `B2SData "E"&n`
-- The **SendMSG JSON protocol (`mt:301`)** carries function codes ([raw/dekay-vpinball-wiki/PUP-Reverse-Engineering.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Reverse-Engineering), §Scripting API): FN 22 transparency (`AV` 0–255), FN 30/31 jukebox mode/next/prev, FN 42 audio duck (`DV`, `ALL`), FN 45 slow-PC mode, FN 50 aspect, FN 51 media position ms, FN 16 launch exe, FN 12 stop screen, FN 15 custom position %, FN 6 bring to front, FN 41 safeloop, FN 52 text alignment
+- The **SendMSG JSON protocol (`mt:301`)** carries function codes ([raw/ExternalWikis/dekay-vpinball-wiki/repo/PUP-Reverse-Engineering.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Reverse-Engineering), §Scripting API): FN 22 transparency (`AV` 0–255), FN 30/31 jukebox mode/next/prev, FN 42 audio duck (`DV`, `ALL`), FN 45 slow-PC mode, FN 50 aspect, FN 51 media position ms, FN 16 launch exe, FN 12 stop screen, FN 15 custom position %, FN 6 bring to front, FN 41 safeloop, FN 52 text alignment
 
 ## Standalone Gaps
 
-Unimplemented in the standalone renderer ([raw/dekay-vpinball-wiki/PUP-Reverse-Engineering.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Reverse-Engineering), §Missing features and bugs): playlistplay/play/playpause/playresume/setAspect/setVolume/SetLength pindisplay functions; no video alpha; **no transparent background**, so PuP-over-B2S combos (Star Tours, Tom & Jerry) become a "disco screen"; playstop fails to stop looping music; triggers fire on `off` screens; SkipSamePrty skips even when nothing is playing; label font scaling, image labels, and `mt:1` label animations unsupported.
+Unimplemented in the standalone renderer ([raw/ExternalWikis/dekay-vpinball-wiki/repo/PUP-Reverse-Engineering.md](https://github.com/dekay/vpinball-wiki/wiki/PUP-Reverse-Engineering), §Missing features and bugs): playlistplay/play/playpause/playresume/setAspect/setVolume/SetLength pindisplay functions; no video alpha; **no transparent background**, so PuP-over-B2S combos (Star Tours, Tom & Jerry) become a "disco screen"; playstop fails to stop looping music; triggers fire on `off` screens; SkipSamePrty skips even when nothing is playing; label font scaling, image labels, and `mt:1` label animations unsupported.
 
 The source wiki's archived-status note (2026-10-11): "most of these issues are fixed in the current PUP Plugin" — treat the gap list as historic.
 

@@ -2,7 +2,7 @@
 
 The Blender-to-VPX authoring pipeline used by premium tables: the VPX Lightmapper (VLM) toolkit collections and export settings, bake/nestmap architecture, EXR HDR workflow, tonemappers, model cleanup, and render probes.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/3d-art-pipeline.md](https://vpw-wiki.skirmishofwit.com/guides/3d-art-pipeline/), `[raw/vpw-wiki/docs/guides/build-workflow.md](https://vpw-wiki.skirmishofwit.com/guides/build-workflow/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/3d-art-pipeline.md](https://vpw-wiki.skirmishofwit.com/guides/3d-art-pipeline/), `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/build-workflow.md](https://vpw-wiki.skirmishofwit.com/guides/build-workflow/)
 
 ## VLM Toolkit Compatibility
 

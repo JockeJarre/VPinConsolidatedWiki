@@ -2,7 +2,7 @@
 
 Table-authoring guidance for shipping VR support: VR room creation, the `VRRoom` variable, VR-specific rendering bugs (probe roughness ghosting), blocker walls, backglass depth bias, and the frame-pacing performance budget.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/vr-development.md](https://vpw-wiki.skirmishofwit.com/guides/vr-development/) Player-side configuration is on [VPX VR Setup](VPX%20VR%20Setup.md).
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/vr-development.md](https://vpw-wiki.skirmishofwit.com/guides/vr-development/) Player-side configuration is on [VPX VR Setup](VPX%20VR%20Setup.md).
 
 ## VR Rooms and the VRRoom Variable
 
@@ -42,7 +42,7 @@ Copy the cabinet primitive, shrink it fractionally, flip normals inward → an i
 
 - Niwak recommends **OpenGL** for VR: exact refresh delivery, MSAA, adaptive sync; 90 Hz Oculus standard
   - ⚠️ CONFLICT (secondary source): "VPX supports OpenGL for VR rendering… recommended for both desktop and VR play"
-    ([raw/vpw-wiki/docs/guides/vr-development.md](https://vpw-wiki.skirmishofwit.com/guides/vr-development/), §SteamVR vs OpenXR) — Primary: [Visual Pinball X](../projects/Visual%20Pinball%20X.md) marks OpenGL deprecated, superseded by BGFX/OpenXR. The VPW knowledge base documents DX9/OpenGL-era builds (~2020–2023); on current VPX use BGFX/OpenXR
+    ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/vr-development.md](https://vpw-wiki.skirmishofwit.com/guides/vr-development/), §SteamVR vs OpenXR) — Primary: [Visual Pinball X](../projects/Visual%20Pinball%20X.md) marks OpenGL deprecated, superseded by BGFX/OpenXR. The VPW knowledge base documents DX9/OpenGL-era builds (~2020–2023); on current VPX use BGFX/OpenXR
 
 ## Ball Reflections
 

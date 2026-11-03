@@ -7,17 +7,17 @@ Operational setup for running [Visual Pinball X](../projects/Visual%20Pinball%20
 ## Platform Support
 
 - ⚠️ CONFLICT (secondary source): "At time of writing, only the Windows version of VPinball supports VR… work is currently underway to port VPinball to the cross-platform OpenXR API"
-  ([raw/dekay-vpinball-wiki/VR.md](https://github.com/dekay/vpinball-wiki/wiki/VR), opening NOTE) — Primary: [VPX Stereo 3D](VPX%20Stereo%203D.md) lists **VR headsets via OpenXR (BGFX build)** as shipping, and the same community collection's About-Visual-Pinball.md describes BGFX with OpenXR VR cross-platform. Dated snapshot (2025) — keep the primary claim
+  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/VR.md](https://github.com/dekay/vpinball-wiki/wiki/VR), opening NOTE) — Primary: [VPX Stereo 3D](VPX%20Stereo%203D.md) lists **VR headsets via OpenXR (BGFX build)** as shipping, and the same community collection's About-Visual-Pinball.md describes BGFX with OpenXR VR cross-platform. Dated snapshot (2025) — keep the primary claim
 
 ## Enabling VR Mode per Table
 
-Newer tables (especially **VPinWorkshop**) auto-detect VR. For others ([raw/dekay-vpinball-wiki/VR.md](https://github.com/dekay/vpinball-wiki/wiki/VR), §Manually enabling VR mode):
+Newer tables (especially **VPinWorkshop**) auto-detect VR. For others ([raw/ExternalWikis/dekay-vpinball-wiki/repo/VR.md](https://github.com/dekay/vpinball-wiki/wiki/VR), §Manually enabling VR mode):
 
 1. Open the `.vpx` in the VPX Editor → **View → Script**
 2. Ctrl-F for **`VRRoom`** (VPinWorkshop standard) or `VR` / `VROn`
 3. Set the value: **0 = VR off, 1 = VR on**; other numbers select multiple VR rooms
 
-The authoring-side convention is `VRRoom = 0` (desktop/cabinet, no room loaded), `1` (standard VR room), `2` (VR room with backglass positioning) ([raw/vpw-wiki/docs/guides/vr-development.md](https://vpw-wiki.skirmishofwit.com/guides/vr-development/), 2026 extraction). This is also a stutter-isolation diagnostic: VR-room primitives loaded in desktop mode (`VRRoom = 1`) cost 20–40 FPS even when the room is not visible, so if a "desktop" table stutters, check the `VRRoom` value first.
+The authoring-side convention is `VRRoom = 0` (desktop/cabinet, no room loaded), `1` (standard VR room), `2` (VR room with backglass positioning) ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/vr-development.md](https://vpw-wiki.skirmishofwit.com/guides/vr-development/), 2026 extraction). This is also a stutter-isolation diagnostic: VR-room primitives loaded in desktop mode (`VRRoom = 1`) cost 20–40 FPS even when the room is not visible, so if a "desktop" table stutters, check the `VRRoom` value first.
 
 Tables with no VR support still run as "a floating playfield in a black void without a backglass or DMD."
 
@@ -32,7 +32,7 @@ Stock Quest Link requires **both** Quest Link and SteamVR running — a performa
 
 ## Asynchronous Spacewarp ("Why did my FPS cut in half!?")
 
-ASW (Oculus) / Motion Smoothing (SteamVR) renders half the frames and fakes the rest — very visible in pinball because the eyes track the fast silver ball ([raw/dekay-vpinball-wiki/VR.md](https://github.com/dekay/vpinball-wiki/wiki/VR)
+ASW (Oculus) / Motion Smoothing (SteamVR) renders half the frames and fakes the rest — very visible in pinball because the eyes track the fast silver ball ([raw/ExternalWikis/dekay-vpinball-wiki/repo/VR.md](https://github.com/dekay/vpinball-wiki/wiki/VR)
 
 - **Oculus**: open Oculus Debug Tool (`C:\Program Files\Oculus\Support\oculus-diagnostics\`) → Service → **(PC) Asynchronous Spacewarp → Disabled**
 - **SteamVR**: Video Settings → uncheck **Motion Smoothing**

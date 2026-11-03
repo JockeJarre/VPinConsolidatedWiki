@@ -2,7 +2,7 @@
 
 **Upstream:** [vbousquet/flexdmd](https://github.com/vbousquet/flexdmd) (branch `master`).
 
-**What is fetched:** only `docs/` (5 files + media, incl. `docs/media/architecture.svg`) — a small fraction of the repo.
+**What is fetched:** only `docs/` (4 `.md` files + `docs/media/architecture.svg` + 2 PNG demos) — a small fraction of the repo.
 
 **Initial fetch** (from repo root):
 

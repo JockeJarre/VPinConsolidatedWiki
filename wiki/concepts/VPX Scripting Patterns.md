@@ -2,7 +2,7 @@
 
 Community table-scripting patterns for VPX VBScript: the three-tier timer architecture, ROM integration (SolCallback guards, SetLamp, FastFlips), ball tracking (gBOT vs GetBalls), sound integration, physical troughs, and the language-level traps.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/) The API surface itself is on [VPX Scripting](VPX%20Scripting.md).
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/) The API surface itself is on [VPX Scripting](VPX%20Scripting.md).
 
 ## Timer Architecture
 

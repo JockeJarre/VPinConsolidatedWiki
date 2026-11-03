@@ -2,7 +2,7 @@
 
 Author/maintainer software setup for VPX table work: 32-bit vs 64-bit installs, performance settings, PinMAME 64-bit and PWM migration, B2S, PUP, FlexDMD, dmdext, DOF toolkit pinning, the scripting debugger, and Blender compatibility.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/software-setup.md](https://vpw-wiki.skirmishofwit.com/guides/software-setup/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/software-setup.md](https://vpw-wiki.skirmishofwit.com/guides/software-setup/)
 
 ## VPX Installation
 

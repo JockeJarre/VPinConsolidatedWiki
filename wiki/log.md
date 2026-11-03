@@ -2,6 +2,20 @@
 
 Chronological record of wiki operations.
 
+## [2026-11-03] update | raw/ framing clarified in AGENTS.md + raw/FETCH.md
+
+Per user: `raw/` mainly holds the **official documentation of each tool's vendor/author** (Primary tier); `raw/ExternalWikis/` holds the **two external community wikis used to fill gaps** (Secondary tier). Framing added to the AGENTS.md raw-layout tree and the root `raw/FETCH.md` intro; no content or tier rules changed (consistent with the existing Source Priority table).
+
+## [2026-11-03] update | FETCH.md fit-check after ExternalWikis restructure
+
+Verified every `raw/**/FETCH.md` against actual staging content after dekay-vpinball-wiki and vpw-wiki moved to `raw/ExternalWikis/<name>/repo/`; fixed all drift:
+
+- **Scripts**: `update-raw.ps1` + `update-raw.sh` dekay/vpw clone targets, DESCRIPTION, and final path lists retargeted to the new `raw/ExternalWikis/...` locations (ps1 tokenizes clean; sh `bash -n` clean)
+- **FETCH.md fixes**: ExternalWikis clone/refresh commands updated to new paths; vpw tables count 83→84 (incl. index.md); DOF `Documentation` count ~25→~102 files; VPX docs count ~37→~78 files; FlexDMD docs clarified as 4 `.md` + svg + 2 PNGs; PUP page examples corrected to real filenames (79 html, not ~78; `popper.html`/`pinup_display.html` do not exist); root FETCH.md folder rows moved under `ExternalWikis/` plus an SSFImpactor provenance note (file currently absent from staging)
+- **Verified matching**: B2S 31 pages, dekay 48 `.md`, pinscape 133 `.adoc` = 133 `.md`, DMD-Extensions README + LibDmd + PinMameDevice + Console/Server + ProPinballBridge, vpw manifest (108 extractions, 3136 nuggets, 2026-02-12)
+- **AGENTS.md**: raw layout tree, Source Priority rows, conflict-note example, citation example, and upstream URL mapping rows updated to the new paths
+- **Wiki sweep**: 134 citation-label replacements across 44 pages (`raw/dekay-vpinball-wiki/` → `raw/ExternalWikis/dekay-vpinball-wiki/repo/`, `raw/vpw-wiki/` → `raw/ExternalWikis/vpw-wiki/repo/`); log.md exempt (append-only); lint re-run clean
+
 ## [2026-11-03] query | PUP videos in VPX 10.8.1 with the legacy file structure
 
 Answered how PUP videos configure under 10.8.1 with the old global (Baller-era) layout: PinUp Player's global `C:\PinUpSystem\PuPVideos\<rom>` pack folder (unaffected by the layout change), the beside-`.vpx` search resolving to a global `C:\pinball\tables\pupvideos\`, option `.bat` files, the B2S-plugin/Freezy integration stack, directb2s 6-character prefix conflicts, and per-pack `PinUPPlayer.ini` overrides.

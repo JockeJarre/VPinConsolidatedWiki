@@ -2,7 +2,7 @@
 
 > ⚠️ Priority: Secondary — community-maintained; Primary sources win on conflicts.
 
-Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/dekay-vpinball-wiki/](https://github.com/dekay/vpinball-wiki/wiki) — 48 markdown pages (≈527 KB), a GitHub wiki self-described as "Unofficial" and "a work in progress". It covers VPX/VPinball Setup on Windows plus the cross-platform **VPX Standalone** story (Linux, macOS, iOS, Android, Batocera), file layout, altcolor, addressable LEDs, PuP Packs, VPinFE, and Pinscape Pico.
+Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/ExternalWikis/dekay-vpinball-wiki/repo/](https://github.com/dekay/vpinball-wiki/wiki) — 48 markdown pages (≈527 KB), a GitHub wiki self-described as "Unofficial" and "a work in progress". It covers VPX/VPinball Setup on Windows plus the cross-platform **VPX Standalone** story (Linux, macOS, iOS, Android, Batocera), file layout, altcolor, addressable LEDs, PuP Packs, VPinFE, and Pinscape Pico.
 
 ## Canonical Upstream
 
@@ -21,7 +21,7 @@ Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/dekay-vp
 
 ## Key Facts
 
-- Upstream community conventions: prefer the name **"VPinball" over "VPX"** (anticipating v11); Visual Pinball is **GPLv3+** licensed ([raw/dekay-vpinball-wiki/_Footer.md](https://github.com/dekay/vpinball-wiki/wiki/_Footer), Contribution-Guidelines.md)
+- Upstream community conventions: prefer the name **"VPinball" over "VPX"** (anticipating v11); Visual Pinball is **GPLv3+** licensed ([raw/ExternalWikis/dekay-vpinball-wiki/repo/_Footer.md](https://github.com/dekay/vpinball-wiki/wiki/_Footer), Contribution-Guidelines.md)
 - The wiki's own **Archived-Pages** ledger (2026-10-11 batch) dates ecosystem changes: PUP reverse-engineering issues fixed in the current PUP Plugin, `VPinballX.ini` doc dropped after massive 10.8.1 changes, PAL/VNI/Serum/PAC pages merged into a single **Altcolor** page
 - File-Layout.md is the collection's most valuable page: the 10.8.1+ **per-table self-contained layout**, search priority, and per-OS user-data paths (Linux moved to `~/.local/share/VPinballX/<version>` Jan 2026)
 - VPX Standalone = the port **without table editor/preferences GUI**; cross-platform builds shipped in official releases since **VPX 10.8**; per-commit betas on GitHub Actions

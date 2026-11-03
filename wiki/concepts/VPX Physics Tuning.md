@@ -2,7 +2,7 @@
 
 Community table-authoring physics guidance centered on the nFozzy flipper/rubber physics system: rubber separation collections, era-specific flipper constants, trigger sizing, slingshot and target behavior, and calibration methodology.
 
-> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/vpw-wiki/docs/guides/physics-tuning.md](https://vpw-wiki.skirmishofwit.com/guides/physics-tuning/), `[raw/vpw-wiki/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/)
+> ⚠️ Priority: Secondary — from the [VPW Knowledge Base](../sources/VPW%20Knowledge%20Base.md) (authoring community); Primary sources win on conflicts. Raw: `[raw/ExternalWikis/vpw-wiki/repo/docs/guides/physics-tuning.md](https://vpw-wiki.skirmishofwit.com/guides/physics-tuning/), `[raw/ExternalWikis/vpw-wiki/repo/docs/reference/example-table.md](https://vpw-wiki.skirmishofwit.com/reference/example-table/)
 
 ## nFozzy Rubber Separation
 

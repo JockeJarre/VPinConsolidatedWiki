@@ -22,11 +22,11 @@ To prevent "egg-shaped" ball distortion:
 - Avoid decorative elements that change the bounding box
 
 - ⚠️ CONFLICT (secondary source): VPW cabinet experience uses **Inclination 6–20, FOV 29–45, Layback 42–70**; Flupper's reference calibration is Inclination 6, FOV 45, Layback 65, "designed so the top of the table tucks under the backbox, matching real machine perspective"
-  ([raw/vpw-wiki/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction) — Primary: the ~10 FOV figures above come from the desktop distortion-avoidance guidance in the shipped docs; scopes differ (generic desktop camera vs POV-calibrated cabinet), so the ranges are not directly comparable
+  ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction) — Primary: the ~10 FOV figures above come from the desktop distortion-avoidance guidance in the shipped docs; scopes differ (generic desktop camera vs POV-calibrated cabinet), so the ranges are not directly comparable
 
 ### Anti Ball Stretch
 
-The "Anti Ball Stretch" checkbox alone is not sufficient — the monitor's aspect ratio must also be entered in the associated fields, or the ball stays egg-shaped on rotated screens; the ratio may need swapping (16:9 vs 9:16) depending on native orientation ([raw/vpw-wiki/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction)
+The "Anti Ball Stretch" checkbox alone is not sufficient — the monitor's aspect ratio must also be entered in the associated fields, or the ball stays egg-shaped on rotated screens; the ratio may need swapping (16:9 vs 9:16) depending on native orientation ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction)
 
 ## Window Projection (Pincab)
 
