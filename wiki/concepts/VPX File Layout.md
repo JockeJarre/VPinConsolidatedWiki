@@ -33,7 +33,7 @@ Settings can be adjusted in-game via **F12 LiveUI**; saving asks whether to stor
 - **`.vpx`** — the original format, a Windows Compound Binary Format file; non-Windows platforms load it via the **POLE** structured-storage library (see [VPX Standalone](VPX%20Standalone.md))
 - **`.vpz`** — open zip-based alternative holding the full table and assets in editable formats (JSON documents + scene assets), meant for diffing and DCC interoperability; can also run unzipped; the full spec is in the official docs ([raw/VPX/repo/docs/VPZ File Format.md](https://github.com/vpinball/vpinball/blob/master/docs/VPZ%20File%20Format.md)), marked preliminary/not yet production-ready
 - **`.vpxz`** — zip archive of table **plus ROMs, scripts, and all assets**; mobile-only transfer convenience (ROMs must stay zipped inside)
-- Conversions between formats: **vpxtool** (francisdb)
+- Conversions between formats: **[vpxtool](../projects/Vpxtool.md)** (francisdb)
 
 ## Companion File Search Priority
 

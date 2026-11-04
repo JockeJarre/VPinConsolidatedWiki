@@ -324,3 +324,13 @@ Validated and fixed wiki link consistency after content edits:
 ## [2026-11-04] lint | Site link fix: index.md AGENTS.md link retargeted to docs-root copy (mkdocs build); log.md historical links left exempt
 
 ## [2026-11-04] update | Site imagery: VPX logo as site header icon + favicon (gen-nav theme), hero logo on overview; diagrams added to VPX Latency, VPX View Setup, FlexDMD, VPX Lights and Rendering from raw VPX/FlexDMD docs (copied to wiki/assets/)
+
+## [2026-11-04] ingest | vpxtool README (raw/vpxtool/) — new Primary source
+- Registered collection: single-file README fetch in update-raw.sh/.ps1, FETCH.md, manifest fingerprint, AGENTS.md tier+URL mapping
+- Created [projects/Vpxtool.md] usage page (CLI surface, selective extract, table packs, verify/audit, optimize flags incl. --opus, scores, frontend, TOML config, vpxz_excludes); Building section excluded per scope
+- Created [sources/Vpxtool README.md]; linked from VPX Debugging, VPX Standalone, VPX Authoring Tools, VPX File Layout; index updated
+
+## [2026-11-04] ingest | VPinballX Starter (raw/VPinballX-Starter/) — new Primary source
+- Registered collection: full clone depth 100 (commit history is source material) in update-raw.sh/.ps1, FETCH.md, manifest git_head, AGENTS.md tier+URL mapping
+- Created [projects/VPinballX Starter.md]: version routing, ini reference, keyboard-state switching, pre/post cmd files, plus "Changelog — Commit Messages Not Yet in the Documentation" filing 13 upstream commits whose behavior the README never documented
+- Created [sources/VPinballX Starter.md]; index updated

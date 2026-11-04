@@ -25,6 +25,8 @@
 #       PinUP      https://www.nailbuster.com/wikipinup/              -> raw/PUP/site/   (--pup only)
 #       Dekay      https://github.com/dekay/vpinball-wiki (wiki)      -> raw/ExternalWikis/dekay-vpinball-wiki/repo/
 #       VPW        https://github.com/dcbenji/vpw-wiki                -> raw/ExternalWikis/vpw-wiki/repo/
+#       Starter    https://github.com/JockeJarre/VPinballX.starter    -> raw/VPinballX-Starter/repo/  (depth 100)
+#       vpxtool    https://github.com/francisdb/vpxtool               -> raw/vpxtool/README.md  (file download)
 #
 # NOTES
 #     Requires git 2.25+ (sparse-checkout), python3, curl.
@@ -69,20 +71,32 @@ run_step() {
 
 # wiki_clone LABEL REPO_URL LOCAL_PATH — full (shallow) clone of a small repo
 wiki_clone() {
-    local label="$1" url="$2" path="$3"
+    local label="$1" url="$2" path="$3" depth="${4:-1}"
     if [[ -d "$path/.git" ]]; then
         echo "    Pulling latest..."
-        if ! git -C "$path" pull --depth 1; then
+        if ! git -C "$path" pull --depth "$depth"; then
             echo "    Pull failed; re-cloning mirror..."
             rm -rf -- "$path"
             echo "    Cloning wiki (full, small repo)..."
-            git clone --depth 1 "$url" "$path" \
+            git clone --depth "$depth" "$url" "$path" \
                 || { fail "$label" "git clone failed ($url)"; return 1; }
         fi
     else
         echo "    Cloning wiki (full, small repo)..."
-        git clone --depth 1 "$url" "$path" \
+        git clone --depth "$depth" "$url" "$path" \
             || { fail "$label" "git clone failed ($url)"; return 1; }
+    fi
+}
+
+# fetch_file LABEL URL LOCAL_PATH — single-file download collection
+fetch_file() {
+    local label="$1" url="$2" path="$3"
+    mkdir -p "$(dirname "$path")"
+    echo "    Downloading $url ..."
+    if ! curl -fsSL "$url" -o "$path"; then
+        rm -f -- "$path"
+        fail "$label" "download failed ($url)"
+        return 1
     fi
 }
 
@@ -427,6 +441,14 @@ run_step 'Unofficial Visual Pinball Wiki' wiki_clone 'Unofficial Visual Pinball 
 run_step 'VPW Knowledge Base' wiki_clone 'VPW Knowledge Base' \
     'https://github.com/dcbenji/vpw-wiki.git' 'raw/ExternalWikis/vpw-wiki/repo'
 
+# VPinballX Starter — version-routing launcher; history kept (commit messages are source material)
+run_step 'VPinballX Starter' wiki_clone 'VPinballX Starter' \
+    'https://github.com/JockeJarre/VPinballX.starter.git' 'raw/VPinballX-Starter/repo' 100
+
+# vpxtool — README.md only (usage docs; builds are out of wiki scope)
+run_step 'vpxtool README' fetch_file 'vpxtool README' \
+    'https://raw.githubusercontent.com/francisdb/vpxtool/main/README.md' 'raw/vpxtool/README.md'
+
 # ---------------------------------------------------------------------------
 
 echo
@@ -448,7 +470,9 @@ echo '  raw/pinscape-build-guide/repo/book/'
 echo '  raw/pinscape-build-guide/markdown/'
 echo '  raw/PUP/site/'
 echo '  raw/ExternalWikis/dekay-vpinball-wiki/repo/'
-echo '  raw/ExternalWikis/vpw-wiki/repo/'
+echo '  raw/ExternalWikis/vpw-wiki/repo/
+  raw/VPinballX-Starter/repo/
+  raw/vpxtool/README.md'
 echo
 echo 'Ask Copilot to re-ingest any changed files and regenerate wiki/ pages.'
 

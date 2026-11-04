@@ -33,7 +33,7 @@ The community toolchain directory for VPX table authoring: scanning, stitching, 
 
 ## VPX Utilities
 
-- **vpxtool** — `github.com/francisdb/vpxtool`: decompiles `.vpx` to JSON/VBS/images for git; reversible via `vpxtool assemble`
+- **[vpxtool](../projects/Vpxtool.md)** — `github.com/francisdb/vpxtool`: decompiles `.vpx` to JSON/VBS/images for git; reversible via `vpxtool assemble`
 - **PinAffinity** — mjrnet.org/pinscape/PinAffinity.html: dedicates CPU threads to pinball, cutting input lag and script timing jitter (see [VPX Latency](VPX%20Latency.md))
 - **VPW Bot** — Discord check-in/check-out to prevent merge conflicts (see [VPX Table Build Workflow](VPX%20Table%20Build%20Workflow.md))
 - **VPReg.stg viewer** — edit VPX persistent storage / high scores

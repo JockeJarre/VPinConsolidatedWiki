@@ -75,7 +75,8 @@ manifest() {
              raw/DMD-Extensions/repo \
              raw/pinscape-build-guide/repo \
              raw/ExternalWikis/dekay-vpinball-wiki/repo \
-             raw/ExternalWikis/vpw-wiki/repo; do
+             raw/ExternalWikis/vpw-wiki/repo \
+             raw/VPinballX-Starter/repo; do
         [ -d "$r" ] && printf '%s %s\n' "$r" "$(git -C "$r" rev-parse HEAD 2>/dev/null)"
     done
     # Non-git collections: stable fingerprints only.
@@ -83,6 +84,8 @@ manifest() {
     # the page list + sizes (new/removed/grown pages) to avoid false changes.
     [ -d raw/PUP/site ] && printf '%s %s\n' raw/PUP/site \
         "$(find raw/PUP/site -type f -printf '%P %s\n' | sort | md5sum)"
+    [ -f raw/vpxtool/README.md ] && printf '%s %s\n' raw/vpxtool/README.md \
+        "$(md5sum < raw/vpxtool/README.md | cut -d' ' -f1)"
     [ -d raw/pinscape-build-guide/markdown ] && printf '%s %s\n' raw/pinscape-build-guide/markdown \
         "$(find raw/pinscape-build-guide/markdown -type f -printf '%P %s\n' | sort | md5sum)"
 }

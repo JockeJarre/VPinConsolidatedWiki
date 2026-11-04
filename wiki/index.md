@@ -16,6 +16,8 @@ Catalog of all pages in this wiki.
 - [PinUp Player](projects/PinUp%20Player.md) — Closed-source Windows media player rendering PuP Pack content across pincab displays
 - [SSFImpactor](projects/SSFImpactor.md) — Software DOF controller emulating contactors/shakers as tactile audio for exciters
 - [Visual Pinball X](projects/Visual%20Pinball%20X.md) — Pinball table simulator, editor, and physics engine
+- [VPinballX Starter](projects/VPinballX%20Starter.md) — Version-routing launcher: starts the right VPX exe per table, config-driven
+- [Vpxtool](projects/Vpxtool.md) — Cross-platform CLI for inspecting, extracting, verifying, optimizing, and launching VPX tables
 - [VPinFE](projects/VPinFE.md) — Open-source cross-platform Python frontend for VPX/VPinball Standalone
 
 ## Concepts
@@ -89,6 +91,8 @@ Catalog of all pages in this wiki.
 - [Unofficial Visual Pinball Wiki](sources/Unofficial%20Visual%20Pinball%20Wiki.md) — Summary of 48 community wiki files covering VPX, platforms, DOF, and PuP (secondary source)
 - [VPW Knowledge Base](sources/VPW%20Knowledge%20Base.md) — Distilled Virtual Pinball Workshop Discord knowledge: 13 authoring guides, 83 table case studies, 5 references (secondary source)
 - [VPX Docs](sources/VPX%20Docs.md) — Summary of 39 Visual Pinball X documentation files
+- [VPinballX Starter](sources/VPinballX%20Starter.md) — Summary of the starter repo incl. 114-commit history as changelog source
+- [Vpxtool README](sources/Vpxtool%20README.md) — Summary of the vpxtool usage README (single-file collection)
 
 ## Meta
 

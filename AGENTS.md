@@ -78,7 +78,7 @@ VPXwiki/
 
 | Tier | Sources | Rule |
 |------|---------|------|
-| **Primary** | B2S wiki, DOF docs, VPX docs, FlexDMD docs, DMD Extensions docs, Pinscape Build Guide, SSFImpactor Guide, PinUp Popper docs | Upstream docs of the owning project. Claims win on conflicts |
+| **Primary** | B2S wiki, DOF docs, VPX docs, FlexDMD docs, DMD Extensions docs, Pinscape Build Guide, SSFImpactor Guide, PinUp Popper docs, vpxtool README, VPinballX Starter | Upstream docs of the owning project. Claims win on conflicts |
 | **Secondary** | Unofficial Visual Pinball Wiki (`raw/ExternalWikis/dekay-vpinball-wiki/`) | Community wiki. Use for tips and platforms the Primary sources do not cover. Where it conflicts with a Primary source, keep the Primary claim and add a conflict note |
 | **Secondary** | VPW Knowledge Base (`raw/ExternalWikis/vpw-wiki/`) | Virtual Pinball Workshop Discord community knowledge base (table authoring focus). Same secondary rules as above |
 
@@ -142,6 +142,8 @@ Upstream URL mapping per collection (verified against `update-raw.ps1`; branch i
 | `raw/SSFImpactor Guide.pdf` | `https://www.mjrnet.org/pinscape/BuildGuideV2/BuildGuide.php?sec=downloads` (ships inside the DOF R3++ Grand Unified Edition zip) |
 | `raw/ExternalWikis/dekay-vpinball-wiki/repo/<Stem>.md` | `https://github.com/dekay/vpinball-wiki/wiki/<Stem>` (`Home.md` → wiki root; dekay page titles legitimately use U+2010 hyphens — write them literally in link text, percent-encode as `%E2%80%90` in URLs) |
 | `raw/ExternalWikis/vpw-wiki/repo/docs/<area>/<stem>.md` | `https://vpw-wiki.skirmishofwit.com/<area>/<stem>/` (area = `guides`, `tables`, `reference`) |
+| `raw/VPinballX-Starter/repo/<path>` | `https://github.com/JockeJarre/VPinballX.starter/blob/main/<path>` (repo root → `…/JockeJarre/VPinballX.starter/tree/main`; commit `sha` → `…/commit/<sha>`) |
+| `raw/vpxtool/README.md` | `https://github.com/francisdb/vpxtool/blob/main/README.md` |
 
 - **log.md exemption:** historical `log.md` entries keep their original local `raw/` links as-is (append-only rule). Lint checks and link conversion skip `log.md`.
 

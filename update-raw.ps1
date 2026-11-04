@@ -19,6 +19,8 @@
       PinUP      https://www.nailbuster.com/wikipinup/              → raw/PUP/site/
       Dekay    https://github.com/dekay/vpinball-wiki (wiki)        → raw/ExternalWikis/dekay-vpinball-wiki/repo/
       VPW      https://github.com/dcbenji/vpw-wiki                  → raw/ExternalWikis/vpw-wiki/repo/
+      Starter  https://github.com/JockeJarre/VPinballX.starter      → raw/VPinballX-Starter/repo/  (depth 100)
+      vpxtool  https://github.com/francisdb/vpxtool                 → raw/vpxtool/README.md  (file download)
 
 .NOTES
     Requires git 2.25+ (sparse-checkout support).
@@ -44,13 +46,14 @@ function Invoke-WikiClone {
     param(
         [string]$Label,
         [string]$RepoUrl,
-        [string]$LocalPath
+        [string]$LocalPath,
+        [int]$Depth = 1
     )
     Write-Host "`n==> $Label" -ForegroundColor Cyan
     if (Test-Path (Join-Path $LocalPath '.git')) {
         Write-Host "    Pulling latest..." -ForegroundColor Yellow
         Push-Location $LocalPath
-        $gitOutput = @(git pull --depth 1 2>&1)
+        $gitOutput = @(git pull --depth $Depth 2>&1)
         if ($gitOutput.Count -gt 0) {
             $gitOutput | ForEach-Object { Write-Host "    $_" }
         }
@@ -59,7 +62,7 @@ function Invoke-WikiClone {
             $pullDetails = ($gitOutput -join ' | ')
             Write-Host "    Pull failed; re-cloning mirror..." -ForegroundColor Yellow
             Remove-Item -Path $LocalPath -Recurse -Force
-            $gitOutput = @(git clone --depth 1 $RepoUrl $LocalPath 2>&1)
+            $gitOutput = @(git clone --depth $Depth $RepoUrl $LocalPath 2>&1)
             if ($gitOutput.Count -gt 0) {
                 $gitOutput | ForEach-Object { Write-Host "    $_" }
             }
@@ -73,7 +76,7 @@ function Invoke-WikiClone {
         }
     } else {
         Write-Host "    Cloning wiki (full, small repo)..." -ForegroundColor Green
-        $gitOutput = @(git clone --depth 1 $RepoUrl $LocalPath 2>&1)
+        $gitOutput = @(git clone --depth $Depth $RepoUrl $LocalPath 2>&1)
         if ($gitOutput.Count -gt 0) {
             $gitOutput | ForEach-Object { Write-Host "    $_" }
         }
@@ -569,6 +572,23 @@ Invoke-SourceStep -Label 'VPW Knowledge Base' -Action {
         -LocalPath 'raw/ExternalWikis/vpw-wiki/repo'
 }
 
+# VPinballX Starter — version-routing launcher; history kept at depth 100 (commit messages are source material)
+Invoke-SourceStep -Label 'VPinballX Starter' -Action {
+    Invoke-WikiClone `
+        -Label     'VPinballX Starter' `
+        -RepoUrl   'https://github.com/JockeJarre/VPinballX.starter.git' `
+        -LocalPath 'raw/VPinballX-Starter/repo' `
+        -Depth     100
+}
+
+# vpxtool — README.md only (usage docs; builds are out of wiki scope)
+Invoke-SourceStep -Label 'vpxtool README' -Action {
+    $vpxToolUrl = 'https://raw.githubusercontent.com/francisdb/vpxtool/main/README.md'
+    $vpxToolDest = 'raw/vpxtool/README.md'
+    $null = New-Item -ItemType Directory -Force (Split-Path $vpxToolDest)
+    Invoke-WebRequest -Uri $vpxToolUrl -OutFile $vpxToolDest -UseBasicParsing -ErrorAction Stop
+}
+
 # PinUP Popper — public DokuWiki mirrored as local HTML snapshots
 <# Invoke-SourceStep -Label 'PinUp Popper' -Action {
     Invoke-PinUpMirror `
@@ -601,6 +621,8 @@ Write-Host '  raw/pinscape-build-guide/markdown/'
 Write-Host '  raw/PUP/site/'
 Write-Host '  raw/ExternalWikis/dekay-vpinball-wiki/repo/'
 Write-Host '  raw/ExternalWikis/vpw-wiki/repo/'
+Write-Host '  raw/VPinballX-Starter/repo/'
+Write-Host '  raw/vpxtool/README.md'
 Write-Host ''
 Write-Host 'Ask Copilot to re-ingest any changed files and regenerate wiki/ pages.' -ForegroundColor Cyan
 
