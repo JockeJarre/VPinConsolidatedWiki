@@ -60,7 +60,7 @@ fi
 LOG="$LOG_DIR/nightly-$(date +%F).log"
 exec >>"$LOG" 2>&1
 START_EPOCH=$(date +%s)
-BRANCH_USED="-"; COMMIT_STAT="0 files"; PROP_RC=0; PROP_STAT="no"
+BRANCH_USED="-"; COMMIT_STAT="0 files"; PROP_RC=0; PROP_STAT="no"; GHWIKI_RC=0
 echo "===== $(date -Is) nightly run start (pid $$)"
 
 # --- 1. fetch raw sources ---------------------------------------------------
@@ -295,6 +295,53 @@ if [ -n "$PROP_NEW" ] && [ "${SKIP_PI:-0}" != "1" ]; then
     rm -f "$PROP_NEW"
 fi
 
+# --- 5. publish: mirror origin/main's wiki/ into this repo's GitHub wiki -----
+#      (github.com/JockeJarre/VPinConsolidatedWiki/wiki — a second front door
+#      alongside the Pages site; links rewritten to wiki URLs, images to Pages) --
+if [ "${SKIP_GHWIKI:-0}" != "1" ]; then
+    git fetch origin "$BASE" --quiet 2>/dev/null || true
+    SRC_DIR="$LOG_DIR/ghwiki-src"
+    rm -rf "$SRC_DIR"
+    mkdir -p "$SRC_DIR"
+    git archive origin/"$BASE" wiki | tar -x -C "$SRC_DIR"
+    python3 tools/publish-ghwiki.py "$SRC_DIR/wiki" "$LOG_DIR/ghwiki-out"
+    if [ "$?" -eq 0 ]; then
+        REPO_DIR="$LOG_DIR/ghwiki-repo"
+        WIKI_URL="https://github.com/JockeJarre/VPinConsolidatedWiki.wiki.git"
+        if [ -n "${GH_TOKEN:-}" ]; then
+            PUSH_URL="https://${GH_TOKEN}@github.com/JockeJarre/VPinConsolidatedWiki.wiki.git"
+        else
+            PUSH_URL="$WIKI_URL"
+        fi
+        if [ ! -d "$REPO_DIR/.git" ]; then
+            git clone -q "$PUSH_URL" "$REPO_DIR" || true
+        fi
+        if [ -d "$REPO_DIR/.git" ]; then
+            git -C "$REPO_DIR" remote set-url origin "$PUSH_URL"
+            git -C "$REPO_DIR" pull -q --ff-only origin main 2>/dev/null \
+                || git -C "$REPO_DIR" pull -q --ff-only origin master 2>/dev/null || true
+            WIKI_BRANCH="$(git -C "$REPO_DIR" rev-parse --abbrev-ref HEAD)"
+            find "$REPO_DIR" -name '*.md' -not -path "$REPO_DIR/.git/*" -delete
+            (shopt -s dotglob; cp -r "$LOG_DIR/ghwiki-out"/* "$REPO_DIR"/)
+            git -C "$REPO_DIR" add -A
+            if git -C "$REPO_DIR" diff --cached --quiet; then
+                echo "GitHub wiki unchanged."
+            else
+                git -C "$REPO_DIR" -c user.name="VPinWiki Nightly" \
+                    -c user.email="vpinwiki-nightly@local" \
+                    commit -q -m "Publish wiki/ $(date +%F) (main@$(git rev-parse --short origin/$BASE))"
+                git -C "$REPO_DIR" push -q origin "HEAD:$WIKI_BRANCH"
+                GHWIKI_RC=$?
+                echo "GitHub wiki publish rc=$GHWIKI_RC"
+            fi
+            git -C "$REPO_DIR" remote set-url origin "$WIKI_URL"
+        else
+            echo "GitHub wiki clone unavailable; publish skipped."
+            GHWIKI_RC=1
+        fi
+    fi
+fi
+
 # Persist manifest only when the pipeline succeeded (retry on failure next night)
 if [ "$INGEST_RC" -eq 0 ] && [ "$PUSH_RC" -eq 0 ] && [ "$PR_RC" -eq 0 ] && [ "$PROP_RC" -eq 0 ]; then
     printf '%s\n' "$NEW_MANIFEST" > "$LOG_DIR/manifest"
@@ -309,8 +356,8 @@ find "$LOG_DIR" -name 'nightly-*.log' -mtime +14 -delete 2>/dev/null
 
 # Uncommitted run metrics: files changed + total duration (.nightly/ is gitignored)
 DURATION=$(( $(date +%s) - START_EPOCH ))
-printf '%s | duration=%ss | %s | branch=%s | proposals=%s | rc raw/ingest/push/pr/prop=%s/%s/%s/%s/%s\n' \
+printf '%s | duration=%ss | %s | branch=%s | proposals=%s | rc raw/ingest/push/pr/prop/ghwiki=%s/%s/%s/%s/%s/%s\n' \
     "$(date -Is)" "$DURATION" "$COMMIT_STAT" "$BRANCH_USED" "$PROP_STAT" \
-    "$RAW_RC" "$INGEST_RC" "$PUSH_RC" "$PR_RC" "$PROP_RC" >> "$LOG_DIR/metrics.log"
+    "$RAW_RC" "$INGEST_RC" "$PUSH_RC" "$PR_RC" "$PROP_RC" "$GHWIKI_RC" >> "$LOG_DIR/metrics.log"
 
 echo "===== $(date -Is) nightly run done"
