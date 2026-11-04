@@ -93,10 +93,6 @@ def main() -> int:
             with open(os.path.join(root, fn), encoding="utf-8") as fh:
                 body = transform(fh.read(), rel, pages)
             name = pages[rel]
-            if rel == "index.md":
-                body = ("> 🌐 This wiki is auto-published from the repo's `wiki/` by the nightly "
-                        "pipeline. The full site version (Material theme, live search, Word Index) "
-                        "is at <https://jockejarre.github.io/VPinConsolidatedWiki/>.\n\n") + body
             if name in used:
                 print(f"WARNING collision: {name} from {used[name]} and {rel}", file=sys.stderr)
             used[name] = rel
