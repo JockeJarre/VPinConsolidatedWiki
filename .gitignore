@@ -20,5 +20,7 @@ raw/ExternalWikis/vpw-wiki/repo/
 site/
 mkdocs.yml
 wiki/AGENTS.md
+wiki/word-index.md
+wiki/assets/word-index-data.json
 raw/VPinballX-Starter/repo/
 raw/vpxtool/README.md
