@@ -322,3 +322,5 @@ Validated and fixed wiki link consistency after content edits:
 - Supersedes the prior "no update needed" review note for this commit; index.md summaries unchanged
 
 ## [2026-11-04] lint | Site link fix: index.md AGENTS.md link retargeted to docs-root copy (mkdocs build); log.md historical links left exempt
+
+## [2026-11-04] update | Site imagery: VPX logo as site header icon + favicon (gen-nav theme), hero logo on overview; diagrams added to VPX Latency, VPX View Setup, FlexDMD, VPX Lights and Rendering from raw VPX/FlexDMD docs (copied to wiki/assets/)

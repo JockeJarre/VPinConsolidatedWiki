@@ -2,6 +2,10 @@
 
 Latency in [Visual Pinball X](../projects/Visual%20Pinball%20X.md) is the delay between a physical action (button press, nudge) and its visible result on screen. Minimizing it is critical for a responsive pinball experience, especially in [pincab setups](Pincab%20Setup.md).
 
+![VPX input-to-frame latency timeline](../assets/VPX%20Latency%20Timeline.svg)
+
+*The latency chain from input to on-screen result* ([raw/VPX/repo/docs/img/Latency.svg](https://github.com/vpinball/vpinball/blob/master/docs/img/Latency.svg))
+
 ## Three Types of Latency
 
 ### 1. Input Latency

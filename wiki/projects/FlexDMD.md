@@ -2,6 +2,10 @@
 
 FlexDMD is an in-process COM DMD renderer for Visual Pinball X and pinball front-ends. It is a drop-in replacement for UltraDMD and adds a flexible scene-based scripting API, embedded playfield DMD support, and active maintenance.
 
+![FlexDMD architecture](../assets/FlexDMD%20Architecture.svg)
+
+*How FlexDMD sits between the game, plugins, and displays* ([raw/FlexDMD/repo/docs/media/architecture.svg](https://raw.githubusercontent.com/vbousquet/flexdmd/master/docs/media/architecture.svg))
+
 ## Overview
 
 FlexDMD is registered as a COM server (`FlexDMD.FlexDMD`) and loaded in-process from VBScript table scripts. It renders dot-matrix content via [DMD Extensions](DMD%20Extensions.md) (`DmdDevice.dll` / `DmdDevice64.dll`), which handle output to virtual DMDs, real hardware DMDs, and network targets.

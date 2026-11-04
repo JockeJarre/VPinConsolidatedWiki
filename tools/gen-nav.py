@@ -52,6 +52,8 @@ def main():
         "use_directory_urls": False,
         "theme": {
             "name": "material",
+            "logo": "assets/VPX Logo.svg",
+            "favicon": "assets/VPX Logo.svg",
             "features": [
                 "navigation.top",
                 "navigation.sections",

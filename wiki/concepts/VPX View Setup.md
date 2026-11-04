@@ -2,6 +2,14 @@
 
 [Visual Pinball X](../projects/Visual%20Pinball%20X.md) offers two camera/projection modes for rendering the playfield, optimized for different display setups.
 
+![VPX view setup window definition](../assets/VPX%20ViewSetup%20Window%20Definition.svg)
+
+*Window definition in the View Setup dialog* ([raw/VPX/repo/docs/img/ViewSetup-WindowDef.svg](https://github.com/vpinball/vpinball/blob/master/docs/img/ViewSetup-WindowDef.svg))
+
+![VPX view setup camera definition](../assets/VPX%20ViewSetup%20Camera%20Definition.svg)
+
+*Camera definition in the View Setup dialog* ([raw/VPX/repo/docs/img/ViewSetup-CameraDef.svg](https://github.com/vpinball/vpinball/blob/master/docs/img/ViewSetup-CameraDef.svg))
+
 ## Perspective Camera (Desktop)
 
 Traditional video game camera. Default for desktop computers. Configured via "Legacy" or "Camera" view layout mode.

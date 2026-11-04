@@ -1,5 +1,7 @@
 # Virtual Pinball Ecosystem
 
+![VPinball X logo](assets/VPX%20Logo.svg)
+
 This wiki covers the core software stack for virtual pinball: the table simulator, the backglass server, and the hardware feedback framework. Together they recreate the full pinball experience — from the playfield on a TV screen to the illuminated backglass on a second monitor to the physical thump of a solenoid when you hit a bumper.
 
 ## The Stack

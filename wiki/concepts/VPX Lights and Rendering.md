@@ -2,6 +2,14 @@
 
 [Visual Pinball X](../projects/Visual%20Pinball%20X.md) uses a sophisticated lighting system to simulate the illuminated playfield of real pinball machines. Lights interact with balls (reflections, shadows) and support multiple fading models.
 
+![VPX ball shadows](../assets/VPX%20Ball%20Shadows.png)
+
+*Ball shadows cast by playfield lights (VPX 10.8 rendering options)* ([raw/VPX/repo/docs/img/Upgrade10.8-BallShadows.png](https://github.com/vpinball/vpinball/blob/master/docs/img/Upgrade10.8-BallShadows.png))
+
+![VPX reflections](../assets/VPX%20Reflections.png)
+
+*Reflections rendering option* ([raw/VPX/repo/docs/img/Upgrade10.8-ReflectionsOption.png](https://github.com/vpinball/vpinball/blob/master/docs/img/Upgrade10.8-ReflectionsOption.png))
+
 ## Lightmaps
 
 VPX renders lights as flat surfaces:
