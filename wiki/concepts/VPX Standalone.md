@@ -67,7 +67,7 @@ Pure Wayland forbids the multi-screen placement a pincab needs; **KDE KWin is re
 
 ## Community Tools
 
-- **vpxtool** (francisdb) — inspect `.vpx`, list ROM requirements, extract/patch scripts, format conversion
+- **vpxtool** (francisdb) — inspect `.vpx`, list ROM requirements, extract/patch scripts, format conversion; `optimize` compacts `.vpx` size (`--mono --flac`, `--max-image-size=768` — see [VPX Debugging](VPX%20Debugging.md) §Table-Level Repair)
 - **vpx-gui-tools** (surtarso) — Linux GUI launcher/ini editor; **vpx-settings-editor** (herrMirto) — Windows-like settings GUI
 - **dmd-config** (Le-Syl21) — FullDMD analysis → DMD placement configs
 - **docker-vpxtool-resize** (jsm174) — batch image downscaling inside `.vpx`
