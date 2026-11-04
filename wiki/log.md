@@ -336,3 +336,5 @@ Validated and fixed wiki link consistency after content edits:
 - Created [sources/VPinballX Starter.md]; index updated
 
 ## [2026-11-04] update | Favicon switched to the VPX editor ball icon (src/ui/win/res/ball.ico from vpinball master, multi-size 16-256px) — copied to wiki/assets/VPX Ball.ico; header wordmark logo kept
+
+## [2026-11-04] update | Nightly pipeline: new-source proposals — pi appends strict [NEW-SOURCE] lines to SOURCE-PROPOSALS.md (registry of accepted proposals, bootstrapped); nightly.sh 4b files ONE branch+PR per proposal (source/<slug>, no auto-merge, per-proposal accept/reject); metrics + manifest now track prop rc

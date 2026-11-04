@@ -6,6 +6,9 @@
 #   2. change detection      compare git HEADs + file checksums vs last run
 #   3. pi --print            headless LLM re-ingest of changed sources into wiki/
 #   4. git commit + push     push wiki/ changes to origin
+#   4b. source proposals     new-source candidates found by the scan go to a
+#      separate rolling SourceProposals branch + PR (no auto-merge; human
+#      registers sources via update-raw scripts + raw/FETCH.md)
 #
 # Run once per night from cron (pi has no scheduler; cron/systemd-timer is the
 # durable runner):
@@ -57,7 +60,7 @@ fi
 LOG="$LOG_DIR/nightly-$(date +%F).log"
 exec >>"$LOG" 2>&1
 START_EPOCH=$(date +%s)
-BRANCH_USED="-"; COMMIT_STAT="0 files"
+BRANCH_USED="-"; COMMIT_STAT="0 files"; PROP_RC=0; PROP_STAT="no"
 echo "===== $(date -Is) nightly run start (pid $$)"
 
 # --- 1. fetch raw sources ---------------------------------------------------
@@ -117,11 +120,21 @@ Do this:
 3. Append one 'ingest' entry (and 'update' entries if significant) to wiki/log.md per the log format.
 4. Append-only rule: never edit past log.md entries.
 5. Verify every link you added: spaces encoded as %20 in targets, never in labels; citations point to upstream URLs, never local raw/ paths.
+6. New-source discovery: if you encounter authoritative documentation sources (project docs, guides, tools) that are NOT in raw/ (registered list: raw/FETCH.md), append proposals to SOURCE-PROPOSALS.md at the repo root — never modify existing lines there. Strict one-line format per proposal:
+   - [NEW-SOURCE] <Project Name> | <upstream docs URL> | raw/<ProposedCollection>/ | <one-line reason>
+   Dedup before proposing: skip names already present in SOURCE-PROPOSALS.md, and skip slugs already used by proposal PRs — check with: gh pr list --repo JockeJarre/VPinConsolidatedWiki --state all --limit 200 --json headRefName (proposal branches are named source/<slug>; slug = project name lowercased, non-alphanumerics collapsed to single hyphens, leading/trailing hyphens removed). Do NOT fetch, register, or ingest proposed sources yourself — humans decide.
 
-Finish by printing a short summary: collections processed, pages created/updated, and anything skipped or flagged as a conflict." 
+Finish by printing a short summary: collections processed, pages created/updated, new source proposals appended, and anything skipped or flagged as a conflict." 
         INGEST_RC=$?
         echo "pi ingest exit=$INGEST_RC"
     fi
+fi
+
+# --- 3b. capture new-source proposals (pi appends SOURCE-PROPOSALS.md) -------
+PROP_NEW=""
+if [ -f SOURCE-PROPOSALS.md ]; then
+    PROP_NEW="$LOG_DIR/proposal-new.md"
+    cp SOURCE-PROPOSALS.md "$PROP_NEW"
 fi
 
 # --- 4. single NightlyUpdates branch + commit + push + PR (create if none) ---
@@ -221,8 +234,69 @@ if [ "${SKIP_PI:-0}" != "1" ]; then
     fi
 fi
 
+# --- 4b. source proposals: ONE branch + PR per proposal (each mergeable /
+#      closable independently; no auto-merge). Accepted proposals land in the
+#      registry SOURCE-PROPOSALS.md on main. ------------------------------------
+if [ -n "$PROP_NEW" ] && [ "${SKIP_PI:-0}" != "1" ]; then
+    REG="SOURCE-PROPOSALS.md"
+    git show "origin/$BASE:$REG" > "$LOG_DIR/registry-main.md" 2>/dev/null || : > "$LOG_DIR/registry-main.md"
+    touch "$LOG_DIR/proposed.log"
+    NEW_LINES="$(grep '^\- \[NEW-SOURCE\]' "$PROP_NEW" 2>/dev/null \
+        | grep -F -x -v -f "$LOG_DIR/registry-main.md" \
+        | grep -F -x -v -f "$LOG_DIR/proposed.log" || true)"
+    PROP_OK=0
+    while IFS= read -r line; do
+        [ -z "$line" ] && continue
+        git switch "$BASE" >/dev/null 2>&1 || true
+        git reset --hard "origin/$BASE" >/dev/null
+        NAME="$(printf '%s\n' "$line" | sed -E 's/^- \[NEW-SOURCE\] ([^|]+)\|.*/\1/' | sed -E 's/[[:space:]]+$//')"
+        SLUG="$(printf '%s' "$NAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')"
+        PBRANCH="source/$SLUG"
+        if [ -z "$SLUG" ] || git ls-remote --exit-code --heads origin "$PBRANCH" >/dev/null 2>&1; then
+            printf '%s\n' "$line" >> "$LOG_DIR/proposed.log"
+            echo "Proposal '$NAME': slug empty or branch $PBRANCH already on origin; skipped."
+            continue
+        fi
+        if [ ! -f "$REG" ]; then
+            echo "Registry $REG missing on $BASE; cannot propose."
+            PROP_RC=1
+            continue
+        fi
+        git switch -C "$PBRANCH" "origin/$BASE" >/dev/null
+        printf '%s\n' "$line" >> "$REG"
+        git add "$REG"
+        git commit -m "Propose new source: $NAME" >/dev/null
+        git push -u origin "$PBRANCH" >/dev/null; push1=$?
+        BODY_FILE="$(mktemp)"
+        {
+            echo "## New source proposal (nightly scan)"
+            echo
+            echo "$line"
+            echo
+            echo "**Accept:** merge this PR (squash + delete branch) — the proposal enters the registry on main. Then register the collection: update-raw.sh/.ps1 fetch step, raw/<Name>/FETCH.md + raw/FETCH.md table row, AGENTS.md tier + upstream URL mapping (the assistant can do this on request)."
+            echo
+            echo "**Reject:** close the PR and delete the branch — nothing lands on main."
+        } > "$BODY_FILE"
+        gh pr create --base "$BASE" --head "$PBRANCH" \
+            --title "New source: $NAME" --body-file "$BODY_FILE" >/dev/null
+        prc2=$?
+        rm -f "$BODY_FILE"
+        if [ "$push1" -eq 0 ] && [ "$prc2" -eq 0 ]; then
+            PROP_OK=$((PROP_OK+1))
+        else
+            PROP_RC=1
+        fi
+        printf '%s\n' "$line" >> "$LOG_DIR/proposed.log"
+        echo "Proposal '$NAME' -> $PBRANCH (push=$push1 pr=$prc2)"
+        git switch "$BASE" >/dev/null 2>&1 || true
+        git reset --hard "origin/$BASE" >/dev/null
+    done <<< "$NEW_LINES"
+    PROP_STAT="$PROP_OK proposal PR(s)"
+    rm -f "$PROP_NEW"
+fi
+
 # Persist manifest only when the pipeline succeeded (retry on failure next night)
-if [ "$INGEST_RC" -eq 0 ] && [ "$PUSH_RC" -eq 0 ] && [ "$PR_RC" -eq 0 ]; then
+if [ "$INGEST_RC" -eq 0 ] && [ "$PUSH_RC" -eq 0 ] && [ "$PR_RC" -eq 0 ] && [ "$PROP_RC" -eq 0 ]; then
     printf '%s\n' "$NEW_MANIFEST" > "$LOG_DIR/manifest"
     printf '%s\n' "$TODAY" > "$LOG_DIR/last-run"
     echo "Manifest updated."
@@ -235,8 +309,8 @@ find "$LOG_DIR" -name 'nightly-*.log' -mtime +14 -delete 2>/dev/null
 
 # Uncommitted run metrics: files changed + total duration (.nightly/ is gitignored)
 DURATION=$(( $(date +%s) - START_EPOCH ))
-printf '%s | duration=%ss | %s | branch=%s | rc raw/ingest/push/pr=%s/%s/%s/%s\n' \
-    "$(date -Is)" "$DURATION" "$COMMIT_STAT" "$BRANCH_USED" \
-    "$RAW_RC" "$INGEST_RC" "$PUSH_RC" "$PR_RC" >> "$LOG_DIR/metrics.log"
+printf '%s | duration=%ss | %s | branch=%s | proposals=%s | rc raw/ingest/push/pr/prop=%s/%s/%s/%s/%s\n' \
+    "$(date -Is)" "$DURATION" "$COMMIT_STAT" "$BRANCH_USED" "$PROP_STAT" \
+    "$RAW_RC" "$INGEST_RC" "$PUSH_RC" "$PR_RC" "$PROP_RC" >> "$LOG_DIR/metrics.log"
 
 echo "===== $(date -Is) nightly run done"
