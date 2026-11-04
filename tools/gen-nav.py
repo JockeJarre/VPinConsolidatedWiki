@@ -38,7 +38,11 @@ def main():
     # Make the schema page available inside docs_dir so links to ../AGENTS.md resolve
     shutil.copy(os.path.join(REPO, "AGENTS.md"), os.path.join(REPO, DOCS, "AGENTS.md"))
 
-    nav = [{"Home": "index.md"}, {"Schema": "AGENTS.md"}]
+    nav = [
+        {"Home": "index.md"},
+        {"GitHub Wiki": "https://github.com/JockeJarre/VPinConsolidatedWiki/wiki"},
+        {"Schema": "AGENTS.md"},
+    ]
     for sub, label in SECTIONS:
         items = page_items(sub)
         if items:
