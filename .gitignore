@@ -9,3 +9,14 @@ raw/DMD-Extensions/repo/
 raw/pinscape-build-guide/repo/
 raw/pinscape-build-guide/markdown/
 raw/PUP/site/
+raw/ExternalWikis/dekay-vpinball-wiki/repo/
+raw/ExternalWikis/vpw-wiki/repo/
+
+# Nightly automation state/logs — local only
+.nightly/
+.nightly.lock
+
+# MkDocs build artifacts
+site/
+mkdocs.yml
+wiki/AGENTS.md

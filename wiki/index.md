@@ -92,4 +92,4 @@ Catalog of all pages in this wiki.
 
 ## Meta
 
-- [AGENTS.md](../AGENTS.md) — Agent instructions, wiki conventions, structure, and maintenance workflows
+- [AGENTS.md](AGENTS.md) — Agent instructions, wiki conventions, structure, and maintenance workflows
