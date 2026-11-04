@@ -50,7 +50,7 @@ C:\Visual Pinball\B2SServer\Backgrounds\SpikeTypeGrill.png
 
 ### tablename.res (Per-Table)
 
-Copy `ScreenRes.txt` and rename to match the table (e.g., `Blood Machines (VPW 2022).res`). Placed alongside the `.vpx` file. Overrides the global configuration for that table.
+Copy `ScreenRes.txt` and rename to match the table (e.g., `Blood Machines (2022).res`). Placed alongside the `.vpx` file. Overrides the global configuration for that table.
 
 **Workflow (v2.1.2+):**
 1. Right-click `.directb2s` file → "B2S Server copy Screenres template"

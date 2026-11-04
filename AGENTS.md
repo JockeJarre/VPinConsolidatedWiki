@@ -32,8 +32,7 @@ VPXwiki/
 │   ├── PUP/                   PinUp system documentation mirror
 │   ├── SSFImpactor Guide.pdf  SSFImpactor user guide PDF
 │   └── ExternalWikis/         External community wikis used to fill gaps — SECONDARY priority (each clones into repo/)
-│       ├── dekay-vpinball-wiki/  Unofficial Visual Pinball Wiki mirror — SECONDARY priority
-│       └── vpw-wiki/          VPW Knowledge Base (Virtual Pinball Workshop Discord) — SECONDARY priority
+│       └── dekay-vpinball-wiki/  Unofficial Visual Pinball Wiki mirror — SECONDARY priority
 │
 └── wiki/                   ← LLM-written and LLM-maintained.
     ├── _schema.md              Legacy schema reference (superseded by this file)
@@ -80,7 +79,6 @@ VPXwiki/
 |------|---------|------|
 | **Primary** | B2S wiki, DOF docs, VPX docs, FlexDMD docs, DMD Extensions docs, Pinscape Build Guide, SSFImpactor Guide, PinUp Popper docs, vpxtool README, VPinballX Starter | Upstream docs of the owning project. Claims win on conflicts |
 | **Secondary** | Unofficial Visual Pinball Wiki (`raw/ExternalWikis/dekay-vpinball-wiki/`) | Community wiki. Use for tips and platforms the Primary sources do not cover. Where it conflicts with a Primary source, keep the Primary claim and add a conflict note |
-| **Secondary** | VPW Knowledge Base (`raw/ExternalWikis/vpw-wiki/`) | Virtual Pinball Workshop Discord community knowledge base (table authoring focus). Same secondary rules as above |
 
 Conflict note format for Secondary-source disagreements:
 
@@ -125,7 +123,7 @@ Conflict note format for Secondary-source disagreements:
 Facts derived from a raw collection cite the raw file path as link text, wrapped in a markdown link to the upstream URL. Plain-text `(raw/...)` citations are written as `([raw/...](https://upstream))`:
 
 ```markdown
-- POV ranges are per-cabinet ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction)
+- POV ranges are per-cabinet ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Additional-Resources.md](https://github.com/dekay/vpinball-wiki/wiki/Additional-Resources), 2026 extraction)
 ```
 
 Upstream URL mapping per collection (verified against `update-raw.ps1`; branch is `master` everywhere except pinscape-build-guide which is `main`):
@@ -141,7 +139,6 @@ Upstream URL mapping per collection (verified against `update-raw.ps1`; branch i
 | `raw/PUP/**` | `https://www.nailbuster.com/wikipinup/doku.php?id=start` |
 | `raw/SSFImpactor Guide.pdf` | `https://www.mjrnet.org/pinscape/BuildGuideV2/BuildGuide.php?sec=downloads` (ships inside the DOF R3++ Grand Unified Edition zip) |
 | `raw/ExternalWikis/dekay-vpinball-wiki/repo/<Stem>.md` | `https://github.com/dekay/vpinball-wiki/wiki/<Stem>` (`Home.md` → wiki root; dekay page titles legitimately use U+2010 hyphens — write them literally in link text, percent-encode as `%E2%80%90` in URLs) |
-| `raw/ExternalWikis/vpw-wiki/repo/docs/<area>/<stem>.md` | `https://vpw-wiki.skirmishofwit.com/<area>/<stem>/` (area = `guides`, `tables`, `reference`) |
 | `raw/VPinballX-Starter/repo/<path>` | `https://github.com/JockeJarre/VPinballX.starter/blob/main/<path>` (repo root → `…/JockeJarre/VPinballX.starter/tree/main`; commit `sha` → `…/commit/<sha>`) |
 | `raw/vpxtool/README.md` | `https://github.com/francisdb/vpxtool/blob/main/README.md` |
 

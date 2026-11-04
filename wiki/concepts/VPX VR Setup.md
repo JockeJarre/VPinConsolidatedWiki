@@ -17,8 +17,6 @@ Newer tables (especially **VPinWorkshop**) auto-detect VR. For others ([raw/Exte
 2. Ctrl-F for **`VRRoom`** (VPinWorkshop standard) or `VR` / `VROn`
 3. Set the value: **0 = VR off, 1 = VR on**; other numbers select multiple VR rooms
 
-The authoring-side convention is `VRRoom = 0` (desktop/cabinet, no room loaded), `1` (standard VR room), `2` (VR room with backglass positioning) ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/vr-development.md](https://vpw-wiki.skirmishofwit.com/guides/vr-development/), 2026 extraction). This is also a stutter-isolation diagnostic: VR-room primitives loaded in desktop mode (`VRRoom = 1`) cost 20–40 FPS even when the room is not visible, so if a "desktop" table stutters, check the `VRRoom` value first.
-
 Tables with no VR support still run as "a floating playfield in a black void without a backglass or DMD."
 
 ## Oculus / Quest Performance: OpenComposite
@@ -46,7 +44,6 @@ ASW (Oculus) / Motion Smoothing (SteamVR) renders half the frames and fakes the 
 ## See Also
 
 - [VPX Stereo 3D](VPX%20Stereo%203D.md) — stereo rendering and output modes
-- [VPX VR Authoring](VPX%20VR%20Authoring.md) — building VR rooms in tables (VRAM budgets, lighting, refraction)
 - [VPX View Setup](VPX%20View%20Setup.md) — non-VR camera setup
 - [VPX Latency](VPX%20Latency.md) — frame pacing concerns shared with VR
 - [Pinscape Pico](Pinscape%20Pico.md) — Android-Quest builds see VR tables via Force VR Rendering Mode ([VPX Standalone](VPX%20Standalone.md))

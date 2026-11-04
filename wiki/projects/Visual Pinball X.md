@@ -113,12 +113,6 @@ VPX uses VBScript for table logic. See [VPX Scripting](../concepts/VPX%20Scripti
 - **Kicker**: `Kick(angle, speed, inclination)`, `CreateBall()`, `DestroyBall()`
 - **Wall**: Hit events, elasticity, collidability, `IsDropped`
 
-Object names face a **31-character hard limit that is silently truncated**, causing duplicate-name conflicts — the authoring community keeps component names ≤6 characters ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/best-practices.md](https://vpw-wiki.skirmishofwit.com/guides/best-practices/), §Naming). See [VPX Authoring Best Practices](../concepts/VPX%20Authoring%20Best%20Practices.md).
-
-### Engine Audio Behavior
-
-Positional audio uses a fixed pan law — **Left 100% / Middle 200% / Right 100%** — implemented in the engine, not scriptable ([raw/ExternalWikis/vpw-wiki/repo/docs/reference/fleep-sounds.md](https://vpw-wiki.skirmishofwit.com/reference/fleep-sounds/) See [Fleep Sound Packages](../concepts/Fleep%20Sound%20Packages.md).
-
 ### Key Events
 - `Table_Init()` — Table initialization
 - `Table_Exit()` — Table teardown (PUP users must release the PuPlayer COM object here)

@@ -11,14 +11,6 @@ Latency in [Visual Pinball X](../projects/Visual%20Pinball%20X.md) is the delay 
 ### 1. Input Latency
 Time from physical stimulus to VPX processing. Target: **<1ms**. VPX polls input continuously.
 
-Measured input-method floor ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction):
-
-- **KL25Z board + leaf switches**: ~**20ms** minimum (8ms debounce + spring contact bounce); fast taps are occasionally missed entirely
-- **PS/2 keyboard hack + gold leaf switches**: **5–8ms** — interrupt-driven, no USB polling, zero missed contacts
-- At 60 Hz, VPX can only register inputs once per frame (**16.7ms**), disadvantaging tap-pass timing; compensating with a very low `sosramp` (~0.5) helps
-
-**PinAffinity** ([mjrnet.org/pinscape/PinAffinity.html](https://mjrnet.org/pinscape/PinAffinity.html)) dedicates CPU threads to the pinball processes and moves everything else to other cores, reducing input lag and script timing jitter — important for consistent flipper physics and live-catch timing ([raw/ExternalWikis/vpw-wiki/repo/docs/reference/tools-resources.md](https://vpw-wiki.skirmishofwit.com/reference/tools-resources/), 2026 extraction).
-
 ### 2. Physics/Emulation Latency
 Time from input event to emulation awareness. Typically **~0.5ms** for WPC machines. Optimized with FastFlips (see below).
 

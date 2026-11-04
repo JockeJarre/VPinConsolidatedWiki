@@ -12,7 +12,7 @@
 
 - [Vpxtool](../projects/Vpxtool.md) — the usage project page built from this README
 - [VPX Debugging](../concepts/VPX%20Debugging.md) — `optimize` guidance cross-checked against the dekay community wiki
-- [VPX Standalone](../concepts/VPX%20Standalone.md), [VPX Authoring Tools](../concepts/VPX%20Authoring%20Tools.md), [VPX File Layout](../concepts/VPX%20File%20Layout.md) — tool mentions
+- [VPX Standalone](../concepts/VPX%20Standalone.md), [VPX File Layout](../concepts/VPX%20File%20Layout.md) — tool mentions
 
 ## See Also
 

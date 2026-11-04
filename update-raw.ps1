@@ -18,7 +18,6 @@
                                               → raw/pinscape-build-guide/markdown/
       PinUP      https://www.nailbuster.com/wikipinup/              → raw/PUP/site/
       Dekay    https://github.com/dekay/vpinball-wiki (wiki)        → raw/ExternalWikis/dekay-vpinball-wiki/repo/
-      VPW      https://github.com/dcbenji/vpw-wiki                  → raw/ExternalWikis/vpw-wiki/repo/
       Starter  https://github.com/JockeJarre/VPinballX.starter      → raw/VPinballX-Starter/repo/  (depth 100)
       vpxtool  https://github.com/francisdb/vpxtool                 → raw/vpxtool/README.md  (file download)
 
@@ -564,14 +563,6 @@ Invoke-SourceStep -Label 'Unofficial Visual Pinball Wiki' -Action {
         -LocalPath 'raw/ExternalWikis/dekay-vpinball-wiki/repo'
 }
 
-# VPW Knowledge Base — MkDocs content repo behind vpw-wiki.skirmishofwit.com (full clone, small)
-Invoke-SourceStep -Label 'VPW Knowledge Base' -Action {
-    Invoke-WikiClone `
-        -Label     'VPW Knowledge Base' `
-        -RepoUrl   'https://github.com/dcbenji/vpw-wiki.git' `
-        -LocalPath 'raw/ExternalWikis/vpw-wiki/repo'
-}
-
 # VPinballX Starter — version-routing launcher; history kept at depth 100 (commit messages are source material)
 Invoke-SourceStep -Label 'VPinballX Starter' -Action {
     Invoke-WikiClone `
@@ -620,7 +611,6 @@ Write-Host '  raw/pinscape-build-guide/repo/book/'
 Write-Host '  raw/pinscape-build-guide/markdown/'
 Write-Host '  raw/PUP/site/'
 Write-Host '  raw/ExternalWikis/dekay-vpinball-wiki/repo/'
-Write-Host '  raw/ExternalWikis/vpw-wiki/repo/'
 Write-Host '  raw/VPinballX-Starter/repo/'
 Write-Host '  raw/vpxtool/README.md'
 Write-Host ''

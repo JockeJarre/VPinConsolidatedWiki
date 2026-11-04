@@ -20,7 +20,6 @@
 | `pinscape-build-guide/` | `concurrent-recursion/pinscape-build-guide` (`main`) | sparse `book` + generated Markdown | book only | ✅ (incl. conversion) |
 | `PUP/` | nailbuster.com DokuWiki | HTML crawl (`Invoke-PinUpMirror` / `pinup_mirror`, disabled by default) | ≤250 crawled pages | ⚠️ ps1 commented out; sh behind `--pup` |
 | `ExternalWikis/dekay-vpinball-wiki/` | `dekay/vpinball-wiki.wiki.git` | full clone into `repo/` (small wiki repo) | all 48 pages | ✅ |
-| `ExternalWikis/vpw-wiki/` | `dcbenji/vpw-wiki` | full clone into `repo/` (MkDocs content) | full repo | ✅ |
 | `VPinballX-Starter/` | `JockeJarre/VPinballX.starter` (`main`) | full clone into `repo/`, depth 100 (commit history is source material) | full repo | ✅ |
 | `vpxtool/` | `francisdb/vpxtool` | single-file download (`README.md`) | usage docs only | ✅ |
 

@@ -24,7 +24,6 @@
 #                                                                      -> raw/pinscape-build-guide/markdown/
 #       PinUP      https://www.nailbuster.com/wikipinup/              -> raw/PUP/site/   (--pup only)
 #       Dekay      https://github.com/dekay/vpinball-wiki (wiki)      -> raw/ExternalWikis/dekay-vpinball-wiki/repo/
-#       VPW        https://github.com/dcbenji/vpw-wiki                -> raw/ExternalWikis/vpw-wiki/repo/
 #       Starter    https://github.com/JockeJarre/VPinballX.starter    -> raw/VPinballX-Starter/repo/  (depth 100)
 #       vpxtool    https://github.com/francisdb/vpxtool               -> raw/vpxtool/README.md  (file download)
 #
@@ -33,8 +32,6 @@
 #     First run clones; subsequent runs pull the latest changes.
 #     PinUp Popper pages are stored as HTML snapshots because the public site
 #     does not expose a stable raw-export or repository-based source feed.
-#     On the pinned 2026-04-13 checkout of raw/ExternalWikis/vpw-wiki/repo, git pulls may fail on
-#     shallow history; the clone step then re-clones automatically.
 #
 set -uo pipefail
 
@@ -438,9 +435,6 @@ fi
 run_step 'Unofficial Visual Pinball Wiki' wiki_clone 'Unofficial Visual Pinball Wiki' \
     'https://github.com/dekay/vpinball-wiki.wiki.git' 'raw/ExternalWikis/dekay-vpinball-wiki/repo'
 
-run_step 'VPW Knowledge Base' wiki_clone 'VPW Knowledge Base' \
-    'https://github.com/dcbenji/vpw-wiki.git' 'raw/ExternalWikis/vpw-wiki/repo'
-
 # VPinballX Starter — version-routing launcher; history kept (commit messages are source material)
 run_step 'VPinballX Starter' wiki_clone 'VPinballX Starter' \
     'https://github.com/JockeJarre/VPinballX.starter.git' 'raw/VPinballX-Starter/repo' 100
@@ -470,8 +464,7 @@ echo '  raw/pinscape-build-guide/repo/book/'
 echo '  raw/pinscape-build-guide/markdown/'
 echo '  raw/PUP/site/'
 echo '  raw/ExternalWikis/dekay-vpinball-wiki/repo/'
-echo '  raw/ExternalWikis/vpw-wiki/repo/
-  raw/VPinballX-Starter/repo/
+echo '  raw/VPinballX-Starter/repo/
   raw/vpxtool/README.md'
 echo
 echo 'Ask Copilot to re-ingest any changed files and regenerate wiki/ pages.'

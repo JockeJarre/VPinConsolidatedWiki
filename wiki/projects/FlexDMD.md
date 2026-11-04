@@ -111,22 +111,6 @@ Sub FlexDMDTimer_Timer
 End Sub
 ```
 
-## Script Detection and Portability
-
-FlexDMD is a Windows COM server, so it is **unavailable on [VPX Standalone](../concepts/VPX%20Standalone.md)**. Tables that must run on both platforms detect it in script instead of assuming it exists ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/), 2026 extraction):
-
-```vbscript
-Dim FlexDMD
-On Error Resume Next
-Set FlexDMD = CreateObject("FlexDMD.FlexDMD")
-On Error GoTo 0
-If Not IsEmpty(FlexDMD) Then
-    ' FlexDMD available (Windows) — set up scenes
-End If
-```
-
-With `On Error Resume Next` guarding the `CreateObject`, the table degrades gracefully on Standalone/mobile builds.
-
 ## See Also
 
 - [DMD](../concepts/DMD.md)

@@ -78,7 +78,6 @@ manifest() {
              raw/DMD-Extensions/repo \
              raw/pinscape-build-guide/repo \
              raw/ExternalWikis/dekay-vpinball-wiki/repo \
-             raw/ExternalWikis/vpw-wiki/repo \
              raw/VPinballX-Starter/repo; do
         [ -d "$r" ] && printf '%s %s\n' "$r" "$(git -C "$r" rev-parse HEAD 2>/dev/null)"
     done

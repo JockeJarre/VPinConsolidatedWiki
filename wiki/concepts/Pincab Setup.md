@@ -77,25 +77,9 @@ Frontends like PinUp Popper manage table selection and launching. B2SRandom can 
 CALL C:\vPinball\B2SServer\B2STools\B2SRandom.cmd "[GAMEFULLNAME]"
 ```
 
-## DOF Safety Rules
-
-Field rules from the authoring community ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction):
-
-- Solenoid-related DOF outputs must use **`DOFPulse`, never `DOFOn`** — a table whose GI code sent `DOFOn` left solenoids continuously energized and burnt fuse/solenoid hardware
-- `DOFOn` is reserved for flippers, button lights, and RGB effects; diverters get pulses without contactors — only flippers stay energized
-- Cap solenoid outputs with a maximum-duration setting (e.g. `S5 MAX100`) so a stuck on-signal cannot cook a coil
-- Use DOTK v0.09 when developing DOF table effects (v0.10 had bugs)
-
 ## Nudge and Tilt
 
 - VPX 10.8.1 includes native tilt plumb-through: cabinet nudge input reaches the emulated ROM tilt bob directly, no table-script shim required
-- Three nudge models are available — legacy digital nudge key, accelerometer (native), and analog nudge via a [Pinscape controller](../projects/Pinscape%20Controller.md); analog is preferred for proportional, ROM-accurate tilt ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction). See [VPX Accelerometer Input](VPX%20Accelerometer%20Input.md)
-- Budget trick: mount the coin door so leaning on the glass closes a micro-switch wired as the nudge button ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction)
-
-## Known Hardware-Side Gotchas
-
-- **Analog plunger seat position**: keyboard-emulation pluggers (ServoSting, encoders in keyboard mode) can report a resting value VPX reads as pulled, so tables drop the ball mid-multiball; fix by using raw-axis mode (Pinscape analog plunger) so the device is a true joystick axis ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/hardware-cabinet.md](https://vpw-wiki.skirmishofwit.com/guides/hardware-cabinet/), 2026 extraction)
-- POV calibration for cabinets (Inclination 6–20, FOV 29–45, Layback 42–70) — see the conflict note in [VPX View Setup](VPX%20View%20Setup.md)
 
 ## See Also
 

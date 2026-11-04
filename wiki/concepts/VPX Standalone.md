@@ -30,11 +30,6 @@ The port embeds "only *just enough* of Wine's source" — it is not running unde
 
 Script-compatibility bugs are tracked in `standalone/docs/vbscript.md`; the **jsm174/vpx-standalone-scripts** patch repo fixes most remaining tables ("very few non-PUP tables won't run on Standalone, out of the box or with a patch").
 
-Two script portability rules from the authoring community ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/), 2026 extraction):
-
-- Use **`GetBalls` (not `gBOT`) inside the `Cor.Update`/CorTracker callback** — `gBOT` is the stated root cause of ~95% of "ball hits flipper → segfault" crashes on Standalone; see [VPX Example Table](VPX%20Example%20Table.md)
-- Guard COM-only objects like [FlexDMD](../projects/FlexDMD.md) with `On Error Resume Next` + `CreateObject` checks — COM is unavailable on Standalone, so unguarded `CreateObject` calls crash the table there; see [FlexDMD §Script Detection and Portability](../projects/FlexDMD.md#script-detection-and-portability)
-
 ## Input Mapping
 
 - **Gamepads**: Standalone uses the **SDL Game Controller** layer — add an entry to `gamecontrollerdb.txt` (community SDL_GameControllerDB), then set INI keys. **Button indexes in VPinballX.ini are 1-based.** Xbox example: JoyLFlipKey=10, JoyRFlipKey=11, JoyLMagnaSave=8, JoyRMagnaSave=9, JoyCTiltKey=12, JoyPlungerKey=13, JoyAddCreditKey=1, JoyStartGameKey=2

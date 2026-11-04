@@ -102,6 +102,5 @@ Used by: [vpx-editor](https://github.com/jsm174/vpx-editor), [vpin-studio](https
 
 - [VPX Debugging](../concepts/VPX%20Debugging.md) — `optimize` flags in pincab practice
 - [VPX Standalone](../concepts/VPX%20Standalone.md) — vpxtool in the headless toolchain
-- [VPX Authoring Tools](../concepts/VPX%20Authoring%20Tools.md) — decompile-for-git workflow
 - [VPX File Layout](../concepts/VPX%20File%20Layout.md) — sidecars and formats vpxtool operates on
 - [Source: Vpxtool README](../sources/Vpxtool%20README.md)

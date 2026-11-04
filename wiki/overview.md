@@ -78,16 +78,6 @@ A common DIY hardware bridge for these cabinet inputs is [Pinscape Controller](p
 
 ### Scripting & Authoring
 - [VPX Scripting](concepts/VPX%20Scripting.md) — VBScript API reference
-- [VPX Scripting Patterns](concepts/VPX%20Scripting%20Patterns.md) — Timer architecture, ROM integration, ball tracking, troughs
-- [VPX Light State Controller](concepts/VPX%20Light%20State%20Controller.md) — Stacked light states and blink groups for original tables
-- [VPX Physics Tuning](concepts/VPX%20Physics%20Tuning.md) — nFozzy flipper/rubber physics system
-- [VPX Insert Lighting](concepts/VPX%20Insert%20Lighting.md) / [VPX GI and Flashers](concepts/VPX%20GI%20and%20Flashers.md) — Community lighting systems
-- [VPX 3D Art Pipeline](concepts/VPX%203D%20Art%20Pipeline.md) / [VPX Playfield Scanning](concepts/VPX%20Playfield%20Scanning.md) / [VPX Transparent Elements](concepts/VPX%20Transparent%20Elements.md) — Art asset creation
-- [VPX Game Rules Design](concepts/VPX%20Game%20Rules%20Design.md) — Mode state machines, wizard modes, multiball
-- [VPX Table Build Workflow](concepts/VPX%20Table%20Build%20Workflow.md) / [VPX Authoring Best Practices](concepts/VPX%20Authoring%20Best%20Practices.md) / [VPX Example Table](concepts/VPX%20Example%20Table.md) — Process and reference
-- [VPX Software Setup](concepts/VPX%20Software%20Setup.md) / [VPX Authoring Tools](concepts/VPX%20Authoring%20Tools.md) / [VPX Table Troubleshooting](concepts/VPX%20Table%20Troubleshooting.md) — Author environment and fixes
-- [VPX VR Authoring](concepts/VPX%20VR%20Authoring.md) — Shipping VR support in tables
-- [Fleep Sound Packages](concepts/Fleep%20Sound%20Packages.md) — Real-machine sound packs
 - [VPX Latency](concepts/VPX%20Latency.md) — Input-to-display latency optimization
 - [VPX Nixie Plugin](concepts/VPX%20Nixie%20Plugin.md) — Script-free DMD window (.nix layouts, formerly ScoreView)
 - [VPX Debugging](concepts/VPX%20Debugging.md) — Bisecting regressions, logs, crash reporting
@@ -105,7 +95,7 @@ A common DIY hardware bridge for these cabinet inputs is [Pinscape Controller](p
 
 ## Raw Sources
 
-This wiki is currently maintained from ten source collections:
+This wiki is currently maintained from nine source collections:
 - [B2S Wiki](sources/B2S%20Wiki.md) — 31 markdown files from the B2S Backglass Server wiki mirror
 - [DOF Documentation](sources/DOF%20Documentation.md) — 25 markdown files from the DirectOutput Framework docs mirror
 - [VPX Docs](sources/VPX%20Docs.md) — 37 files from the Visual Pinball X docs mirror
@@ -115,7 +105,6 @@ This wiki is currently maintained from ten source collections:
 - [PinUp Popper Docs](sources/PinUp%20Popper%20Docs.md) — 78 mirrored HTML pages from the PinUp Popper wiki
 - [SSFImpactor Guide](sources/SSFImpactor%20Guide.md) — 1 PDF user guide (15 pages) for the SSFImpactor software force-feedback controller
 - [Unofficial Visual Pinball Wiki](sources/Unofficial%20Visual%20Pinball%20Wiki.md) — 48 markdown files from the community wiki mirror (secondary source)
-- [VPW Knowledge Base](sources/VPW%20Knowledge%20Base.md) — 108 extractions distilled from the Virtual Pinball Workshop Discord: 13 authoring guides, 83 table case studies, 5 references (secondary source)
 
 PinUp Popper pages are mirrored locally for reference, but are still less deeply modeled than the main VPX/B2S/DOF/FlexDMD/DMD Extensions/Pinscape project and concept pages.
 
