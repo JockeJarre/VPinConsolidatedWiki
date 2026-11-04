@@ -27,6 +27,7 @@ Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/External
 - VPX Standalone = the port **without table editor/preferences GUI**; cross-platform builds shipped in official releases since **VPX 10.8**; per-commit betas on GitHub Actions
 - DOF gained a **built-in VPX 10.8.1 plugin** (no B2S dependency), config at `%APPDATA%\VPinballX\10.8\directoutputconfig`; external plugin keeps `C:\DirectOutput\config`
 - Several pages are marked **ARCHIVED in-source** (`VPinball-Ini.md`, `Fixing-Broken-Tables.md`, `PUP-Reverse-Engineering.md`, PAL/VNI/Serum/PAC): treat their parameter names/defaults as historic snapshots; verify against shipped `Default_VPinballX.ini` before relying on them
+- **vpxtool optimize** guidance refreshed upstream 2026-11-03 (`--mono` flag corrected): `vpxtool optimize --mono --flac table.vpx` is recommended because VPX 10.8.1+ converts stereo playfield sources to mono internally; `--max-image-size=768` targets VRAM-limited devices ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Table-Fixes-&-Performance-Optimizations.md](https://github.com/dekay/vpinball-wiki/wiki/Table-Fixes-&-Performance-Optimizations)) → filed in [VPX Debugging](../concepts/VPX%20Debugging.md)
 
 ## Conflicts Opened (per Source Priority rule, Primary wins)
 

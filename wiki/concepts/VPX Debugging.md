@@ -38,6 +38,7 @@ Mobile platforms: iOS support goes through email/Discord (`#vpx-standalone-mobil
 - **Custom fonts**: tables referencing fonts load them from the OS font directory (not embedded) — missing fonts break the display; install the font (matters on Linux/Wine)
 - Sidecar `.vbs` overrides and `vpxtool` script extraction/repair — see [VPX File Layout](VPX%20File%20Layout.md) and the community patch repo jsm174/vpx-standalone-scripts
 - Performance tuning levers (texture scaling/compression, PreRenderLimit, disable reflections/SSAO, lower FSAA) sit on the same ini surface as [VPX Latency](VPX%20Latency.md) settings
+- **`.vpx` file-size optimization** with `vpxtool optimize` (drops unused embedded fonts, converts media to compact formats): `--mono --flac` compresses playfield sounds to mono FLAC — safe because VPX 10.8.1+ converts stereo playfield sources to mono internally and re-mixes them itself; backglass stereo audio is always preserved. `--max-image-size=768` resizes oversized images/textures for VRAM-limited devices; helps offset texture-cache storage growth ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Table-Fixes-&-Performance-Optimizations.md](https://github.com/dekay/vpinball-wiki/wiki/Table-Fixes-&-Performance-Optimizations), §.vpx File Size Optimizations; `--mono` flag usage corrected upstream 2026-11-03)
 
 ## See Also
 

@@ -315,3 +315,8 @@ Validated and fixed wiki link consistency after content edits:
 
 ## [2026-11-04] lint | Link scan after nightly ingest
 - Full scan of wiki (log.md exempt): 0 targets with literal spaces, 0 %20 in link labels, 0 local raw/ targets, 0 broken relative links — clean
+
+## [2026-11-04] ingest | Unofficial Visual Pinball Wiki (dekay) — vpxtool optimize refresh
+- Upstream HEAD c323972 (2026-11-03, "Correct vpxtool --mono flag"): Table-Fixes-&-Performance-Optimizations.md now documents `vpxtool optimize --mono --flac` (mono playfield audio is lossless-safe in VPX 10.8.1+; backglass stereo preserved) and `--max-image-size=768`
+- Filed in concepts/VPX Debugging.md (§Table-Level Repair) and linked from concepts/VPX Standalone.md (§Community Tools); sources/Unofficial Visual Pinball Wiki.md Key Facts updated
+- Supersedes the prior "no update needed" review note for this commit; index.md summaries unchanged
