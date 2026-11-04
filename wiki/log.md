@@ -338,5 +338,3 @@ Validated and fixed wiki link consistency after content edits:
 ## [2026-11-04] update | Favicon switched to the VPX editor ball icon (src/ui/win/res/ball.ico from vpinball master, multi-size 16-256px) — copied to wiki/assets/VPX Ball.ico; header wordmark logo kept
 
 ## [2026-11-04] update | Nightly pipeline: new-source proposals — pi appends strict [NEW-SOURCE] lines to SOURCE-PROPOSALS.md (registry of accepted proposals, bootstrapped); nightly.sh 4b files ONE branch+PR per proposal (source/<slug>, no auto-merge, per-proposal accept/reject); metrics + manifest now track prop rc
-
-## [2026-11-04] create | GitHub wiki publishing: nightly.sh step 5 mirrors origin/main wiki/ into VPinConsolidatedWiki.wiki.git via tools/publish-ghwiki.py (flat page names, wiki-URL link rewriting, images via Pages site URLs, index.md -> Home); first publish 68 pages live at github.com/JockeJarre/VPinConsolidatedWiki/wiki
