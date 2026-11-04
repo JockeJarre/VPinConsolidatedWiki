@@ -334,3 +334,5 @@ Validated and fixed wiki link consistency after content edits:
 - Registered collection: full clone depth 100 (commit history is source material) in update-raw.sh/.ps1, FETCH.md, manifest git_head, AGENTS.md tier+URL mapping
 - Created [projects/VPinballX Starter.md]: version routing, ini reference, keyboard-state switching, pre/post cmd files, plus "Changelog — Commit Messages Not Yet in the Documentation" filing 13 upstream commits whose behavior the README never documented
 - Created [sources/VPinballX Starter.md]; index updated
+
+## [2026-11-04] update | Favicon switched to the VPX editor ball icon (src/ui/win/res/ball.ico from vpinball master, multi-size 16-256px) — copied to wiki/assets/VPX Ball.ico; header wordmark logo kept
