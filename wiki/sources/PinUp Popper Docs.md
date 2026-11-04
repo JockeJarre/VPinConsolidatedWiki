@@ -12,7 +12,7 @@ Run `update-raw.ps1` to mirror the public PinUp Popper wiki into local HTML snap
 
 The checked-in repository still only includes [raw/PUP/Documentation.url](https://www.nailbuster.com/wikipinup/doku.php?id=start); mirrored HTML pages are generated locally and are not committed.
 
-Current snapshot file count: 78 mirrored HTML pages plus [site-index.json](https://www.nailbuster.com/wikipinup/doku.php?id=start).
+Current snapshot file count: 80 mirrored HTML pages plus [site-index.json](https://www.nailbuster.com/wikipinup/doku.php?id=start) (full re-crawl 2026-11-04; content stable, page count 78 → 80).
 
 ## Key Facts
 

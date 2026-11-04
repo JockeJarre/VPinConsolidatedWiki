@@ -31,7 +31,7 @@ Settings can be adjusted in-game via **F12 LiveUI**; saving asks whether to stor
 ## Table File Formats
 
 - **`.vpx`** — the original format, a Windows Compound Binary Format file; non-Windows platforms load it via the **POLE** structured-storage library (see [VPX Standalone](VPX%20Standalone.md))
-- **`.vpz`** — open zip-based alternative holding the full table and assets in editable formats, meant for diffing and DCC interoperability; can also run unzipped
+- **`.vpz`** — open zip-based alternative holding the full table and assets in editable formats (JSON documents + scene assets), meant for diffing and DCC interoperability; can also run unzipped; the full spec is in the official docs ([raw/VPX/repo/docs/VPZ File Format.md](https://github.com/vpinball/vpinball/blob/master/docs/VPZ%20File%20Format.md)), marked preliminary/not yet production-ready
 - **`.vpxz`** — zip archive of table **plus ROMs, scripts, and all assets**; mobile-only transfer convenience (ROMs must stay zipped inside)
 - Conversions between formats: **vpxtool** (francisdb)
 
@@ -53,7 +53,7 @@ Table Name (Manufacturer Year)/
 ├── Table Name.ini                 <= per-table settings override
 ├── Table Name.vbs                 <= external script override (wins over embedded script)
 ├── Table Name.directb2s           <= backglass file, shared across table versions
-├── Table Name.scv                 <= ScoreView layout file (see VPX ScoreView Plugin)
+├── Table Name.nix                 <= Nixie plugin layout file (see VPX Nixie Plugin; historically .scv)
 ├── Table Name.info                <= frontend metadata, not read by VPX
 ├── altsound/                      <= AltSound plugin audio
 ├── cache/                         <= VPX rendering cache
@@ -98,6 +98,6 @@ All mobile platforms ship a **built-in web server** (off by default) for uploadi
 - [VPX Standalone](VPX%20Standalone.md) — cross-platform builds and their paths
 - [Altcolor](Altcolor.md) — serum/ and vni/ colorization placement
 - [PuP Packs](PuP%20Packs.md) — pupvideos/ media packs
-- [VPX ScoreView Plugin](VPX%20ScoreView%20Plugin.md) — .scv layout files
+- [VPX Nixie Plugin](VPX%20Nixie%20Plugin.md) — .nix layout files (formerly .scv)
 - [Pincab Setup](Pincab%20Setup.md) — cabinet-wide installation ordering
 - [Unofficial Visual Pinball Wiki](../sources/Unofficial%20Visual%20Pinball%20Wiki.md) — source collection (secondary)

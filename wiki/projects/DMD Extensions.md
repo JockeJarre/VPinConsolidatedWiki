@@ -74,7 +74,7 @@ The 64-bit version must be named `DmdDevice64.dll` and placed alongside the 32-b
 
 Frame-by-frame colorization converts grayscale DMD frames to color using pre-made color palettes. Two formats are supported:
 
-- **Serum** (`.cRZ` files) — modern colorization format
+- **Serum** (`.cRZ` files) — modern colorization format; colorization runs on the bundled [libserum](https://github.com/zesinger/libserum) library, shipped at **v2.8.2** since Nov 2026 (frame struct unchanged; newer colorization packs may require the newer DLL, per the README troubleshooting section: [raw/DMD-Extensions/repo/README.md](https://github.com/freezy/dmd-extensions/blob/master/README.md))
 - **VNI/PAL/PAC** — originally from PIN2DMD
 
 Colorization works for VPM, Pinball FX(3), and The Pinball Arcade.

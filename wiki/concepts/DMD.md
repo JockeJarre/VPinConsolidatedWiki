@@ -9,7 +9,7 @@ Real pinball machines from the early 1990s onward replaced mechanical score reel
 - ⚠️ CONFLICT (secondary source): "Later machines adopted Dot Matrix Displays (DMDs) **built from grids of individual LEDs**"
   ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays.md](https://github.com/dekay/vpinball-wiki/wiki/Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays) §Display Types) — Primary: "dot-matrix **plasma** displays" (wording of this page's opening history, from community-era framing). Real machines used plasma panels (WMS), and many reproductions are LED grids — the rendering styles below cover both
 
-Common resolutions (shared with [VPX ScoreView Plugin](VPX%20ScoreView%20Plugin.md) presets): usual DMD 128×32 (4:1), hi-res 256×64, wide 128×16 (8:1), Sega 192×64 (3:1).
+Common resolutions (shared with [VPX Nixie Plugin](VPX%20Nixie%20Plugin.md) presets): usual DMD 128×32 (4:1), hi-res 256×64, wide 128×16 (8:1), Sega 192×64 (3:1).
 
 ## Display Profiles
 
@@ -70,7 +70,7 @@ The grill area automatically hides if DMD X/Y position is 0/0.
 - [DMD Extensions](../projects/DMD%20Extensions.md) — DmdDevice.dll: routes DMD frames to real and virtual displays
 - [FlexDMD](../projects/FlexDMD.md) — In-process COM DMD renderer; uses DmdDevice.dll for output
 - [VPX Scripting](VPX%20Scripting.md) — Script-driven DMD rendering
-- [VPX ScoreView Plugin](VPX%20ScoreView%20Plugin.md) — Table-script-free DMD window with style presets
+- [VPX Nixie Plugin](VPX%20Nixie%20Plugin.md) — Table-script-free DMD window with style presets
 - [Altcolor](Altcolor.md) — Colorizing the DMD content (PAL/VNI/PAC/Serum)
 - [Unofficial Visual Pinball Wiki](../sources/Unofficial%20Visual%20Pinball%20Wiki.md) — source collection (secondary)
 

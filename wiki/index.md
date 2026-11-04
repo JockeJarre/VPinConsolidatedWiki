@@ -51,7 +51,7 @@ Catalog of all pages in this wiki.
 
 - [VPX Debugging](concepts/VPX%20Debugging.md) — Bisecting regressions, logs, frame capture, crash reporting
 - [VPX File Layout](concepts/VPX%20File%20Layout.md) — Per-table file organization, config paths, companion-file search priority
-- [VPX ScoreView Plugin](concepts/VPX%20ScoreView%20Plugin.md) — Script-free DMD window with .scv layout files
+- [VPX Nixie Plugin](concepts/VPX%20Nixie%20Plugin.md) — Script-free DMD window with .nix layout files (formerly ScoreView)
 - [VPX Software Setup](concepts/VPX%20Software%20Setup.md) — Author-side installs: 32/64-bit VPX, PinMAME, B2S, PUP, FlexDMD, toolchain pinning
 - [VPX Standalone](concepts/VPX%20Standalone.md) — Cross-platform VPX builds: Linux, macOS, iOS, Android, Batocera
 
@@ -84,11 +84,11 @@ Catalog of all pages in this wiki.
 - [DOF Documentation](sources/DOF%20Documentation.md) — Summary of 25 DirectOutput Framework documentation files
 - [FlexDMD Docs](sources/FlexDMD%20Docs.md) — Summary of 5 FlexDMD documentation files
 - [Pinscape Build Guide](sources/Pinscape%20Build%20Guide.md) — Summary of 133 AsciiDoc files covering cabinet construction and the Pinscape platform
-- [PinUp Popper Docs](sources/PinUp%20Popper%20Docs.md) — Summary of 78 mirrored PinUp Popper wiki HTML pages
+- [PinUp Popper Docs](sources/PinUp%20Popper%20Docs.md) — Summary of 80 mirrored PinUp Popper wiki HTML pages
 - [SSFImpactor Guide](sources/SSFImpactor%20Guide.md) — Summary of the 15-page SSFImpactor user guide PDF
 - [Unofficial Visual Pinball Wiki](sources/Unofficial%20Visual%20Pinball%20Wiki.md) — Summary of 48 community wiki files covering VPX, platforms, DOF, and PuP (secondary source)
 - [VPW Knowledge Base](sources/VPW%20Knowledge%20Base.md) — Distilled Virtual Pinball Workshop Discord knowledge: 13 authoring guides, 83 table case studies, 5 references (secondary source)
-- [VPX Docs](sources/VPX%20Docs.md) — Summary of 37 Visual Pinball X documentation files
+- [VPX Docs](sources/VPX%20Docs.md) — Summary of 39 Visual Pinball X documentation files
 
 ## Meta
 
