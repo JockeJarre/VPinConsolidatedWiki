@@ -41,7 +41,7 @@ The Rev 4837+ trick edits **the `.vpx` file itself** via the **vpx-editor** web 
 
 1. The table must have a `PinCab_Backglass` primitive referencing a `BackglassImage` file
 2. VPX injects a flasher (`BackglassImage001`) with the target display as external render device
-3. A PuP Pack configured for the Backglass screen then renders onto it; FullDMD flashers can be re-pointed to e.g. ScoreView
+3. A PuP Pack configured for the Backglass screen then renders onto it; FullDMD flashers can be re-pointed to e.g. ScoreView (the community name for what upstream has renamed [Nixie](VPX%20Nixie%20Plugin.md))
 4. If the backglass primitive is named differently, rename/reassign it
 
 ## Platform Notes

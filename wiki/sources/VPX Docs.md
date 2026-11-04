@@ -1,6 +1,6 @@
 # VPX Docs (Source Summary)
 
-Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](https://github.com/vpinball/vpinball/tree/master/docs) (37 files total in the current mirror). Run `update-raw.ps1` to refresh it before re-ingesting.
+Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](https://github.com/vpinball/vpinball/tree/master/docs) (39 files in the current mirror at the top level, 78 including `img/` media; refreshed 2026-11-04). Run `update-raw.ps1` to refresh it before re-ingesting.
 
 ## Canonical Upstream
 
@@ -8,7 +8,7 @@ Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/do
 
 ## Source Files
 
-Current snapshot file count: 37 files. The table below lists the core files currently referenced by the wiki.
+Current snapshot file count: 39 top-level files (78 including `img/` media). The table below lists the core files currently referenced by the wiki.
 
 | File                                                                                                                     | Topic                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
@@ -29,6 +29,10 @@ Current snapshot file count: 37 files. The table below lists the core files curr
 | [Open Pinball Device User Guide.md](https://github.com/vpinball/vpinball/blob/master/docs/Open%20Pinball%20Device%20User%20Guide.md)                   | OPD support                |
 | [Upgrading Table 10.8.md](https://github.com/vpinball/vpinball/blob/master/docs/Upgrading%20Table%2010.8.md)                                           | 10.7→10.8 migration        |
 | [Upgrading Table 10.8.1.md](https://github.com/vpinball/vpinball/blob/master/docs/Upgrading%20Table%2010.8.1.md)                                       | 10.8→10.8.1 migration      |
+| [Mobile.md](https://github.com/vpinball/vpinball/blob/master/docs/Mobile.md)                                                                           | Unified iOS/Android/Quest guide |
+| [VPZ File Format.md](https://github.com/vpinball/vpinball/blob/master/docs/VPZ%20File%20Format.md)                                                     | Open table-pack format     |
+| [Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt)                                                                   | 10.8.1 changelog           |
+| [Changelog_Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog_Scripts.txt)                                                   | System-script changelog    |
 | [Hotkeys.txt](https://github.com/vpinball/vpinball/blob/master/docs/Hotkeys.txt)                                                                       | Keyboard shortcuts         |
 | [RegistryKeys.txt](https://github.com/vpinball/vpinball/blob/master/docs/RegistryKeys.txt)                                                             | Registry configuration     |
 | [Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Scripts.txt)                                                                       | Script notes               |
@@ -47,6 +51,19 @@ Current snapshot file count: 37 files. The table below lists the core files curr
 - Open Pinball Device is the emerging standard for cabinet controllers
 - SharedMemory API enables external apps (DMD, backglass, tools) to interface with VPX
 - Comprehensive upgrade guides for 10.8 and 10.8.1 (input system rewrite)
+
+## Late-2026 Changes (re-ingested 2026-11-04)
+
+Upstream docs moved substantially since the April 2026 ingest ([Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt), [Changelog_Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog_Scripts.txt)):
+
+- **VPZ table pack format** — open zip/folder pack of JSON + scene assets, an editable alternative to the binary `.vpx` OLE container; preliminary, not production-ready ([raw/VPX/repo/docs/VPZ File Format.md](https://github.com/vpinball/vpinball/blob/master/docs/VPZ%20File%20Format.md)); core tables converted to VPZ packs
+- **ScoreView plugin renamed to Nixie**; per-table layout files are now `.nix` with target-display sections ([raw/VPX/repo/docs/FileLayout.md](https://github.com/vpinball/vpinball/blob/master/docs/FileLayout.md))
+- **B2SLegacy plugin removed** from the plugin set, superseded by B2S
+- **Opus audio**: `.opus` (Ogg Opus, libopusfile) supported for table sounds and music
+- **Hardcoded VPinMAME keys removed from system scripts**: F4 (lock display), F5 (double size), F6 (dips), F12 (volume) become in-game UI table options (VPinMAME COM controller only)
+- **New system scripts 3.62**: `spike1.vbs` (Stern Spike 1), `tecnoplay.vbs`, `wpc_ph.vbs`, `p2k.vbs`, `pinheck.vbs`, `playbar.vbs`; core.vbs `cvpmTimer` queue/ownership fixes
+- **Mobile guide unified** into [Mobile.md](https://github.com/vpinball/vpinball/blob/master/docs/Mobile.md) (iOS 26+ App Store, Android 13+ Google Play/APK, Meta Quest sideload); Wasm builds supported
+- Flasher `VideoCap` API deprecated (reported by the table audit)
 
 ## Wiki Pages Generated
 

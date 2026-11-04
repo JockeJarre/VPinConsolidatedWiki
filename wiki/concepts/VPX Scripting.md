@@ -89,6 +89,8 @@ End Sub
 | `PlayMusic(name)` | Play background music |
 | `MusicVolume(vol)` | Set music volume |
 
+- Table sounds and music may be `Ogg Opus` files (`.opus`, decoded by libopusfile) — added in the 10.8.1 stream ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt))
+
 ## DMD Control
 
 | Property | Description |
@@ -159,6 +161,15 @@ Core VBS scripts provide helper classes for common game mechanics:
 Authoring-community guidance on ball enumeration: the VPW convention caches balls in a global `gBOT` array (create at init, never destroy) because per-frame `GetBalls` is expensive — **but `gBOT` must not be used inside `Cor.Update`/CorTracker, where it segfaults standalone VPX; use `GetBalls` there** ([raw/ExternalWikis/vpw-wiki/repo/docs/guides/vbscript-patterns.md](https://vpw-wiki.skirmishofwit.com/guides/vbscript-patterns/), §Ball Tracking). See [VPX Scripting Patterns](VPX%20Scripting%20Patterns.md), [VPX Standalone](VPX%20Standalone.md).
 
 The **core.vbs** ROM-integration script is community-maintained (VPW repo); keep it current — features like `PlaySoundAtLevelStatic` depend on it ([raw/ExternalWikis/vpw-wiki/repo/docs/reference/fleep-sounds.md](https://vpw-wiki.skirmishofwit.com/reference/fleep-sounds/) The cvpm class reference is the VPForums VBS doc (see [VPX Authoring Tools](VPX%20Authoring%20Tools.md)).
+
+## System Script Updates (VPinMAME 3.62, late 2026)
+
+From [raw/VPX/repo/docs/Changelog_Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog_Scripts.txt):
+
+- New system `.vbs` files: `spike1.vbs` (Stern Spike 1), `tecnoplay.vbs` (X Force, Space Team), `wpc_ph.vbs`, `p2k.vbs`, `pinheck.vbs`, `playbar.vbs`
+- Hardcoded keys removed from all system scripts: **F12** volume, **F6** dips, **F4** display lock, **F5** double size → all become **in-game UI table options** (VPinMAME COM controller only, not the PinMAME plugin)
+- `core.vbs` `cvpmTimer` fixes: `Update` no longer double-copies a queued `GetRef` callback (error 450 halt); `AddTimer2` accepts an object as its ID and fired timers drop the reference; a timer is removed before its callback runs, so an erroring callback no longer blocks queued timers
+- `SolOnAboveZero(68)`: solenoids whose modulated value may stay below half while on turn their `SolCallback` on at any value above 0 (with `UseVPMModSol = 2`)
 
 ## See Also
 

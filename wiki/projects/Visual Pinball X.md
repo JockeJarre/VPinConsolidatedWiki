@@ -189,6 +189,18 @@ Client-server shared memory for external applications ([DMD](../concepts/DMD.md)
 
 In-game editor allowing modification while a table plays. Supports orbit/pan/zoom viewport, grab/rotate/scale parts, and switching between startup state (persisted) and live state (animated). Key shortcuts: P (play/pause), G/R/S (grab/rotate/scale), F (fly camera).
 
+## Late-2026 Upstream Changes (10.8.1 stream)
+
+Captured from the 2026-11 raw refresh ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt), [raw/VPX/repo/docs/Changelog_Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog_Scripts.txt)):
+
+- **VPZ table pack format** — open alternative to the binary `.vpx` OLE container: a folder or `.vpz` zip holding the table as JSON documents plus untouched assets (script, images, sounds, fonts, `.glb` meshes), canonically ordered for diffing and version control; preliminary spec, marked not production-ready ([raw/VPX/repo/docs/VPZ File Format.md](https://github.com/vpinball/vpinball/blob/master/docs/VPZ%20File%20Format.md)). Core tables have been converted to VPZ folder packs; see [VPX File Layout](../concepts/VPX%20File%20Layout.md)
+- **ScoreView plugin renamed to Nixie**; per-table display layouts use `.nix` files with target-display sections ([raw/VPX/repo/docs/FileLayout.md](https://github.com/vpinball/vpinball/blob/master/docs/FileLayout.md)) — see [VPX Nixie Plugin](../concepts/VPX%20Nixie%20Plugin.md)
+- **B2SLegacy plugin removed**, superseded by [B2S Backglass Server](B2S%20Backglass%20Server.md)
+- **Opus audio** (`Ogg Opus`, decoded by libopusfile) supported for table sounds and music
+- **System scripts 3.62**: added `spike1.vbs` (Stern Spike 1), `tecnoplay.vbs`, `wpc_ph.vbs`, `p2k.vbs`, `pinheck.vbs`, `playbar.vbs`; hardcoded F4/F5/F6/F12 VPinMAME keys removed — display lock/size, dip switches and volume are now in-game UI table options (VPinMAME COM controller)
+- **Mobile apps published**: App Store (iOS 26+), Google Play (Android 13+, 64-bit); Meta Quest via sideload. iOS/Android/Quest guides merged into [Mobile.md](https://github.com/vpinball/vpinball/blob/master/docs/Mobile.md); see [VPX Standalone](../concepts/VPX%20Standalone.md)
+- **Wasm builds** supported; flasher `VideoCap` capture API deprecated
+
 ## See Also
 
 - [VPX Scripting](../concepts/VPX%20Scripting.md) — Full scripting API reference

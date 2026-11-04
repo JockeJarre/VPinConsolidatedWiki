@@ -43,7 +43,7 @@ Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/External
 
 ## Filing
 
-Claims from this collection were filed into: [VPX File Layout](../concepts/VPX%20File%20Layout.md), [Altcolor](../concepts/Altcolor.md), [DOF Addressable LEDs](../concepts/DOF%20Addressable%20LEDs.md), [VPX Standalone](../concepts/VPX%20Standalone.md), [PinUp Player](../projects/PinUp%20Player.md), [PuP Packs](../concepts/PuP%20Packs.md), [VPinFE](../projects/VPinFE.md), [Pinscape Pico](../concepts/Pinscape%20Pico.md), [VPX Debugging](../concepts/VPX%20Debugging.md), [VPX ScoreView Plugin](../concepts/VPX%20ScoreView%20Plugin.md), [VPX VR Setup](../concepts/VPX%20VR%20Setup.md), plus sweeps of existing pages.
+Claims from this collection were filed into: [VPX File Layout](../concepts/VPX%20File%20Layout.md), [Altcolor](../concepts/Altcolor.md), [DOF Addressable LEDs](../concepts/DOF%20Addressable%20LEDs.md), [VPX Standalone](../concepts/VPX%20Standalone.md), [PinUp Player](../projects/PinUp%20Player.md), [PuP Packs](../concepts/PuP%20Packs.md), [VPinFE](../projects/VPinFE.md), [Pinscape Pico](../concepts/Pinscape%20Pico.md), [VPX Debugging](../concepts/VPX%20Debugging.md), [VPX Nixie Plugin](../concepts/VPX%20Nixie%20Plugin.md), [VPX VR Setup](../concepts/VPX%20VR%20Setup.md), plus sweeps of existing pages.
 
 ## See Also
 

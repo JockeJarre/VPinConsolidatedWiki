@@ -87,7 +87,7 @@ A common DIY hardware bridge for these cabinet inputs is [Pinscape Controller](p
 - [VPX VR Authoring](concepts/VPX%20VR%20Authoring.md) — Shipping VR support in tables
 - [Fleep Sound Packages](concepts/Fleep%20Sound%20Packages.md) — Real-machine sound packs
 - [VPX Latency](concepts/VPX%20Latency.md) — Input-to-display latency optimization
-- [VPX ScoreView Plugin](concepts/VPX%20ScoreView%20Plugin.md) — Script-free DMD window (.scv layouts)
+- [VPX Nixie Plugin](concepts/VPX%20Nixie%20Plugin.md) — Script-free DMD window (.nix layouts, formerly ScoreView)
 - [VPX Debugging](concepts/VPX%20Debugging.md) — Bisecting regressions, logs, crash reporting
 - [VPinFE](projects/VPinFE.md) — Open-source cross-platform frontend
 

@@ -72,7 +72,7 @@ From raw §Common Bugs, §Debugger/Error Handling:
 
 - **`Not 1 = -2`** in VBScript — compare `= 0`, never `Not x`
 - Duplicate subs silently override (two `LeftFlipper_Collide` definitions kill nFozzy physics)
-- `vpmTimer.Add` is broken — never use
+- `vpmTimer.Add` is broken — never use. (Primary note: `core.vbs` 3.62 fixed several `cvpmTimer` failure modes — the `GetRef` queue copy, object IDs in `AddTimer2`, remove-before-call on `Update` — so `AddTimer2` is less catastrophic than before, but the VPW guidance to avoid `vpmTimer.Add` stands ([raw/VPX/repo/docs/Changelog_Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog_Scripts.txt)))
 - `globalplugin.vbs` shares the namespace and silently overrides table subs — prefix names
 - 31-char object-name limit truncates; special characters in primitive names break generated VBS arrays
 - Pure black RGB(0,0,0) breaks rendering — minimum #111111

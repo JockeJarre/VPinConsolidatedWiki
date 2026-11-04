@@ -292,3 +292,26 @@ Validated and fixed wiki link consistency after content edits:
 - Re-ran markdown link lint to verify no broken links and no unencoded-space filenames in internal links
 
 
+
+## [2026-11-04] ingest | Visual Pinball X documentation (late-2026 10.8.1 stream refresh)
+- Scope: upstream docs moved since 2026-04-09 ingest (clone is depth-1; upstream diff taken via GitHub API since 2026-04-12)
+- New material filed: VPZ table pack format (preliminary), unified Mobile.md guide (App Store/Google Play/Quest), B2SLegacy plugin removal, Opus audio, ScoreView→Nixie rename (.nix layouts), VPinMAME system scripts 3.62 (spike1/tecnoplay/wpc_ph/p2k/pinheck/playbar; F4/F5/F6/F12 keys → in-game UI table options; cvpmTimer fixes), Wasm builds, VideoCap deprecation
+- Pages updated: sources/VPX Docs.md (counts, 4 new file rows, Late-2026 Changes), projects/Visual Pinball X.md (new section), concepts/VPX File Layout.md (VPZ primary citation, .nix tree line), concepts/VPX Scripting.md (Opus, System Script Updates 3.62), concepts/VPX Scripting Patterns.md (cvpmTimer note on vpmTimer.Add stance)
+
+## [2026-11-04] update | Renamed concept VPX ScoreView Plugin → VPX Nixie Plugin (upstream rename, Oct 2026)
+- Page rewritten with rename note + primary/secondary conflict note (.scv/ScoreView vs .nix/Nixie); fixed unclosed-paren citation link from old page
+- Inbound links updated: index.md, overview.md, concepts/DMD.md, concepts/VPX File Layout.md, concepts/PuP Packs.md, sources/Unofficial Visual Pinball Wiki.md
+
+## [2026-11-04] ingest | DMD Extensions documentation (late-2026 refresh)
+- Bundled libserum 2.8.2 (commit 9387c66), PinMameDevice DmdDevice.ini + PinballFX_IDs refresh (Jun 2026)
+- Flagged: cross-platform LibDmd.Core / FSQ decoding / native packaging work is outside fetched docs folders — not filed as features
+- Pages updated: sources/DMD Extensions Docs.md, projects/DMD Extensions.md
+
+## [2026-11-04] update | Nightly refresh sweep — collections reviewed, no change filed
+- DOF (HEAD 2025-10-02), B2S wiki (HEAD 2026-02-14, predates ingest), FlexDMD (HEAD 2024-03-10), Pinscape Build Guide (HEAD 2023-11-09): no upstream movement since last ingest
+- VPW Knowledge Base: HEAD 038f6fe (v3 re-extraction) already ingested 2026-11-01; structure verified (13 guides / 83+index tables / 5 references) — skipped
+- Unofficial Visual Pinball Wiki (dekay): single commit since last ingest (c323972, correct vpxtool optimize --mono flag in Table-Fixes page); claim not filed on any wiki page — no update needed
+- PUP mirror re-crawled (update-raw.sh --pup): content stable, page count 78 → 80; sources/PinUp Popper Docs.md and index.md counts updated
+
+## [2026-11-04] lint | Link scan after nightly ingest
+- Full scan of wiki (log.md exempt): 0 targets with literal spaces, 0 %20 in link labels, 0 local raw/ targets, 0 broken relative links — clean
