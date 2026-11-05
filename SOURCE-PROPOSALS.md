@@ -19,3 +19,4 @@ Proposal line format (one line per source, appended by the nightly scan):
 ## Accepted proposals
 
 _(none yet — the section grows as proposal PRs are merged)_
+- [NEW-SOURCE] PinMAME | https://www.vpin-solutions.com/ | raw/PinMAME/ | Official PinMAME (VPin Solutions, cngraham) docs underlying VPinMAME system-script claims (3.62 scripts, UseVPMModSol/PWM) cited in the VPX docs changelog; not registered
