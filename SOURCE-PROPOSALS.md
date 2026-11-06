@@ -20,3 +20,4 @@ Proposal line format (one line per source, appended by the nightly scan):
 
 _(none yet — the section grows as proposal PRs are merged)_
 - [NEW-SOURCE] Pinscape Pico | https://github.com/mjrgh/PinscapePico/tree/main/GUIConfigTool/Help | raw/PinscapePico/ | Primary mjr GUI Config Tool help (PlungerCal, config templates) cited by the secondary dekay guide; only the KL25Z-era build guide is registered
+- [NEW-SOURCE] Pinscape Pico JSON Config Reference | http://mjrnet.org/pinscape/PinscapePico/Help/JSONConfigRef.htm | raw/Pinscape-Pico-JSON-Config/ | mjr's authoritative Pico JSON config reference (gamepad/plunger/nudge axis names cited by the dekay guide); registered build guide covers only the KL25Z era
