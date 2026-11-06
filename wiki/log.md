@@ -340,3 +340,8 @@ Validated and fixed wiki link consistency after content edits:
 ## [2026-11-04] update | Nightly pipeline: new-source proposals — pi appends strict [NEW-SOURCE] lines to SOURCE-PROPOSALS.md (registry of accepted proposals, bootstrapped); nightly.sh 4b files ONE branch+PR per proposal (source/<slug>, no auto-merge, per-proposal accept/reject); metrics + manifest now track prop rc
 
 ## [2026-11-04] update | Source removed: VPW Knowledge Base deregistered from pipeline; references stripped from 31 pages (14 edited, 17 VPW-derived concept pages deleted); source page deleted
+
+## [2026-11-06] ingest | Unofficial Visual Pinball Wiki (dekay) — Pinscape guide Nudge & Plunger setup/settings split (upstream 2026-11-05)
+- Pico LiveUI guidance extended in [Pinscape Pico](concepts/Pinscape%20Pico.md): Nudge Sensor Type (Cabinet Sensor vs Intent Sensor), Cabinet Weight visibility, 2 Gravity / 0.2048 m/s / 12.5 p.u/s sensor units, separate-axis rule, empty-dropdown = sensor unrecognized, graph-based swap verification
+- Source page note added in [Unofficial Visual Pinball Wiki](sources/Unofficial%20Visual%20Pinball%20Wiki.md)
+- Collections checked, no actionable doc changes: VPX (commit 2026-11-06 "Spatial audio: all emitters are mono points" is code-only, no docs/ delta), DOF, B2S, FlexDMD, DMD-Extensions, VPinballX-Starter, pinscape-build-guide, PUP
