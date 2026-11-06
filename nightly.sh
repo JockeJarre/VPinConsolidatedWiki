@@ -155,21 +155,50 @@ if [ "${SKIP_PI:-0}" != "1" ]; then
         echo "Committed wiki/ changes ($(echo "$COMMIT_STAT" | awk '{print $1, $2}'))."
 
         if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
-            # Branch exists: stack today's commit(s) on top of its tip
-            git rev-parse -q --verify "refs/heads/$BRANCH" >/dev/null \
-                || git branch "$BRANCH" "origin/$BRANCH"
-            if git rebase --onto "$BRANCH" "origin/$BASE" "$TMP" >/dev/null 2>&1; then
+            git fetch origin "$BRANCH" --quiet 2>/dev/null || true
+            git update-ref "refs/remotes/origin/$BRANCH" "$(git rev-parse "origin/$BRANCH")"
+            TIP="$(git rev-parse "origin/$BRANCH")"
+            KEEP_TMP=0
+            if git merge-base --is-ancestor "$TIP" "origin/$BASE" 2>/dev/null; then
+                # Branch fully merged (squash-merge rewrites history on main):
+                # restart the rolling branch from base with today's commit only.
+                echo "Branch fully merged; restarting $BRANCH from $BASE with today's commit."
+                git branch -f "$BRANCH" "$TIP"
                 git switch "$BRANCH" >/dev/null
-                git merge --ff-only "$TMP" >/dev/null
-                git push origin "$BRANCH"
+                git reset --hard "origin/$BASE" >/dev/null
+                if ! git cherry-pick "$TMP" >/dev/null 2>&1; then
+                    git cherry-pick --abort 2>/dev/null || true
+                    git cherry-pick --skip 2>/dev/null || true
+                fi
+                git push --force-with-lease origin "$BRANCH"
                 PUSH_RC=$?
             else
-                git rebase --abort
-                git switch "$BASE" >/dev/null
-                echo "Rebase onto $BRANCH conflicted; changes kept on $TMP, not pushed. Resolve manually."
-                PUSH_RC=1
+                # Unmerged commits on branch: rebase them onto base (git drops
+                # squash-applied patches automatically), then stack today's.
+                git branch -f "$BRANCH" "$TIP"
+                if git rebase "origin/$BASE" "$BRANCH" >/dev/null 2>&1; then
+                    git switch "$BRANCH" >/dev/null
+                    if git cherry-pick "$TMP" >/dev/null 2>&1; then
+                        git push --force-with-lease origin "$BRANCH"
+                        PUSH_RC=$?
+                    else
+                        git cherry-pick --abort 2>/dev/null
+                        git switch "$BASE" >/dev/null
+                        KEEP_TMP=1
+                        echo "Cherry-pick of today's commit conflicted; kept on $TMP, not pushed."
+                        PUSH_RC=1
+                    fi
+                else
+                    git rebase --abort 2>/dev/null
+                    git switch "$BASE" >/dev/null
+                    KEEP_TMP=1
+                    echo "Rebase of unmerged $BRANCH commits conflicted; today's commit kept on $TMP."
+                    PUSH_RC=1
+                fi
             fi
-            git branch -D "$TMP" >/dev/null 2>&1
+            if [ "$KEEP_TMP" -eq 0 ]; then
+                git branch -D "$TMP" >/dev/null 2>&1
+            fi
         else
             # First night: the new branch is the single updates branch
             git branch -m "$TMP" "$BRANCH"
