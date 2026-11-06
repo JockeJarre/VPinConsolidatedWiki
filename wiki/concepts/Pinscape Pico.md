@@ -37,7 +37,16 @@ VPX 10.8.1+ accepts simultaneous position+speed plunger and velocity+acceleratio
 
 ## VPX LiveUI Settings for Pinscape
 
-F12 → Cabinet Sensor type; set the real **Cabinet Weight** (not the 1 kg default); acceleration Sensor Unit = **2 Gravity** (unit scale auto 2×9.80665 = 19.613 m/s²); velocity unit = **0.2048 m/s [Pinscape nudge velocity]**; plunger velocity unit = **12.5 p.u/s [Pinscape plunger velocity]**. Boards without velocity-over-USB (e.g. PinOne): leave velocity unmapped — VPX computes it.
+Guide reorganized upstream 2026-11-05: the Nudge & Plunger chapter is now split into **Setup** (Pico JSON/gamepad wiring, above) and **Settings** (VPX LiveUI, below); the Settings steps also work for the KL25Z and largely for other controllers ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers))
+
+- Entry point: **F12** LiveUI → `Nudge & Tilt Settings` → *Add a new nudge sensor*; `Plunger Settings` → *Add a new plunger sensor* (screenshots `img/settings/AddNudgeSensor.jpg`, `NudgeSettings.jpg`, `AddPlungerSensor.jpg`, `PlungerSettings.jpg` upstream)
+- **Nudge Sensor Type**: `Cabinet Sensor` for a classic four-legged pincab that springs back to position; **`Intent Sensor`** (guide's wording) for free-sliding devices that do not spring back (PinOne Mini, VirtuaTilt X-Arcade). `Cabinet Weight` is shown only for `Cabinet Sensor`
+- Set the real **Cabinet Weight** (not the 1 kg default)
+- Acceleration Sensor Unit = **2 Gravity** (unit scale auto 2×9.80665 = 19.613 m/s²); leave Unit scale alone — it auto-computes. Pinscape firmware should use the 2G range
+- Velocity Sensor Unit = **0.2048 m/s [Pinscape nudge velocity]**; plunger velocity unit = **12.5 p.u/s [Pinscape plunger velocity]**; plunger Position Unit Scale = 1 to start
+- All four nudge sensors on **separate** inputs; plunger Position and Velocity on **separate** inputs; empty dropdown lists mean VPX is not recognizing the sensor
+- Boards without velocity-over-USB (e.g. PinOne): leave the velocity sensors `unmapped` — VPX computes velocity
+- **Verification**: after setup, sensor values are plotted in a graph on each settings page — nudge the cabinet and shoot the plunger to catch swapped pairs (nudge Acceleration↔Velocity, plunger Velocity↔Position)
 
 - ⚠️ CONFLICT (secondary source): nudge **acceleration on `rx`/`ry`**, velocity on `x`/`y`
   ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers) — "These setup instructions also work for the KL25Z") — Primary: [VPX Accelerometer Input](VPX%20Accelerometer%20Input.md) documents "KL25Z: X/Y = accelerations, RX/RY = velocity". Both work — the guide itself calls axis choice arbitrary; do not "fix" one page into the other
