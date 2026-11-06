@@ -97,12 +97,38 @@ OLD_MANIFEST="$(cat "$LOG_DIR/manifest" 2>/dev/null || true)"
 CHANGED=1
 [ "$NEW_MANIFEST" = "$OLD_MANIFEST" ] && CHANGED=0
 
-if [ "$CHANGED" -eq 0 ]; then
-    echo "No upstream changes detected; skipping ingest."
+# --- 2b. operator directives: PR comments by the repo owner since last run ---
+# Comments the owner (JockeJarre) adds to pipeline-created PRs are treated as
+# instructions for the ingest run (accept/reject proposals, register sources,
+# content requests). Processed comments are tracked by .nightly/pr-cursor.
+NOW_ISO="$(date -Is)"
+DIRECTIVES=""
+CURSOR="$LOG_DIR/pr-cursor"
+if [ -f "$CURSOR" ]; then
+    SINCE_UTC="$(date -u -d "@$(date -d "$(cat "$CURSOR")" +%s)" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || echo "")"
+    if [ -n "$SINCE_UTC" ]; then
+        DIRECTIVES="$(gh api "repos/{owner}/{repo}/issues/comments?since=$SINCE_UTC&per_page=100" \
+            -q '[.[] | select(.author.login == "JockeJarre" and .pull_request_url != null)
+                 | "PR #\(.issue_number) [\(.created_at)]: \(.body | gsub("\n"; " ") | .[0:400])"]
+               | .[]' 2>/dev/null || true)"
+    fi
+fi
+DIRECTIVE_COUNT="$(printf '%s\n' "$DIRECTIVES" | grep -c '^PR #' 2>/dev/null || true)"
+[ -z "$DIRECTIVES" ] && DIRECTIVE_COUNT=0
+if [ "$DIRECTIVE_COUNT" -gt 0 ]; then
+    echo "Operator directives found ($DIRECTIVE_COUNT PR comment(s) since last run)."
+fi
+
+NEED_PI=0
+[ "$CHANGED" -eq 1 ] && NEED_PI=1
+[ "$DIRECTIVE_COUNT" -gt 0 ] && NEED_PI=1
+
+if [ "$NEED_PI" -eq 0 ]; then
+    echo "No upstream changes and no directives; skipping ingest."
 fi
 
 # --- 3. headless ingest ------------------------------------------------------
-if [ "$CHANGED" -eq 1 ]; then
+if [ "$NEED_PI" -eq 1 ]; then
     if [ "${SKIP_PI:-0}" = "1" ]; then
         echo "SKIP_PI=1; ingest and push skipped."
     else
@@ -112,6 +138,10 @@ if [ "$CHANGED" -eq 1 ]; then
         timeout "${PI_TIMEOUT:-10800}" pi "${PI_ARGS[@]}" "Nightly ingest for this VPXwiki repository. Follow AGENTS.md conventions exactly.
 
 Context: raw/ snapshots were just refreshed by update-raw.sh; upstream git collections changed since the last run. Last ingests are recorded in wiki/log.md (grep '^## \[' wiki/log.md | tail -10).
+Context: upstream change detection this run: CHANGED=$CHANGED (0 means process ONLY the directives below).
+
+0. Operator directives — the repo owner (JockeJarre) added these comments to pipeline PRs since the last run. Act on each one operationally; ALL replies and discussion go in the PR itself via 'gh pr comment' — NEVER transcribe comment text, directives, Q&A, or directive outcomes into any wiki page. Do NOT append log.md entries for directive handling (log entries only for real ingests). Typical meanings — on a proposal PR (head source/<slug>): 'accept'/'register' = gh pr merge --squash --delete-branch, then register the source (add fetch step to update-raw.sh AND update-raw.ps1, create raw/<Name>/FETCH.md, add raw/FETCH.md table row, add AGENTS.md tier + upstream URL mapping rows — and mirror AGENTS.md to wiki/AGENTS.md); 'reject'/'close' = gh pr close --delete-branch <pr> --comment 'rejected'. Content requests = apply the requested change to wiki pages per AGENTS.md conventions (the change lands as wiki content, but no log entry mentioning the comment; describe the change itself if it warrants an 'update' entry). If a directive is ambiguous, do the safest partial action and reply on the PR explaining. Directives:
+$DIRECTIVES
 
 Do this:
 1. For each raw/ collection whose upstream moved, identify the changed upstream files: inside each git clone under raw/ (e.g. raw/VPX/repo, raw/DOF/repo, raw/B2S/b2s-backglass.wiki, raw/ExternalWikis/*/repo) use 'git -C <clone> log --name-status --since=\"14 days ago\"' and 'git -C <clone> diff HEAD~5 --name-only' to list recent upstream changes; for raw/PUP/site and raw/pinscape-build-guide/markdown diff content against the wiki source pages.
@@ -327,6 +357,7 @@ fi
 if [ "$INGEST_RC" -eq 0 ] && [ "$PUSH_RC" -eq 0 ] && [ "$PR_RC" -eq 0 ] && [ "$PROP_RC" -eq 0 ]; then
     printf '%s\n' "$NEW_MANIFEST" > "$LOG_DIR/manifest"
     printf '%s\n' "$TODAY" > "$LOG_DIR/last-run"
+    printf '%s\n' "$NOW_ISO" > "$LOG_DIR/pr-cursor"
     echo "Manifest updated."
 else
     echo "Pipeline incomplete; manifest NOT updated (will re-ingest next run)."
