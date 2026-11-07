@@ -351,3 +351,5 @@ Validated and fixed wiki link consistency after content edits:
 ## [2026-11-07] ingest | Unofficial Visual Pinball Wiki (dekay, secondary, upstream 2026-11-06 "Reorg plus new Sub & SSF Link") — 2 new pages (50 total): Sound.md (missing PinMAME table sound from split-set clone ROMs lacking sampled audio; parent-ROM / merged-zip / global-dir fixes; vpinball.log "SOUND WAS DISABLED" diagnosis) filed into VPX Debugging; Subs-and-SSF.md is an empty scaffold — recorded as not-citable in the source page, cross-linked from SSFImpactor
 
 ## [2026-11-07] update | Unofficial Visual Pinball Wiki (dekay, secondary, upstream 2026-11-06 "No AI kthxbye") — provenance note added to the source page: upstream Contribution-Guidelines now bans AI-written contributions (collection is human-authored community experience); no filed-page content impact
+
+## [2026-11-06] create | References page: link-only external resources channel; first entry Virtual Pinball Spreadsheet (https://virtualpinballspreadsheet.github.io/), accepted from proposal #8 as linked reference without raw registration

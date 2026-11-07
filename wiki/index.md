@@ -75,5 +75,6 @@ Catalog of all pages in this wiki.
 
 ## Meta
 
+- [References](references.md) — Link-only external references (linked, not integrated as raw sources)
 - [AGENTS.md](AGENTS.md) — Agent instructions, wiki conventions, structure, and maintenance workflows
 - [Word Index](word-index.md) — Auto-generated word search + concordance of the most common words, rebuilt on every site build

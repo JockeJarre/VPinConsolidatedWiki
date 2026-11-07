@@ -109,3 +109,5 @@ This wiki is currently maintained from nine source collections:
 PinUp Popper pages are mirrored locally for reference, but are still less deeply modeled than the main VPX/B2S/DOF/FlexDMD/DMD Extensions/Pinscape project and concept pages.
 
 
+
+- Link-only external references (not integrated sources) are listed on [References](references.md).

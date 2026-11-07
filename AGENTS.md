@@ -79,6 +79,7 @@ VPXwiki/
 |------|---------|------|
 | **Primary** | B2S wiki, DOF docs, VPX docs, FlexDMD docs, DMD Extensions docs, Pinscape Build Guide, SSFImpactor Guide, PinUp Popper docs, vpxtool README, VPinballX Starter | Upstream docs of the owning project. Claims win on conflicts |
 | **Secondary** | Unofficial Visual Pinball Wiki (`raw/ExternalWikis/dekay-vpinball-wiki/`) | Community wiki. Use for tips and platforms the Primary sources do not cover. Where it conflicts with a Primary source, keep the Primary claim and add a conflict note |
+| **Link-only** | Entries in `wiki/references.md` (e.g. Virtual Pinball Spreadsheet) | External lookup aids accepted as links only. Never fetched into `raw/`, never get a `wiki/sources/` page, never support standalone factual claims — cite tier sources as usual |
 
 Conflict note format for Secondary-source disagreements:
 
