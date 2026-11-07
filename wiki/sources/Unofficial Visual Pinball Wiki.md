@@ -23,6 +23,7 @@ Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/External
 ## Key Facts
 
 - Upstream community conventions: prefer the name **"VPinball" over "VPX"** (anticipating v11); Visual Pinball is **GPLv3+** licensed ([raw/ExternalWikis/dekay-vpinball-wiki/repo/_Footer.md](https://github.com/dekay/vpinball-wiki/wiki/_Footer), Contribution-Guidelines.md)
+- The collection is explicitly **human-authored**: upstream Contribution-Guidelines bans AI-written contributions outright (added 2026-11-06) — treat its pages as first-hand community experience, not LLM output ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Contribution-Guidelines.md](https://github.com/dekay/vpinball-wiki/wiki/Contribution-Guidelines))
 - The wiki's own **Archived-Pages** ledger (2026-10-11 batch) dates ecosystem changes: PUP reverse-engineering issues fixed in the current PUP Plugin, `VPinballX.ini` doc dropped after massive 10.8.1 changes, PAL/VNI/Serum/PAC pages merged into a single **Altcolor** page
 - File-Layout.md is the collection's most valuable page: the 10.8.1+ **per-table self-contained layout**, search priority, and per-OS user-data paths (Linux moved to `~/.local/share/VPinballX/<version>` Jan 2026)
 - VPX Standalone = the port **without table editor/preferences GUI**; cross-platform builds shipped in official releases since **VPX 10.8**; per-commit betas on GitHub Actions

@@ -1,6 +1,6 @@
 # VPX Docs (Source Summary)
 
-Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](https://github.com/vpinball/vpinball/tree/master/docs) (40 files in the current mirror at the top level, 86 including `img/` media; refreshed 2026-11-06). Run `update-raw.ps1` to refresh it before re-ingesting.
+Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](https://github.com/vpinball/vpinball/tree/master/docs) (40 files in the current mirror at the top level, 79 including `img/` media; refreshed 2026-11-06). Run `update-raw.ps1` to refresh it before re-ingesting.
 
 ## Canonical Upstream
 
@@ -8,7 +8,7 @@ Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/do
 
 ## Source Files
 
-Current snapshot file count: 40 top-level files (86 including `img/` media). The table below lists the core files currently referenced by the wiki.
+Current snapshot file count: 40 top-level files (79 including `img/` media). The table below lists the core files currently referenced by the wiki.
 
 | File                                                                                                                     | Topic                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
