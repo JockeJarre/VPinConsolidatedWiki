@@ -85,3 +85,4 @@ The "out of the box" configuration targets the **SSF Impactor Reference Cabinet*
 - [DOF Toys and Effects](../concepts/DOF%20Toys%20and%20Effects.md) — Contactor/Knocker toys and LedWizEquivalent mapping
 - [Pincab Setup](../concepts/Pincab%20Setup.md) — Cabinet audio and SSF context
 - [SSFImpactor Guide](../sources/SSFImpactor%20Guide.md) — Source documentation summary
+- [Unofficial Visual Pinball Wiki](../sources/Unofficial%20Visual%20Pinball%20Wiki.md) — secondary collection; its Subs-and-SSF page (hardware sub/amp/exciter selection) is a scaffold opened 2026-11-06, not yet citable

@@ -1,13 +1,38 @@
 # VPX VR Setup
 
-Operational setup for running [Visual Pinball X](../projects/Visual%20Pinball%20X.md) tables in VR: enabling per-table VR rooms, the OpenComposite performance mod, disabling Asynchronous Spacewarp, and ROM chores that bite in VR cabinets. For the rendering/stereo theory see [VPX Stereo 3D](VPX%20Stereo%203D.md).
+Operational setup for running [Visual Pinball X](../projects/Visual%20Pinball%20X.md) tables in VR: the OpenXR space-reference and positioning model with its `PlayerVR.*` settings, augmented-reality passthrough, enabling per-table VR rooms, the OpenComposite performance mod, disabling Asynchronous Spacewarp, and ROM chores that bite in VR cabinets. For the rendering/stereo theory see [VPX Stereo 3D](VPX%20Stereo%203D.md).
 
-> Source: community wiki (secondary), largely from a Reddit write-up by SuperFromND (site: superfromnd.gitlab.io/vpx/). Discord has VR General/Software/Hardware/Tables channels.
+> Sources: Primary — the official VR doc ([raw/VPX/repo/docs/VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md), added upstream 2026-11-06, scoped to VPX 10.8.1 Beta); secondary — community wiki, largely from a Reddit write-up by SuperFromND (site: superfromnd.gitlab.io/vpx/). Discord has VR General/Software/Hardware/Tables channels.
 
 ## Platform Support
 
 - ⚠️ CONFLICT (secondary source): "At time of writing, only the Windows version of VPinball supports VR… work is currently underway to port VPinball to the cross-platform OpenXR API"
   ([raw/ExternalWikis/dekay-vpinball-wiki/repo/VR.md](https://github.com/dekay/vpinball-wiki/wiki/VR), opening NOTE) — Primary: [VPX Stereo 3D](VPX%20Stereo%203D.md) lists **VR headsets via OpenXR (BGFX build)** as shipping, and the same community collection's About-Visual-Pinball.md describes BGFX with OpenXR VR cross-platform. Dated snapshot (2025) — keep the primary claim
+
+## Space References (Primary)
+
+VPX renders the virtual world in **4 nested space references** used by table parts and groups (`PartGroupData::SpaceReference`) ([raw/VPX/repo/docs/VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md)):
+
+- **Room** — the real-world room, unscaled; VR room environment models must be modeled at real-world scale
+- **Cabinet feet** — the cabinet legs/body, scaled with the cabinet and stretched so the feet always touch the room ground
+- **Cabinet** — uniformly scaled so its lockbar matches the target lockbar width, positioned so the lockbar lands at the target lockbar height
+- **Playfield** — the simulation space, following the cabinet and applying the playfield slope; **the only space that supports physics** (balls, flippers, … are simulated in table coordinates)
+
+Table files store cabinet-size information (glass height, playfield position inside the cabinet) which must match the cabinet model in the VR scene ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt)).
+
+## Positioning Parameters (Primary)
+
+Transforms are computed from the *headset room positioning* plus the *target lockbar dimensions*; distances in cm, angles in degrees ([raw/VPX/repo/docs/VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md)):
+
+- **Room positioning** (global, auto-saved session calibration): `PlayerVR.RoomYaw`, `PlayerVR.RoomOffsetX/Y/Z` — shift the whole anchored assembly to correct tracking drift, wrong floor height, or chosen standing spot; written back to app settings when a game exits
+- **Lockbar dimensions** (global): `PlayerVR.OverrideLockbarWidth` / `PlayerVR.OverrideLockbarHeight` scale/position the cabinet to the custom `Player.LockbarWidth` / `Player.LockbarHeight` measured on your real cabinet; when disabled the table-authored values are used. These also drive the non-VR cabinet layout preview
+- **Per-table offsets**: `PlayerVR.TableOffsetY` (playfield-end → lockbar distance), `PlayerVR.TableOffsetZ` (glass height correction) — saved per table, never globally
+- **Adjusting while playing**: view move keys (numpad 8/2 up/down plus bindable front/back/left/right) nudge the room offset; **Align VR view** (numpad 5) recenters the room on the current head pose to the standing position defined by `Player.ScreenPlayerX/Y`; **controller recentering** — hold both controllers on the physical lockbar and enable the action, with `PlayerVR.ControllerCabYOffset` / `PlayerVR.ControllerCabZOffset` correcting controller-stand placement
+- **Seated play**: `PlayerVR.SeatedTilt` tilts the whole cabinet toward the player (view only, physics unchanged; non-zero disables LockFeetToGround); `PlayerVR.LockFeetToGround` stretches the feet to the floor — disable for e.g. a mini cabinet on a desk
+
+## Augmented Reality (Primary)
+
+With PCVR, VPX supports augmented reality (passthrough) via **colorkeyed rendering**: use a VR streamer that supports colorkeyed passthrough (e.g. **Virtual Desktop**), set the keyed color to full black (all channels 0) with the lowest possible tolerance, enable the augmented-reality mode in VPX's in-game UI, and play tables that do not cover the whole environment with a virtual room ([raw/VPX/repo/docs/VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md) — documented for 10.8.1 Beta)
 
 ## Enabling VR Mode per Table
 

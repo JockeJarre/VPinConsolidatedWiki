@@ -46,7 +46,7 @@ Catalog of all pages in this wiki.
 - [VPX Latency](concepts/VPX%20Latency.md) — Input-to-display latency types and optimization strategies
 - [VPX Plunger Input](concepts/VPX%20Plunger%20Input.md) — Position vs velocity-based plunger input for cabinet controllers
 - [VPX View Setup](concepts/VPX%20View%20Setup.md) — VPX camera/projection modes (Perspective vs Window Projection)
-- [VPX VR Setup](concepts/VPX%20VR%20Setup.md) — Operational VR configuration: VR rooms, OpenComposite, ASW
+- [VPX VR Setup](concepts/VPX%20VR%20Setup.md) — Operational VR configuration: OpenXR space references, PlayerVR positioning, AR passthrough, VR rooms, OpenComposite, ASW
 
 ### VPX platforms and operation
 
@@ -68,8 +68,8 @@ Catalog of all pages in this wiki.
 - [Pinscape Build Guide](sources/Pinscape%20Build%20Guide.md) — Summary of 133 AsciiDoc files covering cabinet construction and the Pinscape platform
 - [PinUp Popper Docs](sources/PinUp%20Popper%20Docs.md) — Summary of 80 mirrored PinUp Popper wiki HTML pages
 - [SSFImpactor Guide](sources/SSFImpactor%20Guide.md) — Summary of the 15-page SSFImpactor user guide PDF
-- [Unofficial Visual Pinball Wiki](sources/Unofficial%20Visual%20Pinball%20Wiki.md) — Summary of 48 community wiki files covering VPX, platforms, DOF, and PuP (secondary source)
-- [VPX Docs](sources/VPX%20Docs.md) — Summary of 39 Visual Pinball X documentation files
+- [Unofficial Visual Pinball Wiki](sources/Unofficial%20Visual%20Pinball%20Wiki.md) — Summary of 50 community wiki files covering VPX, platforms, DOF, PuP, sound/SSF (secondary source)
+- [VPX Docs](sources/VPX%20Docs.md) — Summary of 40 Visual Pinball X documentation files
 - [VPinballX Starter](sources/VPinballX%20Starter.md) — Summary of the starter repo incl. 114-commit history as changelog source
 - [Vpxtool README](sources/Vpxtool%20README.md) — Summary of the vpxtool usage README (single-file collection)
 

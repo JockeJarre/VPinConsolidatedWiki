@@ -1,6 +1,6 @@
 # VPX Docs (Source Summary)
 
-Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](https://github.com/vpinball/vpinball/tree/master/docs) (39 files in the current mirror at the top level, 78 including `img/` media; refreshed 2026-11-04). Run `update-raw.ps1` to refresh it before re-ingesting.
+Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](https://github.com/vpinball/vpinball/tree/master/docs) (40 files in the current mirror at the top level, 86 including `img/` media; refreshed 2026-11-06). Run `update-raw.ps1` to refresh it before re-ingesting.
 
 ## Canonical Upstream
 
@@ -8,7 +8,7 @@ Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/do
 
 ## Source Files
 
-Current snapshot file count: 39 top-level files (78 including `img/` media). The table below lists the core files currently referenced by the wiki.
+Current snapshot file count: 40 top-level files (86 including `img/` media). The table below lists the core files currently referenced by the wiki.
 
 | File                                                                                                                     | Topic                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
@@ -18,6 +18,7 @@ Current snapshot file count: 39 top-level files (78 including `img/` media). The
 | [View Setup.md](https://github.com/vpinball/vpinball/blob/master/docs/View%20Setup.md)                                                                 | Camera/projection config   |
 | [Lights.md](https://github.com/vpinball/vpinball/blob/master/docs/Lights.md)                                                                           | Lighting system            |
 | [Stereo.md](https://github.com/vpinball/vpinball/blob/master/docs/Stereo.md)                                                                           | 3D stereo rendering        |
+| [VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md)                                                                                     | OpenXR VR spaces, positioning, AR |
 | [Latency.md](https://github.com/vpinball/vpinball/blob/master/docs/Latency.md)                                                                         | Latency analysis           |
 | [LiveUI.md](https://github.com/vpinball/vpinball/blob/master/docs/LiveUI.md)                                                                           | In-game editor             |
 | [Command Line.md](https://github.com/vpinball/vpinball/blob/master/docs/Command%20Line.md)                                                             | CLI options                |
@@ -52,7 +53,7 @@ Current snapshot file count: 39 top-level files (78 including `img/` media). The
 - SharedMemory API enables external apps (DMD, backglass, tools) to interface with VPX
 - Comprehensive upgrade guides for 10.8 and 10.8.1 (input system rewrite)
 
-## Late-2026 Changes (re-ingested 2026-11-04)
+## Late-2026 Changes (re-ingested 2026-11-04, 2026-11-06)
 
 Upstream docs moved substantially since the April 2026 ingest ([Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt), [Changelog_Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog_Scripts.txt)):
 
@@ -64,6 +65,7 @@ Upstream docs moved substantially since the April 2026 ingest ([Changelog.txt](h
 - **New system scripts 3.62**: `spike1.vbs` (Stern Spike 1), `tecnoplay.vbs`, `wpc_ph.vbs`, `p2k.vbs`, `pinheck.vbs`, `playbar.vbs`; core.vbs `cvpmTimer` queue/ownership fixes
 - **Mobile guide unified** into [Mobile.md](https://github.com/vpinball/vpinball/blob/master/docs/Mobile.md) (iOS 26+ App Store, Android 13+ Google Play/APK, Meta Quest sideload); Wasm builds supported
 - Flasher `VideoCap` API deprecated (reported by the table audit)
+- **VR doc added upstream 2026-11-06**: [VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md) documents the OpenXR scene as 4 nested space references (Room / Cabinet feet / Cabinet / Playfield — only Playfield carries physics), the room-positioning + lockbar-dimension parameter model with the full `PlayerVR.*` settings reference, in-play view nudge / Align-VR-view / controller recentering, seated tilt, and colorkeyed passthrough **augmented reality** (10.8.1 Beta) → filed in [VPX VR Setup](../concepts/VPX%20VR%20Setup.md)
 
 ## Wiki Pages Generated
 

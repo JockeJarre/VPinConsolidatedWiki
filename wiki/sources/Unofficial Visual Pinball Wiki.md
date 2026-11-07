@@ -2,7 +2,7 @@
 
 > ⚠️ Priority: Secondary — community-maintained; Primary sources win on conflicts.
 
-Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/ExternalWikis/dekay-vpinball-wiki/repo/](https://github.com/dekay/vpinball-wiki/wiki) — 48 markdown pages (≈527 KB), a GitHub wiki self-described as "Unofficial" and "a work in progress". It covers VPX/VPinball Setup on Windows plus the cross-platform **VPX Standalone** story (Linux, macOS, iOS, Android, Batocera), file layout, altcolor, addressable LEDs, PuP Packs, VPinFE, and Pinscape Pico.
+Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/ExternalWikis/dekay-vpinball-wiki/repo/](https://github.com/dekay/vpinball-wiki/wiki) — 50 markdown pages (≈525 KB), a GitHub wiki self-described as "Unofficial" and "a work in progress". It covers VPX/VPinball Setup on Windows plus the cross-platform **VPX Standalone** story (Linux, macOS, iOS, Android, Batocera), file layout, altcolor, addressable LEDs, PuP Packs, VPinFE, Pinscape Pico, and (new) sound/SSF pages.
 
 ## Canonical Upstream
 
@@ -16,6 +16,7 @@ Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/External
 | Displays / graphics / plugins | Backglasses,-Alphanumeric,-and-Dot-Matrix-Displays, Altcolor, AddressableLED, VR, ScoreView-Plugin, Serum-Plugin, VNI-Plugin, PAC/PAL pages |
 | DOF / controllers / media | DOF---The-Direct-Output-Framework, Pinscape-KL25Z-and-Pinscape-Pico-Controllers, PINPAD, PUP-Packs, PUP-Reverse-Engineering, Research |
 | Frontends | Frontend-VPinFE, Installing-VPINFE-on-Windows-11 |
+| Sound / audio | Sound (PinMAME split-set ROM sound), Subs-and-SSF-(Surround-Sound-Feedback) (scaffold, 2026-11-06) |
 | Platforms | Linux, macOS, Android, iOS, Batocera, Running-On-Other-OSs, Optimizations-For-iOS-Etc, Dockingstation-for-Mobile-Devices, map-external-Gamecontroller, Standalone-(Mobile)-using-VR-Table-with-Puppack |
 | Meta | _Sidebar, _Footer, Home, Contribution-Guidelines, Help-Wanted, Archived-Pages, Additional-Resources |
 
@@ -29,6 +30,8 @@ Summary of the mirror of the **Unofficial Visual Pinball Wiki** at [raw/External
 - Several pages are marked **ARCHIVED in-source** (`VPinball-Ini.md`, `Fixing-Broken-Tables.md`, `PUP-Reverse-Engineering.md`, PAL/VNI/Serum/PAC): treat their parameter names/defaults as historic snapshots; verify against shipped `Default_VPinballX.ini` before relying on them
 - **Pinscape guide restructured upstream 2026-11-05**: the Pico Nudge & Plunger chapter split into **Setup** (JSON/gamepad axis wiring) and **Settings** (VPX LiveUI sensor dialogs, with `img/settings/` screenshots); sensor-type/unit guidance filed in [Pinscape Pico](../concepts/Pinscape%20Pico.md)
 - **vpxtool optimize** guidance refreshed upstream 2026-11-03 (`--mono` flag corrected): `vpxtool optimize --mono --flac table.vpx` is recommended because VPX 10.8.1+ converts stereo playfield sources to mono internally; `--max-image-size=768` targets VRAM-limited devices ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Table-Fixes-&-Performance-Optimizations.md](https://github.com/dekay/vpinball-wiki/wiki/Table-Fixes-&-Performance-Optimizations)) → filed in [VPX Debugging](../concepts/VPX%20Debugging.md)
+- **Missing PinMAME table sound = split-set ROM sets** (new page 2026-11-06): clone ROM zips may lack the sampled-audio files (e.g. `.l1`); fix by adding the parent ROM zip to the table's `pinmame/roms`, merging the audio files into the clone zip, or (not recommended) falling back to PinMAME's global roms dir — the wasm/browser backend requires table-self-contained files. Diagnose in `vpinball.log`: `SOUND WAS DISABLED DUE TO PROBLEMS WITH SOUND ROMS` ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Sound.md](https://github.com/dekay/vpinball-wiki/wiki/Sound)) → filed in [VPX Debugging](../concepts/VPX%20Debugging.md)
+- **Subs-and-SSF page is a scaffold** (created 2026-11-06, "just getting off the ground"): empty sections for sub selection/design, amplifier and shaker/exciter selection, equalizer tips — monitor upstream before citing; SSF software-side coverage stays with the Primary [SSFImpactor Guide](SSFImpactor%20Guide.md)
 
 ## Conflicts Opened (per Source Priority rule, Primary wins)
 
