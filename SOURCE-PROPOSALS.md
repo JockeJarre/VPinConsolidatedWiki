@@ -21,3 +21,4 @@ Proposal line format (one line per source, appended by the nightly scan):
 _(none yet — the section grows as proposal PRs are merged)_
 - [NEW-SOURCE] Pinscape Pico | https://github.com/mjrgh/PinscapePico/tree/main/GUIConfigTool/Help | raw/PinscapePico/ | Primary mjr GUI Config Tool help (PlungerCal, config templates) cited by the secondary dekay guide; only the KL25Z-era build guide is registered
 - [NEW-SOURCE] VPinFE | https://github.com/vpinfe/vpinfe/wiki | raw/VPinFE/ | The frontend's own upstream GitHub wiki — the community "First Steps" page was retired in its favor (2026-10-24); the VPinFE project page currently rests only on secondary sources
+- [NEW-SOURCE] BAM | https://bspinball.weebly.com/bam.html | raw/BAM/ | Official Ballyware Advanced Mod docs; re-added to VPX 10.8.1 as the BAM headtracking plugin (Windows only), referenced by the new VPX Plugins page
