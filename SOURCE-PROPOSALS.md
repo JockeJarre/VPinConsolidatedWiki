@@ -21,3 +21,4 @@ Proposal line format (one line per source, appended by the nightly scan):
 _(none yet — the section grows as proposal PRs are merged)_
 - [NEW-SOURCE] Pinscape Pico | https://github.com/mjrgh/PinscapePico/tree/main/GUIConfigTool/Help | raw/PinscapePico/ | Primary mjr GUI Config Tool help (PlungerCal, config templates) cited by the secondary dekay guide; only the KL25Z-era build guide is registered
 - [NEW-SOURCE] VPinFE | https://github.com/vpinfe/vpinfe/wiki | raw/VPinFE/ | The frontend's own upstream GitHub wiki — the community "First Steps" page was retired in its favor (2026-10-24); the VPinFE project page currently rests only on secondary sources
+- [NEW-SOURCE] WiVRn | https://github.com/WiVRn/WiVRn | raw/WiVRn/ | OpenXR server/app named by the Primary VPX docs/VR.md Linux getting-started section (added upstream 2026-11-07) as the way to stream VPX to Quest/Pico; no VR-runtime docs are registered
