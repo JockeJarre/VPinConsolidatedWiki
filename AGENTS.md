@@ -79,7 +79,7 @@ VPXwiki/
 |------|---------|------|
 | **Primary** | B2S wiki, DOF docs, VPX docs, FlexDMD docs, DMD Extensions docs, Pinscape Build Guide, SSFImpactor Guide, PinUp Popper docs, vpxtool README, VPinballX Starter | Upstream docs of the owning project. Claims win on conflicts |
 | **Secondary** | Unofficial Visual Pinball Wiki (`raw/ExternalWikis/dekay-vpinball-wiki/`) | Community wiki. Use for tips and platforms the Primary sources do not cover. Where it conflicts with a Primary source, keep the Primary claim and add a conflict note |
-| **Link-only** | Entries in `wiki/references.md` (e.g. Virtual Pinball Spreadsheet) | External lookup aids accepted as links only. Never fetched into `raw/`, never get a `wiki/sources/` page, never support standalone factual claims — cite tier sources as usual |
+| **Link-only** | Entries in `wiki/references.md` (e.g. Virtual Pinball Spreadsheet; source proposals accepted as links, e.g. vendor sites not registered for ingest) | External lookup aids accepted as links only. Never fetched into `raw/`, never get a `wiki/sources/` page, never support standalone factual claims — cite tier sources as usual |
 
 Conflict note format for Secondary-source disagreements:
 
@@ -91,6 +91,25 @@ Conflict note format for Secondary-source disagreements:
 - The source page of a Secondary collection must open with the callout
   `> ⚠️ Priority: Secondary — community-maintained; Primary sources win on conflicts.`
 - Its `index.md` entry ends with the marker `(secondary source)`.
+
+### Source Proposals — Accept, Reject, or Link-only
+
+Every `source/<slug>` proposal PR (opened by the nightly scan, one per
+`- [NEW-SOURCE]` line in `SOURCE-PROPOSALS.md`) has three possible outcomes.
+The repo owner chooses by commenting the keyword on the PR; the nightly
+ingest acts on the comment:
+
+| Directive (PR comment) | Effect |
+|------------------------|--------|
+| `accept` / `register` | Merge the PR (line enters the `SOURCE-PROPOSALS.md` registry on `main`), then register the collection: `update-raw.sh`/`.ps1` fetch step, `raw/<Name>/FETCH.md` + `raw/FETCH.md` row, AGENTS.md tier + upstream URL mapping rows (mirror AGENTS.md to `wiki/AGENTS.md`). The next nightly run ingests it. |
+| `reject` / `close` | Close the PR and delete the branch with a `rejected` comment. Nothing lands. |
+| **`link-only`** | **Accept the resource as a link, not an ingest.** Close the PR and delete the branch with a comment noting the link-only acceptance — do **not** merge it into `SOURCE-PROPOSALS.md`, do **not** register a fetch step, do **not** fetch or ingest it. Add the resource as an entry in `wiki/references.md` (name, upstream URL, one-line purpose) and a matching `wiki/index.md` Meta entry. It then lives in the **Link-only** tier: linkable from wiki pages as a lookup aid, never a citation target for factual claims. |
+
+Link-only rules:
+
+- A `link-only` proposal never appears in `SOURCE-PROPOSALS.md`'s accepted list — it lands in `wiki/references.md` instead. The closed PR is the audit trail.
+- Dedup: closed `source/<slug>` branches stay in the PR list, so the nightly scan will not re-propose the same slug. If a link-only source later deserves full ingest, open a fresh proposal (e.g. branch `source/<slug>-ingest`) and `accept` it.
+- Link-only entries cite as plain external markdown links (`[Name](https://upstream)`); they never use the `([raw/...](url))` raw-citation form.
 
 ### Filenames
 

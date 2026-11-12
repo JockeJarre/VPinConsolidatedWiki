@@ -10,6 +10,11 @@ Proposed (not accepted) entries never appear on this file — they live only on
 their open `source/<slug>` proposal branches/PRs. Rejected proposals are closed
 and never enter this registry.
 
+A proposal accepted as **link-only** (comment `link-only` on its PR) is also
+*not* merged into this registry: its PR is closed and the resource is added to
+`wiki/references.md` as a Link-only-tier entry instead — never fetched, registered,
+or ingested. See AGENTS.md → *Source Proposals — Accept, Reject, or Link-only*.
+
 Proposal line format (one line per source, appended by the nightly scan):
 
 ```

@@ -333,6 +333,8 @@ if [ -n "$PROP_NEW" ] && [ "${SKIP_PI:-0}" != "1" ]; then
             echo
             echo "**Accept:** merge this PR (squash + delete branch) — the proposal enters the registry on main. Then register the collection: update-raw.sh/.ps1 fetch step, raw/<Name>/FETCH.md + raw/FETCH.md table row, AGENTS.md tier + upstream URL mapping (the assistant can do this on request)."
             echo
+            echo "**Link-only:** comment \`link-only\` on this PR — the nightly run closes it (it never enters the registry) and adds the resource to wiki/references.md as a Link-tier entry (linkable lookup aid; never fetched, registered, or ingested)."
+            echo
             echo "**Reject:** close the PR and delete the branch — nothing lands on main."
         } > "$BODY_FILE"
         gh pr create --base "$BASE" --head "$PBRANCH" \

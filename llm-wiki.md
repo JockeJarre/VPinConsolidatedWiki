@@ -85,7 +85,11 @@ pull request — one PR per source, so each can be individually:
 
 - **accepted** → merge the PR (the line enters the registry on `main`), then
   register the fetch step + FETCH recipe + schema mapping, and the next
-  nightly run ingests it into the wiki; or
+  nightly run ingests it into the wiki;
+- **link-only** → accept the resource as a link, not an ingest: comment
+  `link-only` on the PR; the nightly run closes the PR (it never enters this
+  registry) and adds the resource to `wiki/references.md` as a Link-only-tier
+  entry — never fetched, registered, or ingested; or
 - **rejected** → close the PR; nothing lands, and dedup (registry + PR list)
   keeps it out of future scans.
 
