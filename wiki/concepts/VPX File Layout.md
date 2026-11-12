@@ -83,6 +83,9 @@ Table Name (Manufacturer Year)/
 
 Before 10.8.1, the ecosystem used one global folder tree — `Tables\`, `B2S Tables\`, `VPinMAME\roms\`, a shared config folder — typically owned by the **Baller** installer ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Windows.md](https://github.com/dekay/vpinball-wiki/wiki/Windows), Windows-Baller-Installer.md).
 
+- Baller bundles **stable pinned releases** (e.g. 10.8.0) and does not track development builds like 10.8.1 — check the Baller docs for the version it installs; Baller-managed installs therefore stay on the legacy-layout-era engine until upgraded ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Windows-Baller-Installer.md](https://github.com/dekay/vpinball-wiki/wiki/Windows-Baller-Installer))
+- The 10.8.0 Windows build supports **all files within a single directory only** — the per-table layout above requires 10.8.1+; the Standalone build is more flexible ([raw/ExternalWikis/dekay-vpinball-wiki/repo/FAQ.md](https://github.com/dekay/vpinball-wiki/wiki/FAQ))
+
 - PUP media in this layout resolves to a single global `Tables\pupvideos\<romname>\` folder (every `.vpx` shares the tables folder); PinUp Player's native global `C:\PinUpSystem\PuPVideos\` folder is independent of the VPX layout change — see [PuP Packs](PuP%20Packs.md), §Placement in the Legacy (Baller-Era) Layout
 
 - ⚠️ CONFLICT (secondary source): global `VPinMAME\roms\` placement ("Where do I put ROMs?")

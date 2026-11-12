@@ -70,6 +70,7 @@ Table Name (Manufacturer Year)/
 - **Table overrides**: Named after table file or containing folder
 - Custom settings file via `-Ini` command line option
 - Settings moved from the Windows Registry to ini files; the registry-era layout (global `VPinMAME\roms\`, Baller-managed trees) survives in community FAQ/Windows pages as **legacy VP9-era advice** — see [VPX File Layout](../concepts/VPX%20File%20Layout.md)
+- The community **Baller Installer** bundles stable pinned releases (e.g. 10.8.0) and does not follow development builds like 10.8.1 — check the installed version before applying 10.8.1-era guidance ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Windows-Baller-Installer.md](https://github.com/dekay/vpinball-wiki/wiki/Windows-Baller-Installer))
   - ⚠️ CONFLICT (secondary source): registry-key settings storage, `regsvr32` repair steps, global ROM folders
     ([raw/ExternalWikis/dekay-vpinball-wiki/repo/FAQ.md](https://github.com/dekay/vpinball-wiki/wiki/FAQ), Windows.md) — Primary: ini model with per-table config ([raw/VPX docs](https://github.com/vpinball/vpinball/tree/master/docs))
 
