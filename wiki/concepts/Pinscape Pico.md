@@ -10,12 +10,12 @@ The Pico presents one of three interfaces to the host; VPX sees each differently
 
 | Interface | Notes |
 |-----------|-------|
-| **`gamepad`** (HID gamepad + keyboard) | Preferred on VPX 10.8.1+ |
+| **`openpindev`** (Open Pinball Device) | Recommended interface on current VPX builds (better performance). The Pico's `openpindev` support in 10.8.1+ was **broken on Windows before 2026-07-24 and on Linux/Mac before 2026-11-09** — use a newer build (guide, updated 2026-11-11; supersedes the earlier "broken on Linux per vpinball #3303, use gamepad/xinput" note) |
+| **`gamepad`** (HID gamepad + keyboard) | Next best when `openpindev` is unavailable (older VPX builds); the guide's JSON examples are written for `gamepad` and are flagged upstream as needing an `openpindev` rewrite |
 | **`xInput`** | Fallback when a host (e.g. OnePlus Pad3) doesn't recognize the Pico's HID gamepad; **max 15 buttons** (15 valid xInput button names) |
-| **`openpindev`** (Open Pinball Device) | ⚠️ detection broken on Linux per vpinball issue #3303 — "Use the `gamepad` (preferred) or `xinput` interfaces instead" |
 
-- ⚠️ CONFLICT (secondary source): OpenPinDev detection on the Pico is broken (Linux); use gamepad/xInput
-  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers), §Nudge & Plunger Setup) — Primary: [Open Pinball Device](Open%20Pinball%20Device.md) recommends selecting OpenPinDev for plunger/nudge input; Pico support "in development as of Sept 2024". Status (secondary) beats design (primary) — dated 2026 note
+- ⚠️ CONFLICT (secondary source): dated status note — `openpindev` on the Pico was broken on Windows before 2026-07-24 and on Linux/Mac before 2026-11-09 (fixed in newer VPX builds; **recommended over `gamepad`/`xinput` for performance where the build is new enough**)
+  ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers), §Nudge & Plunger Setup, updated 2026-11-11) — Primary: [Open Pinball Device](Open%20Pinball%20Device.md) documents OPD as the intended interface for plunger/nudge input (design stands; the secondary note is a dated platform-status timeline)
 
 ## Canonical VPX 10.8.1+ Mapping
 
@@ -45,7 +45,8 @@ Guide reorganized upstream 2026-11-05: the Nudge & Plunger chapter is now split 
 - Acceleration Sensor Unit = **2 Gravity** (unit scale auto 2×9.80665 = 19.613 m/s²); leave Unit scale alone — it auto-computes. Pinscape firmware should use the 2G range
 - Velocity Sensor Unit = **0.2048 m/s [Pinscape nudge velocity]**; plunger velocity unit = **12.5 p.u/s [Pinscape plunger velocity]**; plunger Position Unit Scale = 1 to start
 - All four nudge sensors on **separate** inputs; plunger Position and Velocity on **separate** inputs; empty dropdown lists mean VPX is not recognizing the sensor
-- Boards without velocity-over-USB (e.g. PinOne): leave the velocity sensors `unmapped` — VPX computes velocity
+- Boards without velocity-over-USB (e.g. PinOne): leave the velocity sensors `unmapped` — VPX computes velocity. The **Arnoz Dudescab** *does* support velocity-over-USB (guide, 2026-11-11)
+- The guide flags these Settings instructions as still **gamepad-oriented**: they need updating for the `openpindev` interface, which should be preferred when available (performance) ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Pinscape-KL25Z-and-Pinscape-Pico-Controllers.md](https://github.com/dekay/vpinball-wiki/wiki/Pinscape-KL25Z-and-Pinscape-Pico-Controllers), §Nudge & Plunger Settings, 2026-11-11)
 - **Verification**: after setup, sensor values are plotted in a graph on each settings page — nudge the cabinet and shoot the plunger to catch swapped pairs (nudge Acceleration↔Velocity, plunger Velocity↔Position)
 
 - ⚠️ CONFLICT (secondary source): nudge **acceleration on `rx`/`ry`**, velocity on `x`/`y`

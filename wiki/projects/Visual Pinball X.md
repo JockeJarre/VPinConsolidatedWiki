@@ -195,6 +195,7 @@ Captured from the 2026-11 raw refresh ([raw/VPX/repo/docs/Changelog.txt](https:/
 - **System scripts 3.62**: added `spike1.vbs` (Stern Spike 1), `tecnoplay.vbs`, `wpc_ph.vbs`, `p2k.vbs`, `pinheck.vbs`, `playbar.vbs`; hardcoded F4/F5/F6/F12 VPinMAME keys removed — display lock/size, dip switches and volume are now in-game UI table options (VPinMAME COM controller)
 - **Mobile apps published**: App Store (iOS 26+), Google Play (Android 13+, 64-bit); Meta Quest via sideload. iOS/Android/Quest guides merged into [Mobile.md](https://github.com/vpinball/vpinball/blob/master/docs/Mobile.md); see [VPX Standalone](../concepts/VPX%20Standalone.md)
 - **Wasm builds** supported; flasher `VideoCap` capture API deprecated
+- **Per-table Physics Profile (10.8 vs 10.9)**: the table's physics properties gained a 'Physics Profile' option — existing tables keep 10.8 physics by default, the 10.9 profile enables the corrected physics engine behavior and is the default for new tables. 10.9 highlights: gates model the **actual moving wire/plate** (trigger-zone collider over the sweep between angle limits, ball-tracked contact solving) instead of static line segments, and **ramp side walls are exact sloped quads** (fixing ball escapes through dead zones on steep ramps and phantom hits under raised parts); full list of contact/friction/flipper-inertia fixes in the changelog ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt), upstream 2026-11-13/14)
 
 ## See Also
 

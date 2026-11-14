@@ -78,6 +78,7 @@ Table Name (Manufacturer Year)/
 - Basenames of `.ini` / `.vbs` / `.vpx` must match **exactly** (case and special characters) to associate; ROM filenames lowercase on disk (`TAF_L7` → `taf_l7.zip`) ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Optimizations-For-iOS-Etc.md](https://github.com/dekay/vpinball-wiki/wiki/Optimizations-For-iOS-Etc), §Scenario 2)
 - ROM name comes from `Const cGameName` in the table script, or from `vpinball.log` after a failed load
 - A legacy file layout is still supported for migration ease but **discouraged**; upstream may drop it
+- The community layout page is flagged in-source (2026-11-11) as **not yet updated for the new PinMAME `memmaps`/`gamedefs` folders** — expect per-table `pinmame/` subfolders beyond the tree above on recent builds ([raw/ExternalWikis/dekay-vpinball-wiki/repo/File-Layout.md](https://github.com/dekay/vpinball-wiki/wiki/File-Layout))
 
 ## Legacy Global Layout (Baller Era)
 
