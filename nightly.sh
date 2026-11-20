@@ -32,12 +32,20 @@ export PATH
 PATH="$HOME/.local/bin:$PATH"
 export PATH
 
-# gh authentication: prefer gh's own login; fall back to token file
+# The nightly operates on the JockeJarreAI fork (origin), see ~/.ssh/config
+# host alias github.com-jockejarreai (git pushes authenticate as JockeJarreAI
+# via ~/.ssh/id_JockeJarreAI). API calls (gh pr/comment scanning) need
+# JockeJarreAI credentials too: gh has no per-command account selection, so
+# ~/.config/gh_token must hold a JockeJarreAI PAT (classic: repo + pull
+# requests, or fine-grained with contents:write + pull_requests on the fork).
+# An exported GH_TOKEN overrides stored gh auth, pinning gh calls to that PAT.
+# gh authentication: prefer explicit token file; fall back to gh's own login
+if [ -f "$HOME/.config/gh_token" ]; then
+    GH_TOKEN="$(cat "$HOME/.config/gh_token")"
+    export GH_TOKEN
+fi
 if ! gh auth status >/dev/null 2>&1; then
-    if [ -f "$HOME/.config/gh_token" ]; then
-        GH_TOKEN="$(cat "$HOME/.config/gh_token")"
-        export GH_TOKEN
-    fi
+    echo "WARNING: no gh credentials; PR steps will fail"
 fi
 
 # Single-instance lock
@@ -107,10 +115,18 @@ CURSOR="$LOG_DIR/pr-cursor"
 if [ -f "$CURSOR" ]; then
     SINCE_UTC="$(date -u -d "@$(date -d "$(cat "$CURSOR")" +%s)" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || echo "")"
     if [ -n "$SINCE_UTC" ]; then
-        DIRECTIVES="$(gh api "repos/{owner}/{repo}/issues/comments?since=$SINCE_UTC&per_page=100" \
-            -q '[.[] | select(.author.login == "JockeJarre" and .pull_request_url != null)
-                 | "PR #\(.issue_number) [\(.created_at)]: \(.body | gsub("\n"; " ") | .[0:400])"]
-               | .[]' 2>/dev/null || true)"
+        # REST issue-comments payload fields: .user.login, .issue_url, .html_url
+        # (NOT .author.login/.pull_request_url — that was the old scan's bug).
+        # Scan BOTH repos: pre-fork PRs live in the parent's shared PR database;
+        # fork-based PRs are visible from both endpoints, so dedup by comment id.
+        DQ='[.[] | select(.user.login == "JockeJarre")
+             | "\(.id)|PR #\(.issue_url | split("/") | last) [\(.html_url | split("/")[3:5] | join("/"))] [\(.created_at)]: \(.body | gsub("\n"; " ") | .[0:400])"]
+           | .[]'
+        DIRECTIVES="$(
+            {
+                gh api "repos/JockeJarreAI/VPinConsolidatedWiki/issues/comments?since=$SINCE_UTC&per_page=100" -q "$DQ" 2>/dev/null
+                gh api "repos/JockeJarre/VPinConsolidatedWiki/issues/comments?since=$SINCE_UTC&per_page=100" -q "$DQ" 2>/dev/null
+            } | sort -t'|' -k1,1n -u | cut -d'|' -f2-)"
     fi
 fi
 DIRECTIVE_COUNT="$(printf '%s\n' "$DIRECTIVES" | grep -c '^PR #' 2>/dev/null || true)"
@@ -140,7 +156,7 @@ if [ "$NEED_PI" -eq 1 ]; then
 Context: raw/ snapshots were just refreshed by update-raw.sh; upstream git collections changed since the last run. Last ingests are recorded in wiki/log.md (grep '^## \[' wiki/log.md | tail -10).
 Context: upstream change detection this run: CHANGED=$CHANGED (0 means process ONLY the directives below).
 
-0. Operator directives — the repo owner (JockeJarre) added these comments to pipeline PRs since the last run. Act on each one operationally; ALL replies and discussion go in the PR itself via 'gh pr comment' — NEVER transcribe comment text, directives, Q&A, or directive outcomes into any wiki page. Do NOT append log.md entries for directive handling (log entries only for real ingests). Typical meanings — on a proposal PR (head source/<slug>): 'accept'/'register' = gh pr merge --squash --delete-branch, then register the source (add fetch step to update-raw.sh AND update-raw.ps1, create raw/<Name>/FETCH.md, add raw/FETCH.md table row, add AGENTS.md tier + upstream URL mapping rows — and mirror AGENTS.md to wiki/AGENTS.md); 'reject'/'close' = gh pr close --delete-branch <pr> --comment 'rejected'; 'link-only' = gh pr close --delete-branch <pr> with a comment noting the acceptance, add the resource as an entry to wiki/references.md (create from the References page template if missing: name, upstream URL, one-line purpose) and a matching index.md Meta entry — never fetch, register, or ingest it. Content requests = apply the requested change to wiki pages per AGENTS.md conventions (the change lands as wiki content, but no log entry mentioning the comment; describe the change itself if it warrants an 'update' entry). If a directive is ambiguous, do the safest partial action and reply on the PR explaining. Directives:
+0. Operator directives — the repo owner (JockeJarre) added these comments to pipeline PRs since the last run. Each directive line is tagged with the PR's owner/repo in the second bracket — ALWAYS pass --repo <owner/repo> to every gh pr/issue command (pre-fork PRs live in the parent JockeJarre/VPinConsolidatedWiki PR database and are invisible from the fork's endpoints). Idempotence first: before acting, gh pr view the PR; if it is already closed/merged with the requested outcome applied, skip it and post nothing. Act on each one operationally; ALL replies and discussion go in the PR itself via 'gh pr comment' — NEVER transcribe comment text, directives, Q&A, or directive outcomes into any wiki page. Do NOT append log.md entries for directive handling (log entries only for real ingests). Typical meanings — on a proposal PR (head source/<slug>): 'accept'/'register' = gh pr merge --squash --delete-branch, then register the source (add fetch step to update-raw.sh AND update-raw.ps1, create raw/<Name>/FETCH.md, add raw/FETCH.md table row, add AGENTS.md tier + upstream URL mapping rows — and mirror AGENTS.md to wiki/AGENTS.md); 'reject'/'close' = gh pr close --delete-branch <pr> --comment 'rejected'; 'link-only' = gh pr close --delete-branch <pr> with a comment noting the acceptance, add the resource as an entry to wiki/references.md (create from the References page template if missing: name, upstream URL, one-line purpose) and a matching index.md Meta entry — never fetch, register, or ingest it. Content requests = apply the requested change to wiki pages per AGENTS.md conventions (the change lands as wiki content, but no log entry mentioning the comment; describe the change itself if it warrants an 'update' entry). If a directive is ambiguous, do the safest partial action and reply on the PR explaining. Directives:
 $DIRECTIVES
 
 Do this:
@@ -151,7 +167,7 @@ Do this:
 5. Verify every link you added: spaces encoded as %20 in targets, never in labels; citations point to upstream URLs, never local raw/ paths.
 6. New-source discovery: if you encounter authoritative documentation sources (project docs, guides, tools) that are NOT in raw/ (registered list: raw/FETCH.md), append proposals to SOURCE-PROPOSALS.md at the repo root — never modify existing lines there. Strict one-line format per proposal:
    - [NEW-SOURCE] <Project Name> | <upstream docs URL> | raw/<ProposedCollection>/ | <one-line reason>
-   Dedup before proposing: skip names already present in SOURCE-PROPOSALS.md, and skip slugs already used by proposal PRs — check with: gh pr list --repo JockeJarre/VPinConsolidatedWiki --state all --limit 200 --json headRefName (proposal branches are named source/<slug>; slug = project name lowercased, non-alphanumerics collapsed to single hyphens, leading/trailing hyphens removed). Do NOT fetch, register, or ingest proposed sources yourself — humans decide. When a resource is merely a lookup aid (index/database site) it may already be listed in wiki/references.md — link there, do not propose.
+   Dedup before proposing: skip names already present in SOURCE-PROPOSALS.md, and skip slugs already used by proposal PRs — check with: gh pr list --repo JockeJarreAI/VPinConsolidatedWiki --state all --limit 200 --json headRefName plus gh pr list --repo JockeJarre/VPinConsolidatedWiki --state all --limit 200 --json headRefName (union of both; the fork was created after earlier proposals landed upstream) (proposal branches are named source/<slug>; slug = project name lowercased, non-alphanumerics collapsed to single hyphens, leading/trailing hyphens removed). Do NOT fetch, register, or ingest proposed sources yourself — humans decide. When a resource is merely a lookup aid (index/database site) it may already be listed in wiki/references.md — link there, do not propose.
 
 Finish by printing a short summary: collections processed, pages created/updated, new source proposals appended, and anything skipped or flagged as a conflict." 
         INGEST_RC=$?
