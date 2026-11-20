@@ -53,7 +53,7 @@ Current snapshot file count: 40 top-level files (79 including `img/` media). The
 - SharedMemory API enables external apps (DMD, backglass, tools) to interface with VPX
 - Comprehensive upgrade guides for 10.8 and 10.8.1 (input system rewrite)
 
-## Late-2026 Changes (re-ingested 2026-11-04, 2026-11-06)
+## Late-2026 Changes (re-ingested 2026-11-04, 2026-11-06, 2026-11-14)
 
 Upstream docs moved substantially since the April 2026 ingest ([Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt), [Changelog_Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog_Scripts.txt)):
 
@@ -66,6 +66,7 @@ Upstream docs moved substantially since the April 2026 ingest ([Changelog.txt](h
 - **Mobile guide unified** into [Mobile.md](https://github.com/vpinball/vpinball/blob/master/docs/Mobile.md) (iOS 26+ App Store, Android 13+ Google Play/APK, Meta Quest sideload); Wasm builds supported
 - Flasher `VideoCap` API deprecated (reported by the table audit)
 - **VR doc added upstream 2026-11-06**: [VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md) documents the OpenXR scene as 4 nested space references (Room / Cabinet feet / Cabinet / Playfield — only Playfield carries physics), the room-positioning + lockbar-dimension parameter model with the full `PlayerVR.*` settings reference, in-play view nudge / Align-VR-view / controller recentering, seated tilt, and colorkeyed passthrough **augmented reality** (10.8.1 Beta) → filed in [VPX VR Setup](../concepts/VPX%20VR%20Setup.md)
+- **Per-table Physics Profile 10.9 documented in the Changelog (upstream 2026-11-13/14)**: a per-table 'Physics Profile' option in the table's physics properties (default 10.8; new tables use 10.9) opts into the corrected physics engine behavior — including a rewritten **gate** model (the collider is a trigger zone tracking the actual moving wire/plate between its angle limits, stopping the ball only when the wire cannot follow) and exact **sloped quad ramp side walls** (replacing subdivided rectangles whose dead zones let balls escape on steep sections) → filed in [Visual Pinball X](../projects/Visual%20Pinball%20X.md) ([Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt))
 
 ## Wiki Pages Generated
 
