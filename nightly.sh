@@ -32,13 +32,13 @@ export PATH
 PATH="$HOME/.local/bin:$PATH"
 export PATH
 
-# The nightly operates on the JockeJarreAI fork (origin), see ~/.ssh/config
-# host alias github.com-jockejarreai (git pushes authenticate as JockeJarreAI
-# via ~/.ssh/id_JockeJarreAI). API calls (gh pr/comment scanning) need
-# JockeJarreAI credentials too: gh has no per-command account selection, so
-# ~/.config/gh_token must hold a JockeJarreAI PAT (classic: repo + pull
-# requests, or fine-grained with contents:write + pull_requests on the fork).
-# An exported GH_TOKEN overrides stored gh auth, pinning gh calls to that PAT.
+# The nightly operates directly on the wiki repo (origin =
+# JockeJarre/VPinConsolidatedWiki) as the second user JockeJarreAI, which is a
+# collaborator: git pushes authenticate via ~/.ssh/id_JockeJarreAI (SSH host
+# alias github.com-jockejarreai) and gh API calls authenticate via the classic
+# PAT in ~/.config/gh_token (repo scope). An exported GH_TOKEN overrides stored
+# gh auth, pinning the script's gh calls to that PAT; the interactive JockeJarre
+# login stays untouched.
 # gh authentication: prefer explicit token file; fall back to gh's own login
 if [ -f "$HOME/.config/gh_token" ]; then
     GH_TOKEN="$(cat "$HOME/.config/gh_token")"
@@ -117,16 +117,11 @@ if [ -f "$CURSOR" ]; then
     if [ -n "$SINCE_UTC" ]; then
         # REST issue-comments payload fields: .user.login, .issue_url, .html_url
         # (NOT .author.login/.pull_request_url — that was the old scan's bug).
-        # Scan BOTH repos: pre-fork PRs live in the parent's shared PR database;
-        # fork-based PRs are visible from both endpoints, so dedup by comment id.
-        DQ='[.[] | select(.user.login == "JockeJarre")
-             | "\(.id)|PR #\(.issue_url | split("/") | last) [\(.html_url | split("/")[3:5] | join("/"))] [\(.created_at)]: \(.body | gsub("\n"; " ") | .[0:400])"]
-           | .[]'
-        DIRECTIVES="$(
-            {
-                gh api "repos/JockeJarreAI/VPinConsolidatedWiki/issues/comments?since=$SINCE_UTC&per_page=100" -q "$DQ" 2>/dev/null
-                gh api "repos/JockeJarre/VPinConsolidatedWiki/issues/comments?since=$SINCE_UTC&per_page=100" -q "$DQ" 2>/dev/null
-            } | sort -t'|' -k1,1n -u | cut -d'|' -f2-)"
+        # All pipeline PRs live in JockeJarre/VPinConsolidatedWiki.
+        DIRECTIVES="$(gh api "repos/JockeJarre/VPinConsolidatedWiki/issues/comments?since=$SINCE_UTC&per_page=100" \
+            -q '[.[] | select(.user.login == "JockeJarre")
+                 | "PR #\(.issue_url | split("/") | last) [\(.html_url | split("/")[3:5] | join("/"))] [\(.created_at)]: \(.body | gsub("\n"; " ") | .[0:400])"]
+               | .[]' 2>/dev/null | cut -d'|' -f2-)"
     fi
 fi
 DIRECTIVE_COUNT="$(printf '%s\n' "$DIRECTIVES" | grep -c '^PR #' 2>/dev/null || true)"
@@ -156,7 +151,7 @@ if [ "$NEED_PI" -eq 1 ]; then
 Context: raw/ snapshots were just refreshed by update-raw.sh; upstream git collections changed since the last run. Last ingests are recorded in wiki/log.md (grep '^## \[' wiki/log.md | tail -10).
 Context: upstream change detection this run: CHANGED=$CHANGED (0 means process ONLY the directives below).
 
-0. Operator directives — the repo owner (JockeJarre) added these comments to pipeline PRs since the last run. Each directive line is tagged with the PR's owner/repo in the second bracket — ALWAYS pass --repo <owner/repo> to every gh pr/issue command (pre-fork PRs live in the parent JockeJarre/VPinConsolidatedWiki PR database and are invisible from the fork's endpoints). Idempotence first: before acting, gh pr view the PR; if it is already closed/merged with the requested outcome applied, skip it and post nothing. Act on each one operationally; ALL replies and discussion go in the PR itself via 'gh pr comment' — NEVER transcribe comment text, directives, Q&A, or directive outcomes into any wiki page. Do NOT append log.md entries for directive handling (log entries only for real ingests). Typical meanings — on a proposal PR (head source/<slug>): 'accept'/'register' = gh pr merge --squash --delete-branch, then register the source (add fetch step to update-raw.sh AND update-raw.ps1, create raw/<Name>/FETCH.md, add raw/FETCH.md table row, add AGENTS.md tier + upstream URL mapping rows — and mirror AGENTS.md to wiki/AGENTS.md); 'reject'/'close' = gh pr close --delete-branch <pr> --comment 'rejected'; 'link-only' = gh pr close --delete-branch <pr> with a comment noting the acceptance, add the resource as an entry to wiki/references.md (create from the References page template if missing: name, upstream URL, one-line purpose) and a matching index.md Meta entry — never fetch, register, or ingest it. Content requests = apply the requested change to wiki pages per AGENTS.md conventions (the change lands as wiki content, but no log entry mentioning the comment; describe the change itself if it warrants an 'update' entry). If a directive is ambiguous, do the safest partial action and reply on the PR explaining. Directives:
+0. Operator directives — the repo owner (JockeJarre) added these comments to pipeline PRs since the last run. Each directive line is tagged with the PR's owner/repo in the second bracket — ALWAYS pass --repo <owner/repo> to every gh pr/issue command. Idempotence first: before acting, gh pr view the PR; if it is already closed/merged with the requested outcome applied, skip it and post nothing. Act on each one operationally; ALL replies and discussion go in the PR itself via 'gh pr comment' — NEVER transcribe comment text, directives, Q&A, or directive outcomes into any wiki page. Do NOT append log.md entries for directive handling (log entries only for real ingests). Typical meanings — on a proposal PR (head source/<slug>): 'accept'/'register' = gh pr merge --squash --delete-branch, then register the source (add fetch step to update-raw.sh AND update-raw.ps1, create raw/<Name>/FETCH.md, add raw/FETCH.md table row, add AGENTS.md tier + upstream URL mapping rows — and mirror AGENTS.md to wiki/AGENTS.md); 'reject'/'close' = gh pr close --delete-branch <pr> --comment 'rejected'; 'link-only' = gh pr close --delete-branch <pr> with a comment noting the acceptance, add the resource as an entry to wiki/references.md (create from the References page template if missing: name, upstream URL, one-line purpose) and a matching index.md Meta entry — never fetch, register, or ingest it. Content requests = apply the requested change to wiki pages per AGENTS.md conventions (the change lands as wiki content, but no log entry mentioning the comment; describe the change itself if it warrants an 'update' entry). If a directive is ambiguous, do the safest partial action and reply on the PR explaining. Directives:
 $DIRECTIVES
 
 Do this:
@@ -167,7 +162,7 @@ Do this:
 5. Verify every link you added: spaces encoded as %20 in targets, never in labels; citations point to upstream URLs, never local raw/ paths.
 6. New-source discovery: if you encounter authoritative documentation sources (project docs, guides, tools) that are NOT in raw/ (registered list: raw/FETCH.md), append proposals to SOURCE-PROPOSALS.md at the repo root — never modify existing lines there. Strict one-line format per proposal:
    - [NEW-SOURCE] <Project Name> | <upstream docs URL> | raw/<ProposedCollection>/ | <one-line reason>
-   Dedup before proposing: skip names already present in SOURCE-PROPOSALS.md, and skip slugs already used by proposal PRs — check with: gh pr list --repo JockeJarreAI/VPinConsolidatedWiki --state all --limit 200 --json headRefName plus gh pr list --repo JockeJarre/VPinConsolidatedWiki --state all --limit 200 --json headRefName (union of both; the fork was created after earlier proposals landed upstream) (proposal branches are named source/<slug>; slug = project name lowercased, non-alphanumerics collapsed to single hyphens, leading/trailing hyphens removed). Do NOT fetch, register, or ingest proposed sources yourself — humans decide. When a resource is merely a lookup aid (index/database site) it may already be listed in wiki/references.md — link there, do not propose.
+   Dedup before proposing: skip names already present in SOURCE-PROPOSALS.md, and skip slugs already used by proposal PRs — check with: gh pr list --repo JockeJarre/VPinConsolidatedWiki --state all --limit 200 --json headRefName (proposal branches are named source/<slug>; slug = project name lowercased, non-alphanumerics collapsed to single hyphens, leading/trailing hyphens removed). Do NOT fetch, register, or ingest proposed sources yourself — humans decide. When a resource is merely a lookup aid (index/database site) it may already be listed in wiki/references.md — link there, do not propose.
 
 Finish by printing a short summary: collections processed, pages created/updated, new source proposals appended, and anything skipped or flagged as a conflict." 
         INGEST_RC=$?
@@ -181,6 +176,9 @@ if [ -f SOURCE-PROPOSALS.md ]; then
     PROP_NEW="$LOG_DIR/proposal-new.md"
     cp SOURCE-PROPOSALS.md "$PROP_NEW"
 fi
+
+# PRs are created directly on the wiki repo by the JockeJarreAI collaborator.
+UPSTREAM_REPO="JockeJarre/VPinConsolidatedWiki"
 
 # --- 4. single NightlyUpdates branch + commit + push + PR (create if none) ---
 if [ "${SKIP_PI:-0}" != "1" ]; then
@@ -257,7 +255,7 @@ if [ "${SKIP_PI:-0}" != "1" ]; then
             # Growth guard: if the open PR has sat unmerged past the grace
             # window, merge it (squash + delete branch); next run starts fresh.
             GRACE="${PR_AUTO_MERGE_DAYS:-7}"
-            PR_INFO="$(gh pr list --head "$BRANCH" --state open --json number,createdAt \
+            PR_INFO="$(gh pr list --repo "$UPSTREAM_REPO" --head "$BRANCH" --state open --json number,createdAt \
                 -q 'if .[0] == null then "" else "\(.number) \(.createdAt)" end' 2>/dev/null || true)"
             if [ -n "$PR_INFO" ] && [ "$GRACE" -gt 0 ]; then
                 PR_NUM="${PR_INFO%% *}"; PR_CREATED="${PR_INFO#* }"
@@ -265,7 +263,7 @@ if [ "${SKIP_PI:-0}" != "1" ]; then
                 PR_AGE=$(( ( $(date +%s) - PR_EPOCH ) / 86400 ))
                 if [ "$PR_EPOCH" -gt 0 ] && [ "$PR_AGE" -ge "$GRACE" ]; then
                     echo "PR #$PR_NUM unmerged for ${PR_AGE}d (grace ${GRACE}d); auto-merging."
-                    gh pr merge "$PR_NUM" --squash --delete-branch
+                    gh pr merge "$PR_NUM" --repo "$UPSTREAM_REPO" --squash --delete-branch
                     PR_RC=$?
                     PR_INFO=""
                 fi
@@ -287,13 +285,13 @@ if [ "${SKIP_PI:-0}" != "1" ]; then
                 git show --name-status --format= "$BRANCH" | head -25 | sed 's/^/- /'
             } > "$BODY_FILE"
 
-            OPEN_PR="$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number' 2>/dev/null || true)"
+            OPEN_PR="$(gh pr list --repo "$UPSTREAM_REPO" --head "$BRANCH" --state open --json number -q '.[0].number' 2>/dev/null || true)"
             if [ -n "$OPEN_PR" ] && [ "$OPEN_PR" != "null" ]; then
-                gh pr edit "$OPEN_PR" --body-file "$BODY_FILE"
+                gh pr edit "$OPEN_PR" --repo "$UPSTREAM_REPO" --body-file "$BODY_FILE"
                 PR_RC=$?
                 echo "Open PR #$OPEN_PR for $BRANCH updated (body refreshed, exit=$PR_RC)."
             else
-                gh pr create --base "$BASE" --head "$BRANCH" \
+                gh pr create --repo "$UPSTREAM_REPO" --base "$BASE" --head "$BRANCH" \
                     --title "Nightly wiki updates" --body-file "$BODY_FILE"
                 PR_RC=$?
                 echo "PR created (exit=$PR_RC)"
@@ -353,7 +351,7 @@ if [ -n "$PROP_NEW" ] && [ "${SKIP_PI:-0}" != "1" ]; then
             echo
             echo "**Reject:** close the PR and delete the branch — nothing lands on main."
         } > "$BODY_FILE"
-        gh pr create --base "$BASE" --head "$PBRANCH" \
+        gh pr create --repo "$UPSTREAM_REPO" --base "$BASE" --head "$PBRANCH" \
             --title "New source: $NAME" --body-file "$BODY_FILE" >/dev/null
         prc2=$?
         rm -f "$BODY_FILE"
