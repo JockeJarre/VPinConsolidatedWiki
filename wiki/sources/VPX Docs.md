@@ -1,6 +1,6 @@
 # VPX Docs (Source Summary)
 
-Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](https://github.com/vpinball/vpinball/tree/master/docs) (40 files in the current mirror at the top level, 79 including `img/` media; refreshed 2026-11-06). Run `update-raw.ps1` to refresh it before re-ingesting.
+Summary of the local Visual Pinball X documentation snapshot in [raw/VPX/repo/docs](https://github.com/vpinball/vpinball/tree/master/docs) (40 files in the current mirror at the top level, 79 including `img/` media; refreshed 2026-11-21). Run `update-raw.ps1` to refresh it before re-ingesting.
 
 ## Canonical Upstream
 
@@ -29,7 +29,7 @@ Current snapshot file count: 40 top-level files (79 including `img/` media). The
 | [Accelerometer Velocity Input Tech Note.md](https://github.com/vpinball/vpinball/blob/master/docs/Accelerometer%20Velocity%20Input%20Tech%20Note.md)   | Nudge velocity internals   |
 | [Open Pinball Device User Guide.md](https://github.com/vpinball/vpinball/blob/master/docs/Open%20Pinball%20Device%20User%20Guide.md)                   | OPD support                |
 | [Upgrading Table 10.8.md](https://github.com/vpinball/vpinball/blob/master/docs/Upgrading%20Table%2010.8.md)                                           | 10.7→10.8 migration        |
-| [Upgrading Table 10.8.1.md](https://github.com/vpinball/vpinball/blob/master/docs/Upgrading%20Table%2010.8.1.md)                                       | 10.8→10.8.1 migration      |
+| [Upgrading Table 10.9.0.md](https://github.com/vpinball/vpinball/blob/master/docs/Upgrading%20Table%2010.9.0.md)                                       | 10.8.1→10.9.0 migration (renamed upstream 2026-11-20) |
 | [Mobile.md](https://github.com/vpinball/vpinball/blob/master/docs/Mobile.md)                                                                           | Unified iOS/Android/Quest guide |
 | [VPZ File Format.md](https://github.com/vpinball/vpinball/blob/master/docs/VPZ%20File%20Format.md)                                                     | Open table-pack format     |
 | [Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt)                                                                   | 10.8.1 changelog           |
@@ -51,9 +51,9 @@ Current snapshot file count: 40 top-level files (79 including `img/` media). The
 - Velocity-based input (plunger + accelerometer) is strongly recommended over position/acceleration
 - Open Pinball Device is the emerging standard for cabinet controllers
 - SharedMemory API enables external apps (DMD, backglass, tools) to interface with VPX
-- Comprehensive upgrade guides for 10.8 and 10.8.1 (input system rewrite)
+- Comprehensive upgrade guides for 10.8 and 10.9.0 (input system rewrite)
 
-## Late-2026 Changes (re-ingested 2026-11-04, 2026-11-06, 2026-11-14)
+## Late-2026 Changes (re-ingested 2026-11-04, 2026-11-06, 2026-11-14, 2026-11-21)
 
 Upstream docs moved substantially since the April 2026 ingest ([Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt), [Changelog_Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog_Scripts.txt)):
 
@@ -67,6 +67,9 @@ Upstream docs moved substantially since the April 2026 ingest ([Changelog.txt](h
 - Flasher `VideoCap` API deprecated (reported by the table audit)
 - **VR doc added upstream 2026-11-06**: [VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md) documents the OpenXR scene as 4 nested space references (Room / Cabinet feet / Cabinet / Playfield — only Playfield carries physics), the room-positioning + lockbar-dimension parameter model with the full `PlayerVR.*` settings reference, in-play view nudge / Align-VR-view / controller recentering, seated tilt, and colorkeyed passthrough **augmented reality** (10.8.1 Beta) → filed in [VPX VR Setup](../concepts/VPX%20VR%20Setup.md)
 - **Per-table Physics Profile 10.9 documented in the Changelog (upstream 2026-11-13/14)**: a per-table 'Physics Profile' option in the table's physics properties (default 10.8; new tables use 10.9) opts into the corrected physics engine behavior — including a rewritten **gate** model (the collider is a trigger zone tracking the actual moving wire/plate between its angle limits, stopping the ball only when the wire cannot follow) and exact **sloped quad ramp side walls** (replacing subdivided rectangles whose dead zones let balls escape on steep sections) → filed in [Visual Pinball X](../projects/Visual%20Pinball%20X.md) ([Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt))
+- **Dev stream renumbered 10.8.1 → 10.9.0 (upstream 2026-11-20)**: [Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt) is now "VP 10.9.0 Changelog"; [Build Differences.md](https://github.com/vpinball/vpinball/blob/master/docs/Build%20Differences.md) dates the BGFX build as "introduced with version 10.9.0"; "Upgrading Table 10.8.1.md" renamed to [Upgrading Table 10.9.0.md](https://github.com/vpinball/vpinball/blob/master/docs/Upgrading%20Table%2010.9.0.md); doc footers read "10.9.0 Beta" (top-level file count unchanged at 40)
+- **VR.md space-reference model revised (upstream 2026-11-20)**: the 4 nested space references (Room / Cabinet feet / Cabinet / Playfield) collapse to **2** (Room + Playfield, the cabinet riding inside the playfield space); `PlayerVR.LockFeetToGround` removed from the settings reference (feet-unlock option, controller-measured lockbar width); desktop-window-during-VR display options (black / full scene / playfield only / one eye mirrored); OpenXR backends on Linux → re-filed in [VPX VR Setup](../concepts/VPX%20VR%20Setup.md) ([VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md))
+- **Changelog feature wave (upstream 2026-11-20)**: 'Audit & Fix' table optimizer (WebP/EXR/Opus re-encode), texture compression enabled by default with per-table GPU-format disk cache, analytically raytraced balls + motion blur, AgX tonemapper matched to Blender/Godot, Nuance/Lottes CRT filtering + LCD profile, FAAA AA, MSAA in the multithreaded renderer, haptic audio output for tactile transducers, VPinMAME DIP/volume into InGameUI, LiveEditor tool additions (reference images, point edit, measure, script-editor IDE features), cross-instance clipboard, gate/spinner ball-contact physics refinements → filed in [Visual Pinball X](../projects/Visual%20Pinball%20X.md) ([Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt))
 
 ## Wiki Pages Generated
 
