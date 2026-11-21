@@ -7,6 +7,17 @@ External resources that the wiki links to for lookup and cross-referencing, but 
 - **Virtual Pinball Spreadsheet** — <https://virtualpinballspreadsheet.github.io/>
   Community index of VPX table downloads, ROM names, and patch links; used by community wikis (e.g. the Unofficial Visual Pinball Wiki) as the authority for locating parent/clone ROM sets. Linked from table-setup and ROM-related pages as a lookup aid.
 
+## Tools, Frontends, and Libraries
+
+- **VPin Studio** — <https://github.com/syd711/vpin-studio>
+  Modern table/player/competition management frontend (Rust, cross-platform) for Visual Pinball; listed among vpxtool's related projects. Link-only source proposal accepted 2026-11-20 (PR #18).
+
+- **ClrVpin** — <https://github.com/stojy/ClrVpin/wiki>
+  Long-standing virtual pinball content-management suite (VPinbox/VPDirect) with its own GitHub wiki; referenced by community pages. Link-only source proposal accepted 2026-11-20 (PR #19).
+
+- **BGFX** — <https://bkaradzic.github.io/bgfx/>
+  Rendering library declared the default VPX 10.8.1 flavor; upstream documentation for the renderer backends (Vulkan, Metal, DX11, OpenXR) behind VPX Build Differences / VR / HDR / stereo claims. Link-only source proposal accepted 2026-11-20 (PR #21).
+
 ## Conventions
 
 - Entries are added via accepted source proposals designated "link-only", or by direct request.

@@ -8,7 +8,7 @@ VPX is the core of the virtual pinball ecosystem. Tables are authored in the VPX
 
 ## Build Flavors
 
-### BGFX (Current — 10.8.1+)
+### BGFX (Current — 10.9.0+)
 - Most modern and feature-complete variant
 - Supports Vulkan, Metal, DirectX 11, OpenGL, OpenGL ES
 - VR/AR via OpenXR, HDR display support
@@ -176,6 +176,12 @@ Helper classes: `cvpmTrough`, `cvpmSaucer`, `cvpmMagnet`, `cvpmTurnTable`, `cvpm
 - New VR/XR space reference features (optional)
 - Ball motion trail/blur moved to application settings
 
+### 10.9.0 Changes
+The development stream was **renumbered from 10.8.1 to 10.9.0** upstream 2026-11-20; the upgrade guide `Upgrading Table 10.8.1.md` is now [Upgrading Table 10.9.0.md](https://github.com/vpinball/vpinball/blob/master/docs/Upgrading%20Table%2010.9.0.md) ([raw/VPX/repo/docs/Build Differences.md](https://github.com/vpinball/vpinball/blob/master/docs/Build%20Differences.md))
+- Still fully backwards compatible; input redefinition on upgrade still required
+- VR space references simplified to 2 (Room + Playfield) — see [VPX VR Setup](../concepts/VPX%20VR%20Setup.md)
+- Optional per-table Physics Profile 10.9 (new tables default to it) — see below
+
 ## SharedMemory API
 
 Client-server shared memory for external applications ([DMD](../concepts/DMD.md), backglass, SpyTool) to read/write VPX state. Little Endian format. Reserved IDs: `VPVR` (server), `UDMD`, `XDMD`, `DB2S`, `SPYT`. Slot acquisition uses a handshake protocol with REQUEST_ID/ACK_ID validation.
@@ -184,7 +190,7 @@ Client-server shared memory for external applications ([DMD](../concepts/DMD.md)
 
 In-game editor allowing modification while a table plays. Supports orbit/pan/zoom viewport, grab/rotate/scale parts, and switching between startup state (persisted) and live state (animated). Key shortcuts: P (play/pause), G/R/S (grab/rotate/scale), F (fly camera).
 
-## Late-2026 Upstream Changes (10.8.1 stream)
+## Late-2026 Upstream Changes (10.8.1 → 10.9.0 stream)
 
 Captured from the 2026-11 raw refresh ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt), [raw/VPX/repo/docs/Changelog_Scripts.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog_Scripts.txt)):
 
@@ -196,6 +202,14 @@ Captured from the 2026-11 raw refresh ([raw/VPX/repo/docs/Changelog.txt](https:/
 - **Mobile apps published**: App Store (iOS 26+), Google Play (Android 13+, 64-bit); Meta Quest via sideload. iOS/Android/Quest guides merged into [Mobile.md](https://github.com/vpinball/vpinball/blob/master/docs/Mobile.md); see [VPX Standalone](../concepts/VPX%20Standalone.md)
 - **Wasm builds** supported; flasher `VideoCap` capture API deprecated
 - **Per-table Physics Profile (10.8 vs 10.9)**: the table's physics properties gained a 'Physics Profile' option — existing tables keep 10.8 physics by default, the 10.9 profile enables the corrected physics engine behavior and is the default for new tables. 10.9 highlights: gates model the **actual moving wire/plate** (trigger-zone collider over the sweep between angle limits, ball-tracked contact solving) instead of static line segments, and **ramp side walls are exact sloped quads** (fixing ball escapes through dead zones on steep ramps and phantom hits under raised parts); full list of contact/friction/flipper-inertia fixes in the changelog ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt), upstream 2026-11-13/14)
+- **Version renumbered 10.8.1 → 10.9.0** (upstream 2026-11-20): the changelog header is now "VP 10.9.0 Changelog", Build Differences dates the BGFX build as "introduced with version 10.9.0", and docs carry the "10.9.0 Beta" applicability footer ([raw/VPX/repo/docs/Build Differences.md](https://github.com/vpinball/vpinball/blob/master/docs/Build%20Differences.md))
+- **Physics Profile 10.9 refinements** (upstream 2026-11-20): gate wire/plate and spinner plate are now **pushed by ball contact under all physics profiles** (ball pushes the part ahead instead of it lagging/clipping, spinner keeps spinning after ball exit, rests on a stopped ball); 10.9-profile fixes: trigger/kicker volume edges no longer nudge the ball on Hit/Unhit, gate/spinner zones honor actual ball sizes (bigger balls no longer clip through ends), non-legacy kickers capture slow balls on raised surfaces, friction uncapped at 1, glass collider honors authored elasticity, playfield side walls under a **sloped glass** fixed, ramp-entrance duplicate collision and very-low-'Mech Strength' plunger release fixed ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt))
+- **'Audit & Fix' table optimizer**: new dialog detects table errors/quirks and semi-automatically re-encodes images/sounds/music to WebP/EXR/Opus at matched-quality compression for smaller shipped tables (upstream 2026-11-20, Changelog; corroborated by the community wiki's tip ([raw/ExternalWikis/dekay-vpinball-wiki/repo/Table-Fixes-&-Performance-Optimizations.md](https://github.com/dekay/vpinball-wiki/wiki/Table-Fixes-&-Performance-Optimizations)))
+- **Texture compression enabled by default** (BGFX, all platforms): GPU formats BC7/BC1/BC3 (ASTC/ETC2 on mobile, BC6H for HDR, RGB9E5/RG11B10F fallback) with a **per-table disk cache** that skips re-compression on reload and auto-prunes stale entries; force-disabled on DX9/GL; table loading further optimized with a closable progress loading screen ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt))
+- **Rendering additions** (upstream 2026-11-20): balls rendered as **analytically raytraced per pixel** (exact silhouette/shading, no mesh facets) plus raytraced true motion blur (BGFX only, not VR/headtracking), balls reflect nearby lights by bulb size/distance; AgX tonemapper matched to Blender/Godot ('punchy'/'golden' variants removed); 'Nuance'/'Lottes' CRT texture filtering with an LCD display profile (also in the Nixie/ScoreView plugin); FAAA anti-aliasing mode; MSAA in the multithreaded renderer; static parts prerendered over several frames ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt))
+- **Haptics & audio** (upstream 2026-11-20): optional **haptic audio output** cloning the playfield sound engine to a dedicated device for tactile transducers (off by default); gamepad rumble scaled by impact strength with per-source settings (bumper/slingshot/plunger/flipper/nudge); Arcade2TV-Pinball split audio; VPinMAME DIP-switch dialog, volume and F4/F5 keys moved into the InGameUI (with restart notice), per-source audio levels saved there
+- **Editor & workflow** (upstream 2026-11-20): copy/paste between VPX instances and between the Windows editor and LiveEditor via system clipboard; LiveEditor gains reference images (real-size scans/blueprints to trace), point-edit tools (bevel/arc/add point), 'Round Wall' tool, measure mode, Blender-style sidebar & orthographic views; script editor with syntax highlighting, autocomplete, go-to-definition, F7 syntax check and two-way sync with the Windows code view; saving writes a temp file first (old table kept on failure); loading of broken/malicious table/model/image files hardened; element names matched case-insensitively, table text stored as UTF-8 ([raw/VPX/repo/docs/Changelog.txt](https://github.com/vpinball/vpinball/blob/master/docs/Changelog.txt))
+- **VR scene model revised** (upstream 2026-11-20): space references simplified from 4 (Room / Cabinet feet / Cabinet / Playfield) to 2 — the cabinet now rides inside the Playfield space — and OpenXR backends are supported **on Linux** → see [VPX VR Setup](../concepts/VPX%20VR%20Setup.md) ([raw/VPX/repo/docs/VR.md](https://github.com/vpinball/vpinball/blob/master/docs/VR.md))
 
 ## See Also
 
